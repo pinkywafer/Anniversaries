@@ -1,5 +1,5 @@
 {
-  "domain": "sensor.anniversaries",
+  "domain": "anniversaries",
   "name": "Anniversaries",
   "documentation": "https://github.com/pinkywafer/Anniversaries",
   "dependencies": [""],
