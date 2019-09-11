@@ -1,0 +1,8 @@
+{
+  "domain": "sensor.anniversaries",
+  "name": "Anniversaries Sensor",
+  "documentation": "",
+  "dependencies": [""],
+  "codeowners": ["@pinkywafer"],
+  "requirements": []
+}
