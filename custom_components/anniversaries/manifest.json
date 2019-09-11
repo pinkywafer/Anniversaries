@@ -1,7 +1,7 @@
 {
   "domain": "sensor.anniversaries",
   "name": "Anniversaries Sensor",
-  "documentation": "",
+  "documentation": "https://github.com/pinkywafer/Anniversaries",
   "dependencies": [""],
   "codeowners": ["@pinkywafer"],
   "requirements": []
