@@ -1,0 +1,6 @@
+  
+{
+  "name": "Anniversaries",
+  "domains": ["anniversaries", "sensor"],
+  "iot_class": "Local Push"
+}
