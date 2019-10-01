@@ -10,10 +10,9 @@ from homeassistant.const import (
 from homeassistant.helpers.entity import Entity
 from datetime import datetime, date, timedelta
 
-#_LOGGER = logging.getLogger(__name__)
-
 CONF_DATE = "date"
 ATTR_YEARS = "years"
+ATTR_DATE = "date"
 CONF_ICON_NORMAL = "icon_normal"
 CONF_ICON_TODAY = "icon_today"
 CONF_ICON_TOMORROW = "icon_tomorrow"
@@ -31,9 +30,6 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_ICON_TOMORROW, default=DEFAULT_ICON_TOMORROW): cv.icon,
 
 })
-
-#SCAN_INTERVAL = timedelta(seconds=60)
-#THROTTLE_INTERVAL = timedelta(seconds=600)
 
 TRACKABLE_DOMAINS = ["sensor"]
 
@@ -68,6 +64,7 @@ class anniversaries(Entity):
         """Return the state attributes."""
         res = {}
         res[ATTR_YEARS] = self._years
+        res[ATTR_DATE] = datetime.strftime(self._date,"%Y-%m-%d")
         return res
 
     @property

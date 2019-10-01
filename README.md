@@ -1,9 +1,12 @@
 # Anniversaries
 The 'anniversaries' component is a Home Assistant custom sensor which counts down to a recurring date such as birthdays, but can be used for any anniversary which occurs annually on the same date.
 
-The state is the number of days remaining to the next occurance.
+State Returned:
+* The number of days remaining to the next occurance.
 
-The years attribute shows how many years have passed since the first occurance (ie, age)
+Attributes:
+* years: number of years have passed since the first occurance (ie, age)
+* date:  The date as configured
 
 ## Table of Contents
 * [Installation](#installation)
