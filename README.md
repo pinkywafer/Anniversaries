@@ -5,7 +5,8 @@ State Returned:
 * The number of days remaining to the next occurance.
 
 Attributes:
-* years: number of years have passed since the first occurance (ie, age)
+* years at next anniversary: number of years that will have passed at the next occurrence 
+* current years: number of years have passed since the first occurance (ie, age)
 * date:  The date as configured
 
 ## Table of Contents
