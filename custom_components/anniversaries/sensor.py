@@ -11,7 +11,8 @@ from homeassistant.helpers.entity import Entity
 from datetime import datetime, date, timedelta
 
 CONF_DATE = "date"
-ATTR_YEARS = "years"
+ATTR_YEARS_NEXT = "years at next anniversary"
+ATTR_YEARS_CURRENT = "current years"
 ATTR_DATE = "date"
 CONF_ICON_NORMAL = "icon_normal"
 CONF_ICON_TODAY = "icon_today"
@@ -46,7 +47,8 @@ class anniversaries(Entity):
         self._icon_today = config.get(CONF_ICON_TODAY)
         self._icon_tomorrow = config.get(CONF_ICON_TOMORROW)
         self._icon = self._icon_normal
-        self._years = 0
+        self._years_next = 0
+        self._years_current = 0
         self._state = 0
 
     @property
@@ -63,7 +65,8 @@ class anniversaries(Entity):
     def device_state_attributes(self):
         """Return the state attributes."""
         res = {}
-        res[ATTR_YEARS] = self._years
+        res[ATTR_YEARS_NEXT] = self._years_next
+        res[ATTR_YEARS_CURRENT] = self._years_current
         res[ATTR_DATE] = datetime.strftime(self._date,"%Y-%m-%d")
         return res
 
@@ -92,4 +95,5 @@ class anniversaries(Entity):
         else:
             self._icon = self._icon_normal
         self._state = daysRemaining
-        self._years = years
+        self._years_next = years
+        self._years_current = years - 1
