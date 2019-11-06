@@ -7,7 +7,7 @@ State Returned:
 Attributes:
 * years at next anniversary: number of years that will have passed at the next occurrence 
 * current years: number of years have passed since the first occurance (ie, age)
-* date:  The date as configured
+* date:  The configured date (formatted by the date_format attribute if set)
 
 ## Table of Contents
 * [Installation](#installation)
@@ -55,5 +55,6 @@ sensor:
 | `icon_normal` | Yes | Default icon **Default**:  `mdi:calendar-blank`
 | `icon_today` | Yes | Icon if the anniversary is today **Default**: `mdi:calendar-star`
 | `icon_tomorrow` | Yes | Icon if the anniversary is tomorrow **Default**: `mdi:calendar`
+| `date_format` | Yes | formats the returned date **Default**: '%Y-%m-%d' _for reference, see [http://strftime.org/](http://strftime.org/)_
 ---
 [<a href="https://www.buymeacoffee.com/V3q9id4" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>](https://www.buymeacoffee.com/V3q9id4)
