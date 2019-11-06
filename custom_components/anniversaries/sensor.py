@@ -11,16 +11,18 @@ from homeassistant.helpers.entity import Entity
 from datetime import datetime, date, timedelta
 
 CONF_DATE = "date"
-ATTR_YEARS_NEXT = "years at next anniversary"
-ATTR_YEARS_CURRENT = "current years"
+ATTR_YEARS_NEXT = "years_at_next_anniversary"
+ATTR_YEARS_CURRENT = "current_years"
 ATTR_DATE = "date"
 CONF_ICON_NORMAL = "icon_normal"
 CONF_ICON_TODAY = "icon_today"
 CONF_ICON_TOMORROW = "icon_tomorrow"
+CONF_DATE_FORMAT = "date_format"
 
 DEFAULT_ICON_NORMAL = "mdi:calendar-blank"
 DEFAULT_ICON_TODAY = "mdi:calendar-star"
 DEFAULT_ICON_TOMORROW = "mdi:calendar"
+DEFAULT_DATE_FORMAT = "%Y-%m-%d"
 
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
@@ -29,6 +31,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_ICON_NORMAL, default=DEFAULT_ICON_NORMAL): cv.icon,
     vol.Optional(CONF_ICON_TODAY, default=DEFAULT_ICON_TODAY): cv.icon,
     vol.Optional(CONF_ICON_TOMORROW, default=DEFAULT_ICON_TOMORROW): cv.icon,
+    vol.Optional(CONF_DATE_FORMAT, default=DEFAULT_DATE_FORMAT): cv.string,
 
 })
 
@@ -46,6 +49,7 @@ class anniversaries(Entity):
         self._icon_normal = config.get(CONF_ICON_NORMAL)
         self._icon_today = config.get(CONF_ICON_TODAY)
         self._icon_tomorrow = config.get(CONF_ICON_TOMORROW)
+        self._date_format = config.get(CONF_DATE_FORMAT)
         self._icon = self._icon_normal
         self._years_next = 0
         self._years_current = 0
@@ -67,7 +71,7 @@ class anniversaries(Entity):
         res = {}
         res[ATTR_YEARS_NEXT] = self._years_next
         res[ATTR_YEARS_CURRENT] = self._years_current
-        res[ATTR_DATE] = datetime.strftime(self._date,"%Y-%m-%d")
+        res[ATTR_DATE] = datetime.strftime(self._date,self._date_format)
         return res
 
     @property
@@ -83,6 +87,7 @@ class anniversaries(Entity):
             daysRemaining = (nextDate - today).days
         elif today == nextDate:
             daysRemaining = 0
+            years = years + 1
         elif today > nextDate:
             nextDate = date(today.year + 1, self._date.month, self._date.day)
             daysRemaining = (nextDate - today).days
