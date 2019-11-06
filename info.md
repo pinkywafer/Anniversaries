@@ -7,7 +7,7 @@ State Returned:
 Attributes:
 * years at next anniversary: number of years that will have passed at the next occurrence 
 * current years: number of years have passed since the first occurance (ie, age)
-* date:  The date as configured
+* date:  The configured date (formatted by the date_format attribute if set)
 
 ## Configuration
 Add `anniversaries` sensor in your `configuration.yaml`. The following example adds two sensors - Shakespeare's birthday and wedding anniversary!
@@ -19,6 +19,7 @@ Add `anniversaries` sensor in your `configuration.yaml`. The following example a
 | `icon_normal` | Yes | Default icon **Default**:  `mdi:calendar-blank`
 | `icon_today` | Yes | Icon if the anniversary is today **Default**: `mdi:calendar-star`
 | `icon_tomorrow` | Yes | Icon if the anniversary is tomorrow **Default**: `mdi:calendar`
+| `date_format` | Yes | formats the returned date **Default**: '%Y-%m-%d' _for reference, see [http://strftime.org/](http://strftime.org/)_
 
 ```yaml
 # Example configuration.yaml entry
