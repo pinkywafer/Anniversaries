@@ -48,6 +48,6 @@ anniversaries:
 |`date` | No | date in format `'YYYY-MM-DD'`
 | `icon_normal` | Yes | Default icon **Default**:  `mdi:calendar-blank`
 | `icon_today` | Yes | Icon if the anniversary is today **Default**: `mdi:calendar-star`
-| `days_as_soon` Yes | Days in advance to display the icon defined in `icon_soon` **Default**: 1
-| `icon_soon` | Yes | Icon if the anniversary is tomorrow **Default**: `mdi:calendar`
+| `days_as_soon` | Yes | Days in advance to display the icon defined in `icon_soon` **Default**: 1
+| `icon_soon` | Yes | Icon if the anniversary is 'soon' **Default**: `mdi:calendar`
 | `date_format` | Yes | formats the returned date **Default**: '%Y-%m-%d' _for reference, see [http://strftime.org/](http://strftime.org/)_
