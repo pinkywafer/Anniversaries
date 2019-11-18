@@ -3,6 +3,11 @@
   "name": "Anniversaries",
   "documentation": "https://github.com/pinkywafer/Anniversaries",
   "dependencies": [],
+  "config_flow": true,
   "codeowners": ["@pinkywafer"],
-  "requirements": []
+  "requirements": [
+    "sampleclient",
+    "integrationhelper"
+  ],
+  "homeassistant": "0.96.0"
 }

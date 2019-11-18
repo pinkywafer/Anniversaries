@@ -1,6 +1,8 @@
   
 {
   "name": "Anniversaries",
+  "zip_release": true,
+  "filename": "anniversaries.zip",
   "domains": ["anniversaries", "sensor"],
   "iot_class": "Local Push"
 }

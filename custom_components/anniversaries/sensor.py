@@ -1,60 +1,72 @@
-"""Platform for sensor integration."""
+""" sensor """
 
-import voluptuous as vol
-import homeassistant.helpers.config_validation as cv
-from homeassistant.components.sensor import PLATFORM_SCHEMA
+from homeassistant.helpers.entity import Entity
+import logging
+from datetime import datetime, date, timedelta
+from homeassistant.core import HomeAssistant, State
+
 from homeassistant.const import (
     CONF_NAME,
 )
 
-from homeassistant.helpers.entity import Entity
-from datetime import datetime, date, timedelta
+from .const import (
+    ATTRIBUTION,
+    DEFAULT_NAME,
+    DOMAIN,
+    CONF_SENSOR,
+    CONF_ENABLED,
+    CONF_ICON_NORMAL,
+    CONF_ICON_TODAY,
+    CONF_ICON_SOON,
+    CONF_DATE,
+    CONF_DATE_FORMAT,
+    CONF_SOON,
+)
 
-CONF_DATE = "date"
 ATTR_YEARS_NEXT = "years_at_next_anniversary"
 ATTR_YEARS_CURRENT = "current_years"
 ATTR_DATE = "date"
-CONF_ICON_NORMAL = "icon_normal"
-CONF_ICON_TODAY = "icon_today"
-CONF_ICON_TOMORROW = "icon_tomorrow"
-CONF_DATE_FORMAT = "date_format"
-
-DEFAULT_ICON_NORMAL = "mdi:calendar-blank"
-DEFAULT_ICON_TODAY = "mdi:calendar-star"
-DEFAULT_ICON_TOMORROW = "mdi:calendar"
-DEFAULT_DATE_FORMAT = "%Y-%m-%d"
-
-
-PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
-    vol.Required(CONF_DATE): cv.date,
-    vol.Required(CONF_NAME): cv.string,
-    vol.Optional(CONF_ICON_NORMAL, default=DEFAULT_ICON_NORMAL): cv.icon,
-    vol.Optional(CONF_ICON_TODAY, default=DEFAULT_ICON_TODAY): cv.icon,
-    vol.Optional(CONF_ICON_TOMORROW, default=DEFAULT_ICON_TOMORROW): cv.icon,
-    vol.Optional(CONF_DATE_FORMAT, default=DEFAULT_DATE_FORMAT): cv.string,
-
-})
-
-TRACKABLE_DOMAINS = ["sensor"]
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Setup the sensor platform."""
-    async_add_entities([anniversaries(config)],True)  
+ #   async_add_entities([anniversaries(config)],True)  
+    async_add_entities([anniversaries(hass, discovery_info)], True)
+     
+async def async_setup_entry(hass, config_entry, async_add_devices):
+    """Setup sensor platform."""
+    async_add_devices([anniversaries(hass, config_entry.data)], True)
+
 
 class anniversaries(Entity):
-    def __init__(self, config):
+    def __init__(self, hass, config):
         """Initialize the sensor."""
+        self.config = config
         self._name = config.get(CONF_NAME)
-        self._date = config.get(CONF_DATE)
+        self._date = datetime.strptime(config.get(CONF_DATE), "%Y-%m-%d")
         self._icon_normal = config.get(CONF_ICON_NORMAL)
         self._icon_today = config.get(CONF_ICON_TODAY)
-        self._icon_tomorrow = config.get(CONF_ICON_TOMORROW)
+        self._icon_soon = config.get(CONF_ICON_SOON)
+        self._soon = config.get(CONF_SOON)
         self._date_format = config.get(CONF_DATE_FORMAT)
         self._icon = self._icon_normal
         self._years_next = 0
         self._years_current = 0
         self._state = 0
 
+    @property
+    def unique_id(self):
+        """Return a unique ID to use for this sensor."""
+        return self.config.get("unique_id", None)
+
+    @property
+    def device_info(self):
+        return {
+            "identifiers": {(DOMAIN, self.config.get("unique_id", None))},
+            "name": self.config.get("name"),
+            "manufacturer": "Pinkywafer",
+            "model": "Anniversaries",
+        }
+        
     @property
     def name(self):
         """Return the name of the sensor."""
@@ -95,8 +107,8 @@ class anniversaries(Entity):
 
         if daysRemaining == 0:
             self._icon = self._icon_today
-        elif daysRemaining == 1:
-            self._icon = self._icon_tomorrow
+        elif daysRemaining <= self._soon:
+            self._icon = self._icon_soon
         else:
             self._icon = self._icon_normal
         self._state = daysRemaining
