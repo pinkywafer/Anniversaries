@@ -57,11 +57,9 @@ Add `anniversaries` sensor in your `configuration.yaml`. The following example a
 
 anniversaries:
   sensors:
-  - platform: anniversaries
-    name: Shakespeare's Birthday
+  - name: Shakespeare's Birthday
     date: '1564-04-23'
-  - platform: anniversaries
-    name: Shakespeare's Wedding Anniversary
+  - name: Shakespeare's Wedding Anniversary
     date: '1582-11-27'
 ```
 
