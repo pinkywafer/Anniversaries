@@ -80,6 +80,11 @@ class anniversaries(Entity):
     @property
     def icon(self):
         return self._icon
+    
+    @property
+    def unit_of_measurement(self):
+        """Return the unit this state is expressed in."""
+        return "days"
 
     async def async_update(self):
         today = date.today()
