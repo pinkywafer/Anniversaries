@@ -59,15 +59,6 @@ class anniversaries(Entity):
         return self.config.get("unique_id", None)
 
     @property
-    def device_info(self):
-        return {
-            "identifiers": {(DOMAIN, self.config.get("unique_id", None))},
-            "name": self.config.get("name"),
-            "manufacturer": "Pinkywafer",
-            "model": "Anniversaries",
-        }
-        
-    @property
     def name(self):
         """Return the name of the sensor."""
         return self._name
