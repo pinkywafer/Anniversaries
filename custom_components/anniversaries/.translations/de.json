@@ -4,7 +4,7 @@
         "step": {
             "user": {
                 "title": "Jahrestage",
-                "description": "Enter the sensor name and configure sensor parameters. More info on https://github.com/pinkywafer/Anniversaries",
+                "description": "Setze den Namen des sensors und ändere Sensorparameter. Mehr Informationen auf https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "name": "Name",
                     "date": "Erstes Datum (yyyy-mm-dd)",
