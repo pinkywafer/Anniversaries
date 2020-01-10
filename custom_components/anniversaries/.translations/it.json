@@ -1,0 +1,42 @@
+{
+    "config": {
+        "title": "Anniversari",
+        "step": {
+            "user": {
+                "title": "Anniversari",
+                "description": "Inserisci il nome sensore e configura i parametri. Altre informazioni su https://github.com/pinkywafer/Anniversaries",
+                "data": {
+                    "name": "Nome",
+                    "date": "Prima data (yyyy-mm-dd)",
+                    "icon_normal": "Icona",
+                    "icon_today": "Icona quando occorre l'anniversario",
+                    "days_as_soon": "Numero di giorni da considerarsi imminente",
+                    "icon_soon": "Icona quando l'anniversario è imminente",
+                    "date_format": "Formato data (vedi http://strftime.org/)"
+                }
+            }
+        },
+        "error": {
+            "invalid_date": "La data non è valida. Inseriscine una con formato 'YYYY-MM-DD'"
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Anniversari",
+                "description": "Configura i parametri del sensore. Altre informazioni su https://github.com/pinkywafer/Anniversaries",
+                "data": {
+                    "date": "Prima data (yyyy-mm-dd)",
+                    "icon_normal": "Icona",
+                    "icon_today": "Icona quando occorre l'anniversario",
+                    "days_as_soon": "Numero di giorni da considerarsi imminente",
+                    "icon_soon": "Icona quando l'anniversario è imminente",
+                    "date_format": "Formato data (vedi http://strftime.org/)"
+                }
+            }
+        },
+        "error": {
+            "invalid_date": "La data non è valida. Inseriscine una con formato 'YYYY-MM-DD'"
+        }
+    }
+}
