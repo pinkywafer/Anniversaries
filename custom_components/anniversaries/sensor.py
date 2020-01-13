@@ -26,6 +26,7 @@ from .const import (
 ATTR_YEARS_NEXT = "years_at_next_anniversary"
 ATTR_YEARS_CURRENT = "current_years"
 ATTR_DATE = "date"
+ATTR_WEEKS = "weeks_remaining"
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Setup the sensor platform."""
@@ -52,6 +53,7 @@ class anniversaries(Entity):
         self._years_next = 0
         self._years_current = 0
         self._state = 0
+        self._weeks_remaining = 0
 
     @property
     def unique_id(self):
@@ -75,6 +77,7 @@ class anniversaries(Entity):
         res[ATTR_YEARS_NEXT] = self._years_next
         res[ATTR_YEARS_CURRENT] = self._years_current
         res[ATTR_DATE] = datetime.strftime(self._date,self._date_format)
+        res[ATTR_WEEKS] = self._weeks_remaining
         return res
 
     @property
@@ -110,3 +113,4 @@ class anniversaries(Entity):
         self._state = daysRemaining
         self._years_next = years
         self._years_current = years - 1
+        self._weeks_remaining = int(daysRemaining / 7)
