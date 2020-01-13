@@ -30,9 +30,8 @@ ATTR_WEEKS = "weeks_remaining"
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Setup the sensor platform."""
- #   async_add_entities([anniversaries(config)],True)  
     async_add_entities([anniversaries(hass, discovery_info)], True)
-     
+
 async def async_setup_entry(hass, config_entry, async_add_devices):
     """Setup sensor platform."""
     async_add_devices([anniversaries(hass, config_entry.data)], True)
@@ -92,6 +91,7 @@ class anniversaries(Entity):
         return "days"
 
     async def async_update(self):
+        """update the sensor"""
         today = date.today()
         nextDate = date(today.year, self._date.month, self._date.day)
         daysRemaining = 0
