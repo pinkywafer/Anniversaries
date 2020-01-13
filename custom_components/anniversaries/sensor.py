@@ -87,6 +87,8 @@ class anniversaries(Entity):
     @property
     def unit_of_measurement(self):
         """Return the unit this state is expressed in."""
+        if self._state == 1:
+            return "day"
         return "days"
 
     async def async_update(self):
