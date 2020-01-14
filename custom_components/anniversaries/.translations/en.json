@@ -17,7 +17,7 @@
             }
         },
         "error": {
-            "invalid_date": "The date is not valid.  Please enter a valid 'YYYY-MM-DD' date"
+            "invalid_date": "The date is not valid.  Please enter a valid 'YYYY-MM-DD'  or 'MM-DD' date"
         }
     },
     "options": {
@@ -26,7 +26,7 @@
                 "title": "Anniversaries",
                 "description": "Change sensor parameters. More info on https://github.com/pinkywafer/Anniversaries",
                 "data": {
-                    "date": "First Date (yyyy-mm-dd)",
+                    "date": "First Date (yyyy-mm-dd) or (mm-yy) if year is unknown",
                     "icon_normal": "Icon",
                     "icon_today": "Icon when anniversary is today",
                     "days_as_soon": "Number of Days to consider soon",
@@ -36,7 +36,7 @@
             }
         },
         "error": {
-            "invalid_date": "The date is not valid.  Please enter a valid 'YYYY-MM-DD' date"
+            "invalid_date": "The date is not valid.  Please enter a valid 'YYYY-MM-DD' or 'MM-DD' date"
         }
     }
 }
