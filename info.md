@@ -15,19 +15,28 @@ The 'anniversaries' component is a Home Assistant custom sensor which counts dow
 **1.0.0 includes BREAKING CHANGES** read the [release notes](https://github.com/pinkywafer/anniversaries/releases/latest).
 
 State Returned:
+
 * The number of days remaining to the next occurance.
 
 Attributes:
-* years at next anniversary: number of years that will have passed at the next occurrence 
-* current years: number of years have passed since the first occurance (ie, age)
-* date:  The configured date (formatted by the date_format attribute if set)
+
+* years at next anniversary: number of years that will have passed at the next occurrence  _(NOT displayed if year is unknown)_
+* current years: number of years have passed since the first occurance (ie, current age)  _(NOT displayed if year is unknown)_
+* date:  The date of the first occurence _(or the date of the next occurence if year is unknown)_ (formatted by the date_format attribute if set)
+* weeks_remaining: The number of weeks until the anniversary
 
 ## Configuration
+
 Anniversaries can be configured on the integrations menu or in configuration.yaml
+
 ### Config Flow
+
 In Configuration/Integrations click on the + button, select Anniversaries and configure the options on the form.
+
 ### configuration.yaml
+
 Add `anniversaries` sensor in your `configuration.yaml`. The following example adds two sensors - Shakespeare's birthday and wedding anniversary!
+
 ```yaml
 # Example configuration.yaml entry
 
@@ -40,10 +49,11 @@ anniversaries:
 ```
 
 ### CONFIGURATION PARAMETERS
+
 |Attribute |Optional|Description
 |:----------|----------|------------
 | `name` | No | Friendly name
-|`date` | No | date in format `'YYYY-MM-DD'`
+|`date` | No | date in format `'YYYY-MM-DD'` (or `'MM-DD'` if year is unknown)
 | `icon_normal` | Yes | Default icon **Default**:  `mdi:calendar-blank`
 | `icon_today` | Yes | Icon if the anniversary is today **Default**: `mdi:calendar-star`
 | `days_as_soon` | Yes | Days in advance to display the icon defined in `icon_soon` **Default**: 1
