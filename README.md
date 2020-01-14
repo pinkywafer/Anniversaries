@@ -19,7 +19,7 @@ State Returned:
 Attributes:
 * years at next anniversary: number of years that will have passed at the next occurrence 
 * current years: number of years have passed since the first occurance (ie, age)
-* date:  The configured date (formatted by the date_format attribute if set)
+* date:  The date of the first occurence _(or the date of the next occurence if year is unknown_) (formatted by the date_format attribute if set)
 
 ## Table of Contents
 * [Installation](#installation)
@@ -67,7 +67,7 @@ anniversaries:
 |Attribute |Optional|Description
 |:----------|----------|------------
 | `name` | No | Friendly name
-|`date` | No | date in format `'YYYY-MM-DD'`
+|`date` | No | date in format `'YYYY-MM-DD'` (or `'MM-DD'` if year is unknown)
 | `icon_normal` | Yes | Default icon **Default**:  `mdi:calendar-blank`
 | `icon_today` | Yes | Icon if the anniversary is today **Default**: `mdi:calendar-star`
 | `days_as_soon` | Yes | Days in advance to display the icon defined in `icon_soon` **Default**: 1

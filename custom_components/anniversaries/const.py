@@ -46,6 +46,10 @@ def check_date(value):
     try:
         return datetime.strptime(value, "%Y-%m-%d").date().strftime("%Y-%m-%d")
     except ValueError:
+        pass
+    try:
+        return datetime.strptime(value, "%m-%d").date().strftime("%m-%d")
+    except ValueError:
         raise vol.Invalid(f"Invalid date: {value}")
 
 

@@ -104,6 +104,11 @@ def is_not_date(date):
         datetime.strptime(date, "%Y-%m-%d")
         return False
     except ValueError:
+        pass
+    try:
+        datetime.strptime(date, "%m-%d")
+        return False
+    except ValueError:
         return True
         
 class OptionsFlowHandler(config_entries.OptionsFlow):
