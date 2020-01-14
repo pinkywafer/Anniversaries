@@ -1,4 +1,5 @@
 # Anniversaries
+
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/custom-components/hacs)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/pinkywafer/Anniversaries)](https://github.com/pinkywafer/Anniversaries/releases)
 ![GitHub Release Date](https://img.shields.io/github/release-date/pinkywafer/Anniversaries)
@@ -14,25 +15,29 @@ The 'anniversaries' component is a Home Assistant custom sensor which counts dow
 **1.0.0 includes BREAKING CHANGES** read the [release notes](https://github.com/pinkywafer/anniversaries/releases/latest).
 
 State Returned:
+
 * The number of days remaining to the next occurance.
 
 Attributes:
-* years at next anniversary: number of years that will have passed at the next occurrence 
+
+* years at next anniversary: number of years that will have passed at the next occurrence
 * current years: number of years have passed since the first occurance (ie, age)
-* date:  The date of the first occurence _(or the date of the next occurence if year is unknown_) (formatted by the date_format attribute if set)
+* date:  The date of the first occurence _(or the date of the next occurence if year is unknown)_ (formatted by the date_format attribute if set)
 
 ## Table of Contents
+
 * [Installation](#installation)
-  + [Manual Installation](#manual-installation)
-  + [Installation via HACS](#installation-via-hacs)
+  * [Manual Installation](#manual-installation)
+  * [Installation via HACS](#installation-via-hacs)
 * [Configuration](#configuration)
-  + [Configuration Parameters](#configuration-parameters)
+  * [Configuration Parameters](#configuration-parameters)
 * [State and Attributes](#state-and-attributes)
 
 ## Installation
 
 ### MANUAL INSTALLATION
-1. Download the `anniversaries.zip` file from the 
+
+1. Download the `anniversaries.zip` file from the
    [latest release](https://github.com/pinkywafer/anniversaries/releases/latest).
 2. Unpack the release and copy the `custom_components/anniversaries` directory
    into the `custom_components` directory of your Home Assistant
@@ -41,17 +46,24 @@ Attributes:
 4. Restart Home Assistant.
 
 ### INSTALLATION VIA HACS
+
 1. Ensure that [HACS](https://custom-components.github.io/hacs/) is installed.
 2. Search for and install the "anniversaries" integration.
 3. Configure the `anniversaries` sensor.
 4. Restart Home Assistant.
 
 ## Configuration
+
 Anniversaries can be configured on the integrations menu or in configuration.yaml
+
 ### Config Flow
+
 In Configuration/Integrations click on the + button, select Anniversaries and configure the options on the form.
+
 ### configuration.yaml
+
 Add `anniversaries` sensor in your `configuration.yaml`. The following example adds two sensors - Shakespeare's birthday and wedding anniversary!
+
 ```yaml
 # Example configuration.yaml entry
 
@@ -64,6 +76,7 @@ anniversaries:
 ```
 
 ### CONFIGURATION PARAMETERS
+
 |Attribute |Optional|Description
 |:----------|----------|------------
 | `name` | No | Friendly name
