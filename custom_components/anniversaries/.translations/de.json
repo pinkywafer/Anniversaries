@@ -7,7 +7,7 @@
                 "description": "Setze den Namen des sensors und ändere Sensorparameter. Mehr Informationen auf https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "name": "Name",
-                    "date": "Erstes Datum (yyyy-mm-dd)",
+                    "date": "Erstes Datum (yyyy-mm-dd) oder (mm-dd) wenn das Jahr unbekannt ist",
                     "icon_normal": "Icon",
                     "icon_today": "Icon, wenn heute der Jahrestag ist",
                     "days_as_soon": "Ab wie vielen Tagen gilt \"bald\"",
@@ -17,7 +17,7 @@
             }
         },
         "error": {
-            "invalid_date": "Das Datum ist ungültig.  Bitte gib ein valides Datum im Format \"YYYY-MM_DD\" ein."
+            "invalid_date": "Das Datum ist ungültig.  Bitte gib ein valides Datum im Format \"YYYY-MM-DD\" oder \" MM-DD\" ein."
         }
     },
     "options": {
@@ -26,7 +26,7 @@
                 "title": "Jahrestage",
                 "description": "Ändere Sensorparameter. Mehr Informationen auf https://github.com/pinkywafer/Anniversaries",
                 "data": {
-                    "date": "Erstes Datum (yyyy-mm-dd)",
+                    "date": "Erstes Datum (yyyy-mm-dd) oder (mm-dd) wenn das Jahr unbekannt ist",
                     "icon_normal": "Icon",
                     "icon_today": "Icon, wenn heute der Jahrestag ist",
                     "days_as_soon": "Ab wie vielen Tagen gilt \"bald\"",
@@ -36,7 +36,7 @@
             }
         },
         "error": {
-            "invalid_date": "Das Datum ist ungültig.  Bitte gib ein valides Datum im Format \"YYYY-MM_DD\" ein."
+            "invalid_date": "Das Datum ist ungültig.  Bitte gib ein valides Datum im Format \"YYYY-MM-DD\" oder \" MM-DD\" ein."
         }
     }
 }
