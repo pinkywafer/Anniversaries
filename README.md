@@ -20,8 +20,8 @@ State Returned:
 
 Attributes:
 
-* years at next anniversary: number of years that will have passed at the next occurrence
-* current years: number of years have passed since the first occurance (ie, age)
+* years at next anniversary: number of years that will have passed at the next occurrence _(NOT displayed if year is unknown)_
+* current years: number of years have passed since the first occurance (ie, current age)  _(NOT displayed if year is unknown)_
 * date:  The date of the first occurence _(or the date of the next occurence if year is unknown)_ (formatted by the date_format attribute if set)
 * weeks_remaining: The number of weeks until the anniversary
 
