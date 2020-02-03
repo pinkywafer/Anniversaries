@@ -101,6 +101,8 @@ class anniversaries(Entity):
         """update the sensor"""
         today = date.today()
         nextDate = date(today.year, self._date.month, self._date.day)
+        if today < self._date.date():
+            nextDate = self._date.date()
         daysRemaining = 0
         years = today.year - self._date.year
         if today < nextDate:
