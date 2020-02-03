@@ -10,6 +10,8 @@
 
 [![Buy me a coffee](https://img.shields.io/static/v1.svg?label=Buy%20me%20a%20coffee&logo=buy%20me%20a%20coffee&logoColor=white&labelColor=ff69b4&message=donate&color=Black)](https://www.buymeacoffee.com/V3q9id4)
 
+[![Support Pinkywafer on Patreon][patreon-shield]][patreon]
+
 The 'anniversaries' component is a Home Assistant custom sensor which counts down to a recurring date such as birthdays, but can be used for any anniversary which occurs annually on the same date.
 
 **1.0.0 includes BREAKING CHANGES** read the [release notes](https://github.com/pinkywafer/anniversaries/releases/latest).
@@ -91,3 +93,7 @@ anniversaries:
 * current years: number of years have passed since the first occurance (ie, current age)  _(NOT displayed if year is unknown)_
 * date:  The date of the first occurence _(or the date of the next occurence if year is unknown)_ (formatted by the date_format attribute if set)
 * weeks_remaining: The number of weeks until the anniversary
+
+[patreon-shield]: https://c5.patreon.com/external/logo/become_a_patron_button.png
+[patreon]: https://www.patreon.com/pinkywafer
+
