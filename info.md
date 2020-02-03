@@ -10,6 +10,8 @@
 
 [![Buy me a coffee](https://img.shields.io/static/v1.svg?label=Buy%20me%20a%20coffee&logo=buy%20me%20a%20coffee&logoColor=white&labelColor=ff69b4&message=donate&color=Black)](https://www.buymeacoffee.com/V3q9id4)
 
+[![Support Pinkywafer on Patreon][patreon-shield]][patreon]
+
 The 'anniversaries' component is a Home Assistant custom sensor which counts down to a recurring date such as birthdays, but can be used for any anniversary which occurs annually on the same date.
 
 **1.0.0 includes BREAKING CHANGES** read the [release notes](https://github.com/pinkywafer/anniversaries/releases/latest).
@@ -59,3 +61,6 @@ anniversaries:
 | `days_as_soon` | Yes | Days in advance to display the icon defined in `icon_soon` **Default**: 1
 | `icon_soon` | Yes | Icon if the anniversary is 'soon' **Default**: `mdi:calendar`
 | `date_format` | Yes | formats the returned date **Default**: '%Y-%m-%d' _for reference, see [http://strftime.org/](http://strftime.org/)_
+
+[patreon-shield]: https://c5.patreon.com/external/logo/become_a_patron_button.png
+[patreon]: https://www.patreon.com/pinkywafer
