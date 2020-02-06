@@ -26,6 +26,29 @@ Attributes:
 * current years: number of years have passed since the first occurance (ie, current age)  _(NOT displayed if year is unknown)_
 * date:  The date of the first occurence _(or the date of the next occurence if year is unknown)_ (formatted by the date_format attribute if set)
 * weeks_remaining: The number of weeks until the anniversary
+* unit_of_measurement: 'Days' By default, this is displayed after the state. _this is NOT translate-able.  See below for work-around_
+
+### Notes about unit of measurement
+
+Unit_of_measurement is *not* translate-able.
+You can, however, change the unit of measurement with a customization. There are two ways to do this:
+
+* _NOTE that each sensor would require it's own customization_
+
+_This example would replace `Days` with `Dias`_
+
+* In customize.yaml:
+
+    ```yaml
+    sensor.your_sensor_id:
+      unit_of_measurement: Dias
+    ```
+
+* Use the Customizations from the Configuration menu:
+  1. Select your sensor
+  2. under "Pick an attribute to override" select unit_of_measurement
+  3. Type `Dias` in the box
+  4. Press save
 
 ## Configuration
 
