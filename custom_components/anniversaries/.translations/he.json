@@ -4,7 +4,7 @@
         "step": {
             "user": {
                 "title": "ימי שנה",
-                "description": "הכנס שם לחיישן והגדר פרמטריםץ עוד מידע בכתובת https://github.com/pinkywafer/Anniversaries",
+                "description": "הכנס שם לחיישן והגדר פרמטרים. עוד מידע בכתובת https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "name": "שם ידידותי",
                     "date": "תאריך ראשון (yyyy-mm-dd) או (mm-yy) אם התאריך הראשון לא ידוע",
