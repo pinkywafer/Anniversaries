@@ -115,7 +115,7 @@ class anniversaries(Entity):
             daysRemaining = (nextDate - today).days
             years = years + 1
             if self._unknown_year:
-                self._date = nextDate
+                self._date = datetime(nextDate.year, nextDate.month, nextDate.day)
 
         if daysRemaining == 0:
             self._icon = self._icon_today
