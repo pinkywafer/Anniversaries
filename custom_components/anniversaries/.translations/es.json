@@ -24,7 +24,7 @@
         "step": {
             "init": {
                 "title": "Aniversarios",
-                "description": "Ingrese el nombre del sensor y configure los parámetros. Más información en https://github.com/pinkywafer/Anniversaries",
+                "description": "Cambiar los parámetros del sensor. Más información en https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "name": "Nombre amistoso",
                     "date": "Primera fecha (yyyy-mm-dd) o (mm-yy) si el año es desconocido",
