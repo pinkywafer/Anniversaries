@@ -26,7 +26,6 @@
                 "title": "Aniversarios",
                 "description": "Cambiar los parámetros del sensor. Más información en https://github.com/pinkywafer/Anniversaries",
                 "data": {
-                    "name": "Nombre amistoso",
                     "date": "Primera fecha (yyyy-mm-dd) o (mm-yy) si el año es desconocido",
                     "icon_normal": "Icono",
                     "icon_today": "Icono para cuando el aniversario es hoy",
@@ -37,7 +36,7 @@
             }
         },
         "error": {
-            "invalid_date": "La fecha no es válida. Por favor, introduza un valor valido 'YYYY-MM-DD'  o 'MM-DD' fecha"
+            "invalid_date": "La fecha no es válida. Por favor, introduza un valor valido 'YYYY-MM-DD' o 'MM-DD'"
         }
     }
 }
