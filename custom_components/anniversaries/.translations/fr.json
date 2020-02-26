@@ -1,0 +1,42 @@
+{
+    "config": {
+        "title": "Anniversaires",
+        "step": {
+            "user": {
+                "title": "Anniversaires",
+                "description": "Saisissez le nom du senseur et configurez les paramètres du senseur. Plus d'infos sur https://github.com/pinkywafer/Anniversaries",
+                "data": {
+                    "name": "Nom familier",
+                    "date": "Date de naissance (yyyy-mm-dd) ou (mm-yy) si l'année est inconnue",
+                    "icon_normal": "Icône",
+                    "icon_today": "Icône quand l'anniversaire est aujourd'hui",
+                    "days_as_soon": "Nombre de jours à considérer bientôt",
+                    "icon_soon": "Icône quand l'anniversaire est bientôt",
+                    "date_format": "Format de date (voir http://strftime.org/)"
+                }
+            }
+        },
+        "error": {
+            "invalid_date": "La date n'est pas valide. Veuillez saisir une valide 'YYYY-MM-DD'  ou 'MM-DD' date"
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Anniversaires",
+                "description": "Modifiez les paramètres du senseur. Plus d'infos sur https://github.com/pinkywafer/Anniversaries",
+                "data": {
+                    "date": "Date de naissance (yyyy-mm-dd) ou (mm-yy) si l'année est inconnue",
+                    "icon_normal": "Icône",
+                    "icon_today": "Icône quand l'anniversaire est aujourd'hui",
+                    "days_as_soon": "Nombre de jours à considérer bientôt",
+                    "icon_soon": "Icône quand l'anniversaire est bientôt",
+                    "date_format": "Format de date (voir http://strftime.org/)"
+                }
+            }
+        },
+        "error": {
+            "invalid_date": "La date n'est pas valide. Veuillez saisir une valide 'YYYY-MM-DD' ou 'MM-DD' date"
+        }
+    }
+}
