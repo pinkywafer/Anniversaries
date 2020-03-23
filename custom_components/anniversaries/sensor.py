@@ -21,12 +21,15 @@ from .const import (
     CONF_DATE,
     CONF_DATE_FORMAT,
     CONF_SOON,
+    CONF_HALF_ANNIVERSARY,
 )
 
 ATTR_YEARS_NEXT = "years_at_next_anniversary"
 ATTR_YEARS_CURRENT = "current_years"
 ATTR_DATE = "date"
 ATTR_WEEKS = "weeks_remaining"
+ATTR_HALF_DATE = "half_anniversary_date"
+ATTR_HALF_DAYS = "days_until_half_anniversary"
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Setup the sensor platform."""
@@ -59,6 +62,10 @@ class anniversaries(Entity):
         self._years_current = 0
         self._state = 0
         self._weeks_remaining = 0
+        self._show_half_anniversary = config.get(CONF_HALF_ANNIVERSARY)
+        if self._show_half_anniversary:
+            self._half_days_remaining = 0
+            self._half_date = self._date - timedelta(days=183)
 
     @property
     def unique_id(self):
@@ -84,6 +91,9 @@ class anniversaries(Entity):
             res[ATTR_YEARS_CURRENT] = self._years_current
         res[ATTR_DATE] = datetime.strftime(self._date,self._date_format)
         res[ATTR_WEEKS] = self._weeks_remaining
+        if self._show_half_anniversary:
+            res[ATTR_HALF_DATE] = datetime.strftime(self._half_date, self._date_format)
+            res[ATTR_HALF_DAYS] = self._half_days_remaining
         return res
 
     @property
@@ -127,3 +137,12 @@ class anniversaries(Entity):
         self._years_next = years
         self._years_current = years - 1
         self._weeks_remaining = int(daysRemaining / 7)
+        
+        if self._show_half_anniversary:
+            nextHalfDate = self._half_date.date()
+            if today > nextHalfDate:
+                nextHalfDate = date(today.year, self._half_date.month, self._half_date.day)
+            if today > nextHalfDate:
+                nextHalfDate = date(today.year + 1, self._half_date.month, self._half_date.day)
+            self._half_days_remaining = (nextHalfDate - today).days
+            self._half_date = datetime(nextHalfDate.year, nextHalfDate.month, nextHalfDate.day)
