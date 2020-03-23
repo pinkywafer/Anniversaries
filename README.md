@@ -72,7 +72,7 @@ anniversaries:
 
 ### CONFIGURATION PARAMETERS
 
-|Attribute |Optional|Description
+|Parameter |Optional|Description
 |:----------|----------|------------
 | `name` | No | Friendly name
 |`date` | No | date in format `'YYYY-MM-DD'` (or `'MM-DD'` if year is unknown)
