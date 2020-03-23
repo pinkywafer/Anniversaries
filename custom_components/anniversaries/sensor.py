@@ -100,29 +100,29 @@ class anniversaries(Entity):
     async def async_update(self):
         """update the sensor"""
         today = date.today()
-        nextDate = date(today.year, self._date.month, self._date.day)
-        if today < self._date.date():
-            nextDate = self._date.date()
-        daysRemaining = 0
         years = today.year - self._date.year
-        if today < nextDate:
-            daysRemaining = (nextDate - today).days
-        elif today == nextDate:
-            daysRemaining = 0
-            years = years + 1
-        elif today > nextDate:
-            nextDate = date(today.year + 1, self._date.month, self._date.day)
-            daysRemaining = (nextDate - today).days
-            years = years + 1
-            if self._unknown_year:
-                self._date = datetime(nextDate.year, nextDate.month, nextDate.day)
+        nextDate = self._date.date()
+        
+        if today > nextDate:
+            nextDate = date(today.year, self._date.month, self._date.day)
+            if today == nextDate:
+                years = years + 1
+            if today > nextDate:
+                nextDate = date(today.year + 1, self._date.month, self._date.day)
+                years = years + 1
+        
+        daysRemaining = (nextDate - today).days
 
+        if self._unknown_year:
+            self._date = datetime(nextDate.year, nextDate.month, nextDate.day)
+        
         if daysRemaining == 0:
             self._icon = self._icon_today
         elif daysRemaining <= self._soon:
             self._icon = self._icon_soon
         else:
             self._icon = self._icon_normal
+        
         self._state = daysRemaining
         self._years_next = years
         self._years_current = years - 1
