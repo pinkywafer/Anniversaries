@@ -33,14 +33,13 @@ CONF_SOON = "days_as_soon"
 
 # Defaults
 DEFAULT_NAME = DOMAIN
-
-# Icons
 DEFAULT_ICON_NORMAL = "mdi:calendar-blank"
 DEFAULT_ICON_TODAY = "mdi:calendar-star"
 DEFAULT_ICON_SOON = "mdi:calendar"
 DEFAULT_DATE_FORMAT = "%Y-%m-%d"
-ICON = DEFAULT_ICON_NORMAL
 DEFAULT_SOON = 1
+
+ICON = DEFAULT_ICON_NORMAL
 
 def check_date(value):
     try:
