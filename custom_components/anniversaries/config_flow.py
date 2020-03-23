@@ -130,7 +130,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         data_schema = OrderedDict()
         data_schema[vol.Required(CONF_DATE, default=self.config_entry.options.get(CONF_DATE),)] = str
         data_schema[vol.Required(CONF_ICON_NORMAL,default=self.config_entry.options.get(CONF_ICON_NORMAL),)] = str
-        data_schema[vol.Required(CONF_ICON_TODAY,default=self.config_entry.options.get(CONF_ICON_SOON),)] = str
+        data_schema[vol.Required(CONF_ICON_TODAY,default=self.config_entry.options.get(CONF_ICON_TODAY),)] = str
         data_schema[vol.Required(CONF_SOON,default=self.config_entry.options.get(CONF_SOON),)] = int
         data_schema[vol.Required(CONF_ICON_SOON,default=self.config_entry.options.get(CONF_ICON_SOON),)] = str
         data_schema[vol.Required(CONF_DATE_FORMAT,default=self.config_entry.options.get(CONF_DATE_FORMAT),)] = str
