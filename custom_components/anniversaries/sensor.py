@@ -115,7 +115,7 @@ class anniversaries(Entity):
         years = today.year - self._date.year
         nextDate = self._date.date()
         
-        if today > nextDate:
+        if today >= nextDate:
             nextDate = self._date.date() + relativedelta(year=today.year)
             if today == nextDate:
                 years = years + 1
