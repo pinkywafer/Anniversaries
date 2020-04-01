@@ -1,8 +1,10 @@
 """ sensor """
 
-from homeassistant.helpers.entity import Entity
-import logging
+from dateutil.relativedelta import relativedelta
 from datetime import datetime, date, timedelta
+
+import logging
+from homeassistant.helpers.entity import Entity
 from homeassistant.core import HomeAssistant, State
 
 from homeassistant.const import (
@@ -50,7 +52,7 @@ class anniversaries(Entity):
         try:
             self._date = datetime.strptime(config.get(CONF_DATE), "%Y-%m-%d")
         except:
-            self._date = datetime.strptime(str(date.today().year) + "-" + config.get(CONF_DATE),  "%Y-%m-%d")
+            self._date = datetime.strptime("2020-" + config.get(CONF_DATE),  "%Y-%m-%d")
             self._unknown_year = True
         self._icon_normal = config.get(CONF_ICON_NORMAL)
         self._icon_today = config.get(CONF_ICON_TODAY)
@@ -65,7 +67,7 @@ class anniversaries(Entity):
         self._show_half_anniversary = config.get(CONF_HALF_ANNIVERSARY)
         if self._show_half_anniversary:
             self._half_days_remaining = 0
-            self._half_date = self._date - timedelta(days=183)
+            self._half_date = self._date + relativedelta(months=+6)
 
     @property
     def unique_id(self):
@@ -114,11 +116,11 @@ class anniversaries(Entity):
         nextDate = self._date.date()
         
         if today > nextDate:
-            nextDate = date(today.year, self._date.month, self._date.day)
+            nextDate = self._date.date() + relativedelta(year=today.year)
             if today == nextDate:
                 years = years + 1
             if today > nextDate:
-                nextDate = date(today.year + 1, self._date.month, self._date.day)
+                nextDate = self._date.date() + relativedelta(year=today.year + 1)
                 years = years + 1
         
         daysRemaining = (nextDate - today).days
@@ -141,8 +143,8 @@ class anniversaries(Entity):
         if self._show_half_anniversary:
             nextHalfDate = self._half_date.date()
             if today > nextHalfDate:
-                nextHalfDate = date(today.year, self._half_date.month, self._half_date.day)
+                nextHalfDate = self._half_date.date() + relativedelta(year = today.year)
             if today > nextHalfDate:
-                nextHalfDate = date(today.year + 1, self._half_date.month, self._half_date.day)
+                nextHalfDate = self._half_date.date() + relativedelta(year = today.year + 1)
             self._half_days_remaining = (nextHalfDate - today).days
             self._half_date = datetime(nextHalfDate.year, nextHalfDate.month, nextHalfDate.day)
