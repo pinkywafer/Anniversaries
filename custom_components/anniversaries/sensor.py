@@ -1,8 +1,10 @@
 """ sensor """
 
-from homeassistant.helpers.entity import Entity
-import logging
+from dateutil.relativedelta import relativedelta
 from datetime import datetime, date, timedelta
+
+import logging
+from homeassistant.helpers.entity import Entity
 from homeassistant.core import HomeAssistant, State
 
 from homeassistant.const import (
@@ -21,12 +23,15 @@ from .const import (
     CONF_DATE,
     CONF_DATE_FORMAT,
     CONF_SOON,
+    CONF_HALF_ANNIVERSARY,
 )
 
 ATTR_YEARS_NEXT = "years_at_next_anniversary"
 ATTR_YEARS_CURRENT = "current_years"
 ATTR_DATE = "date"
 ATTR_WEEKS = "weeks_remaining"
+ATTR_HALF_DATE = "half_anniversary_date"
+ATTR_HALF_DAYS = "days_until_half_anniversary"
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Setup the sensor platform."""
@@ -47,7 +52,7 @@ class anniversaries(Entity):
         try:
             self._date = datetime.strptime(config.get(CONF_DATE), "%Y-%m-%d")
         except:
-            self._date = datetime.strptime(str(date.today().year) + "-" + config.get(CONF_DATE),  "%Y-%m-%d")
+            self._date = datetime.strptime("2020-" + config.get(CONF_DATE),  "%Y-%m-%d")
             self._unknown_year = True
         self._icon_normal = config.get(CONF_ICON_NORMAL)
         self._icon_today = config.get(CONF_ICON_TODAY)
@@ -59,6 +64,10 @@ class anniversaries(Entity):
         self._years_current = 0
         self._state = 0
         self._weeks_remaining = 0
+        self._show_half_anniversary = config.get(CONF_HALF_ANNIVERSARY)
+        if self._show_half_anniversary:
+            self._half_days_remaining = 0
+            self._half_date = self._date + relativedelta(months=+6)
 
     @property
     def unique_id(self):
@@ -84,6 +93,9 @@ class anniversaries(Entity):
             res[ATTR_YEARS_CURRENT] = self._years_current
         res[ATTR_DATE] = datetime.strftime(self._date,self._date_format)
         res[ATTR_WEEKS] = self._weeks_remaining
+        if self._show_half_anniversary:
+            res[ATTR_HALF_DATE] = datetime.strftime(self._half_date, self._date_format)
+            res[ATTR_HALF_DAYS] = self._half_days_remaining
         return res
 
     @property
@@ -100,30 +112,39 @@ class anniversaries(Entity):
     async def async_update(self):
         """update the sensor"""
         today = date.today()
-        nextDate = date(today.year, self._date.month, self._date.day)
-        if today < self._date.date():
-            nextDate = self._date.date()
-        daysRemaining = 0
         years = today.year - self._date.year
-        if today < nextDate:
-            daysRemaining = (nextDate - today).days
-        elif today == nextDate:
-            daysRemaining = 0
-            years = years + 1
-        elif today > nextDate:
-            nextDate = date(today.year + 1, self._date.month, self._date.day)
-            daysRemaining = (nextDate - today).days
-            years = years + 1
-            if self._unknown_year:
-                self._date = nextDate
+        nextDate = self._date.date()
+        
+        if today >= nextDate:
+            nextDate = self._date.date() + relativedelta(year=today.year)
+            if today == nextDate:
+                years = years + 1
+            if today > nextDate:
+                nextDate = self._date.date() + relativedelta(year=today.year + 1)
+                years = years + 1
+        
+        daysRemaining = (nextDate - today).days
 
+        if self._unknown_year:
+            self._date = datetime(nextDate.year, nextDate.month, nextDate.day)
+        
         if daysRemaining == 0:
             self._icon = self._icon_today
         elif daysRemaining <= self._soon:
             self._icon = self._icon_soon
         else:
             self._icon = self._icon_normal
+        
         self._state = daysRemaining
         self._years_next = years
         self._years_current = years - 1
         self._weeks_remaining = int(daysRemaining / 7)
+        
+        if self._show_half_anniversary:
+            nextHalfDate = self._half_date.date()
+            if today > nextHalfDate:
+                nextHalfDate = self._half_date.date() + relativedelta(year = today.year)
+            if today > nextHalfDate:
+                nextHalfDate = self._half_date.date() + relativedelta(year = today.year + 1)
+            self._half_days_remaining = (nextHalfDate - today).days
+            self._half_date = datetime(nextHalfDate.year, nextHalfDate.month, nextHalfDate.day)

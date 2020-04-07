@@ -1,0 +1,42 @@
+{
+    "config": {
+        "title": "Aniversarios",
+        "step": {
+            "user": {
+                "title": "Aniversarios",
+                "description": "Ingrese el nombre del sensor y configure los parámetros. Más información en https://github.com/pinkywafer/Anniversaries",
+                "data": {
+                    "name": "Nombre amistoso",
+                    "date": "Primera fecha (yyyy-mm-dd) o (mm-yy) si el año es desconocido",
+                    "icon_normal": "Icono",
+                    "icon_today": "Icono para cuando el aniversario es hoy",
+                    "days_as_soon": "Número de días para considerar pronto",
+                    "icon_soon": "Icono cuando el aniversario es pronto",
+                    "date_format": "Formato de fecha (ver http://strftime.org/)"
+                }
+            }
+        },
+        "error": {
+            "invalid_date": "La fecha no es válida. Por favor, introduza un valor valido 'YYYY-MM-DD'  o 'MM-DD' fecha"
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Aniversarios",
+                "description": "Cambiar los parámetros del sensor. Más información en https://github.com/pinkywafer/Anniversaries",
+                "data": {
+                    "date": "Primera fecha (yyyy-mm-dd) o (mm-yy) si el año es desconocido",
+                    "icon_normal": "Icono",
+                    "icon_today": "Icono para cuando el aniversario es hoy",
+                    "days_as_soon": "Número de días para considerar pronto",
+                    "icon_soon": "Icono cuando el aniversario es pronto",
+                    "date_format": "Formato de fecha (ver http://strftime.org/)"
+                }
+            }
+        },
+        "error": {
+            "invalid_date": "La fecha no es válida. Por favor, introduza un valor valido 'YYYY-MM-DD' o 'MM-DD'"
+        }
+    }
+}

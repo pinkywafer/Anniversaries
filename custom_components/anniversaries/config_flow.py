@@ -15,6 +15,7 @@ from .const import (
     DEFAULT_ICON_TODAY,
     DEFAULT_DATE_FORMAT,
     DEFAULT_SOON,
+    DEFAULT_HALF_ANNIVERSARY,
     CONF_SENSOR,
     CONF_ENABLED,
     CONF_ICON_NORMAL,
@@ -24,6 +25,7 @@ from .const import (
     CONF_DATE_FORMAT,
     CONF_SENSORS,
     CONF_SOON,
+    CONF_HALF_ANNIVERSARY,
 )
 
 from homeassistant.const import CONF_NAME
@@ -58,6 +60,7 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
         icon_today = DEFAULT_ICON_TODAY
         date_format = DEFAULT_DATE_FORMAT
         days_as_soon = DEFAULT_SOON
+        half_anniversary= DEFAULT_HALF_ANNIVERSARY
         if user_input is not None:
             if CONF_NAME in user_input:
                 name = user_input[CONF_NAME]
@@ -71,6 +74,8 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
                 icon_today = user_input[CONF_ICON_TODAY]
             if CONF_DATE_FORMAT in user_input:
                 date_format = user_input[CONF_DATE_FORMAT]
+            if CONF_HALF_ANNIVERSARY in user_input:
+                half_anniversary = user_input[CONF_HALF_ANNIVERSARY]
         data_schema = OrderedDict()
         data_schema[vol.Required(CONF_NAME, default=name)] = str
         data_schema[vol.Required(CONF_DATE, default=date)] = str
@@ -79,6 +84,7 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
         data_schema[vol.Required(CONF_SOON, default=days_as_soon)] = int
         data_schema[vol.Required(CONF_ICON_SOON, default=icon_soon)] = str
         data_schema[vol.Required(CONF_DATE_FORMAT, default=date_format)] = str
+        data_schema[vol.Required(CONF_HALF_ANNIVERSARY, default=half_anniversary)] = bool
         return self.async_show_form(step_id="user", data_schema=vol.Schema(data_schema), errors=self._errors)
 
     async def async_step_import(self, user_input):  # pylint: disable=unused-argument
@@ -114,7 +120,8 @@ def is_not_date(date):
 class OptionsFlowHandler(config_entries.OptionsFlow):
     def __init__(self, config_entry):
         self.config_entry = config_entry
-        self._data = config_entry.options
+        self._data = {}
+        self._data["unique_id"] = config_entry.options.get("unique_id")
 
     async def async_step_init(self, user_input=None):
         self._errors = {}
@@ -130,10 +137,11 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         data_schema = OrderedDict()
         data_schema[vol.Required(CONF_DATE, default=self.config_entry.options.get(CONF_DATE),)] = str
         data_schema[vol.Required(CONF_ICON_NORMAL,default=self.config_entry.options.get(CONF_ICON_NORMAL),)] = str
-        data_schema[vol.Required(CONF_ICON_TODAY,default=self.config_entry.options.get(CONF_ICON_SOON),)] = str
+        data_schema[vol.Required(CONF_ICON_TODAY,default=self.config_entry.options.get(CONF_ICON_TODAY),)] = str
         data_schema[vol.Required(CONF_SOON,default=self.config_entry.options.get(CONF_SOON),)] = int
         data_schema[vol.Required(CONF_ICON_SOON,default=self.config_entry.options.get(CONF_ICON_SOON),)] = str
         data_schema[vol.Required(CONF_DATE_FORMAT,default=self.config_entry.options.get(CONF_DATE_FORMAT),)] = str
+        data_schema[vol.Required(CONF_HALF_ANNIVERSARY,default=self.config_entry.options.get(CONF_HALF_ANNIVERSARY),)] = bool
         return self.async_show_form(
             step_id="init", data_schema=vol.Schema(data_schema), errors=self._errors
         )
