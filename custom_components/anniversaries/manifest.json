@@ -6,8 +6,11 @@
   "config_flow": true,
   "codeowners": ["@pinkywafer"],
   "requirements": [
-    "sampleclient",
-    "integrationhelper"
+    "datetime"
+    "python-dateutil"
+    "integrationhelper",
+    "uuid",
+    "voluptuous"
   ],
   "homeassistant": "0.96.0"
 }
