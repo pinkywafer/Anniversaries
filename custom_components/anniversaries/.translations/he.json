@@ -12,7 +12,8 @@
                     "icon_today": "סמל כשהתאריך הוא היום",
                     "days_as_soon": "מספר הימים הנחשבים 'בקרוב'",
                     "icon_soon": "סמל כשהתאריך 'בקרוב'",
-                    "date_format": "פורמט תאריך (ראה http://strftime.org/)"
+                    "date_format": "פורמט תאריך (ראה http://strftime.org/)",
+                    "show_half_anniversary": "הצג ערכי חצי הזמן"
                 }
             }
         },
@@ -31,7 +32,8 @@
                     "icon_today": "סמל כשהתאריך הוא היום",
                     "days_as_soon": "מספר הימים הנחשבים 'בקרוב'",
                     "icon_soon": "סמל כשהתאריך 'בקרוב'",
-                    "date_format": "פורמט תאריך (ראה http://strftime.org/)"
+                    "date_format": "פורמט תאריך (ראה http://strftime.org/)",
+                    "show_half_anniversary": "הצג ערכי חצי הזמן"
                 }
             }
         },
