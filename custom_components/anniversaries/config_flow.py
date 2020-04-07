@@ -120,7 +120,8 @@ def is_not_date(date):
 class OptionsFlowHandler(config_entries.OptionsFlow):
     def __init__(self, config_entry):
         self.config_entry = config_entry
-        self._data = config_entry.options
+        self._data = {}
+        self._data["unique_id"] = config_entry.options.get("unique_id")
 
     async def async_step_init(self, user_input=None):
         self._errors = {}
