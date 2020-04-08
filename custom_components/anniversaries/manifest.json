@@ -7,7 +7,7 @@
   "codeowners": ["@pinkywafer"],
   "requirements": [
     "datetime",
-    "python-dateutil"
+    "python-dateutil",
     "integrationhelper",
     "uuid",
     "voluptuous"
