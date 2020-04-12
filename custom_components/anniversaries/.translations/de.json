@@ -12,7 +12,8 @@
                     "icon_today": "Icon, wenn heute der Jahrestag ist",
                     "days_as_soon": "Ab wie vielen Tagen gilt \"bald\"",
                     "icon_soon": "Icon, wenn der Jahrestag bald ist",
-                    "date_format": "Datumsformat (siehe http://strftime.org/)"
+                    "date_format": "Datumsformat (siehe http://strftime.org/)",
+                    "show_half_anniversary": "Halber Jahrestag-Attribut anzeigen"
                 }
             }
         },
@@ -31,7 +32,8 @@
                     "icon_today": "Icon, wenn heute der Jahrestag ist",
                     "days_as_soon": "Ab wie vielen Tagen gilt \"bald\"",
                     "icon_soon": "Icon, wenn der Jahrestag bald ist",
-                    "date_format": "Datumsformat (siehe http://strftime.org/)"
+                    "date_format": "Datumsformat (siehe http://strftime.org/)",
+                    "show_half_anniversary": "Halber Jahrestag-Attribut anzeigen"
                 }
             }
         },
