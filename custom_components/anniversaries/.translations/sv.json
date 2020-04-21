@@ -12,7 +12,8 @@
                     "icon_today": "Ikon när årsdagen är idag",
                     "days_as_soon": "Antal dagar för att anta snart",
                     "icon_soon": "Ikon när årsdagen är snart",
-                    "date_format": "Datum format (see http://strftime.org/)"
+                    "date_format": "Datum format (see http://strftime.org/)
+                    "show_half_anniversary": "Visa hälften av årsdagens attribut"
                 }
             }
         },
@@ -32,6 +33,7 @@
                     "days_as_soon": "Antal dagar för att anta snart",
                     "icon_soon": "Ikon när årsdagen är snart",
                     "date_format": "Datum format (see http://strftime.org/)"
+                    "show_half_anniversary": "Visa hälften av årsdagens attribut"
                 }
             }
         },
