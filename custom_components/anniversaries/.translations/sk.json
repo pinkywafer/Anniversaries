@@ -1,0 +1,44 @@
+{
+    "config": {
+        "title": "Výročia",
+        "step": {
+            "user": {
+                "title": "Výročia",
+                "description": "Zadajte názov senzora a nakonfigurujte parametre senzora. Viac info na https://github.com/pinkywafer/Anniversaries",
+                "data": {
+                    "name": "Vlastný názov",
+                    "date": "Prvý deň (yyyy-mm-dd) alebo (mm-yy) ak je rok neznámy",
+                    "icon_normal": "Ikona",
+                    "icon_today": "Ikona ked je výročie dnes",
+                    "days_as_soon": "Počet dní, ktoré zostavajú do výročia",
+                    "icon_soon": "Ikona pri príležitosti výročia",
+                    "date_format": "Formát dátumu (pozri http://strftime.org/)",
+                    "show_half_anniversary": "Zobraziť atribúty polroka"
+                }
+            }
+        },
+        "error": {
+            "invalid_date": "Dátum je nesprávny.  Prosím vložte správny dátum vo formáte 'YYYY-MM-DD' alebo 'MM-DD'"
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Výročia",
+                "description": "Zmeň parametre senzora. Viac info na https://github.com/pinkywafer/Anniversaries",
+                "data": {
+                    "date": "Prvý deň (yyyy-mm-dd) alebo (mm-yy) ak je rok neznámy",
+                    "icon_normal": "Ikona",
+                    "icon_today": "Ikona ked je výročie dnes",
+                    "days_as_soon": "Počet dní, ktoré zostavajú do výročia",
+                    "icon_soon": "Ikona pri príležitosti výročia",
+                    "date_format": "Formát dátumu (pozri http://strftime.org/)",
+                    "show_half_anniversary": "Zobraziť atribúty polroka"
+                }
+            }
+        },
+        "error": {
+            "invalid_date": "Dátum je nesprávny.  Prosím vložte správny dátum vo formáte 'YYYY-MM-DD' alebo 'MM-DD'"
+        }
+    }
+}
