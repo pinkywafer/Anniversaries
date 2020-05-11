@@ -85,6 +85,7 @@ anniversaries:
 | `icon_soon` | Yes | Icon if the anniversary is 'soon' **Default**: `mdi:calendar`
 | `date_format` | Yes | formats the returned date **Default**: '%Y-%m-%d' _for reference, see [http://strftime.org/](http://strftime.org/)_
 | `show_half_anniversary` | Yes | `true` or `false`. Enables the `half_anniversary_date` and `days_until_half_anniversary` attributes. **Default**: `false`
+| `unit_of_measurement` | Yes | Your choice of label N.B. The sensor always returns Days, but this option allows you to express this in the language of your choice without needing a customization
 
 [patreon-shield]: https://c5.patreon.com/external/logo/become_a_patron_button.png
 [patreon]: https://www.patreon.com/pinkywafer
