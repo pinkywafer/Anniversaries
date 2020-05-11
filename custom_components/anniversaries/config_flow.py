@@ -16,6 +16,7 @@ from .const import (
     DEFAULT_DATE_FORMAT,
     DEFAULT_SOON,
     DEFAULT_HALF_ANNIVERSARY,
+    DEFAULT_UNIT_OF_MEASUREMENT,
     CONF_SENSOR,
     CONF_ENABLED,
     CONF_ICON_NORMAL,
@@ -26,6 +27,7 @@ from .const import (
     CONF_SENSORS,
     CONF_SOON,
     CONF_HALF_ANNIVERSARY,
+    CONF_UNIT_OF_MEASUREMENT,
 )
 
 from homeassistant.const import CONF_NAME
@@ -60,7 +62,8 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
         icon_today = DEFAULT_ICON_TODAY
         date_format = DEFAULT_DATE_FORMAT
         days_as_soon = DEFAULT_SOON
-        half_anniversary= DEFAULT_HALF_ANNIVERSARY
+        half_anniversary = DEFAULT_HALF_ANNIVERSARY
+        unit_of_measurement = DEFAULT_UNIT_OF_MEASUREMENT
         if user_input is not None:
             if CONF_NAME in user_input:
                 name = user_input[CONF_NAME]
@@ -76,6 +79,8 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
                 date_format = user_input[CONF_DATE_FORMAT]
             if CONF_HALF_ANNIVERSARY in user_input:
                 half_anniversary = user_input[CONF_HALF_ANNIVERSARY]
+            if CONF_UNIT_OF_MEASUREMENT in user_input:
+                unit_of_measurement = user_input[CONF_UNIT_OF_MEASUREMENT]
         data_schema = OrderedDict()
         data_schema[vol.Required(CONF_NAME, default=name)] = str
         data_schema[vol.Required(CONF_DATE, default=date)] = str
@@ -85,6 +90,7 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
         data_schema[vol.Required(CONF_ICON_SOON, default=icon_soon)] = str
         data_schema[vol.Required(CONF_DATE_FORMAT, default=date_format)] = str
         data_schema[vol.Required(CONF_HALF_ANNIVERSARY, default=half_anniversary)] = bool
+        data_schema[vol.Required(CONF_UNIT_OF_MEASUREMENT, default=unit_of_measurement)] = str
         return self.async_show_form(step_id="user", data_schema=vol.Schema(data_schema), errors=self._errors)
 
     async def async_step_import(self, user_input):  # pylint: disable=unused-argument
@@ -142,6 +148,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         data_schema[vol.Required(CONF_ICON_SOON,default=self.config_entry.options.get(CONF_ICON_SOON),)] = str
         data_schema[vol.Required(CONF_DATE_FORMAT,default=self.config_entry.options.get(CONF_DATE_FORMAT),)] = str
         data_schema[vol.Required(CONF_HALF_ANNIVERSARY,default=self.config_entry.options.get(CONF_HALF_ANNIVERSARY),)] = bool
+        data_schema[vol.Required(CONF_UNIT_OF_MEASUREMENT,default=self.config_entry.options.get(CONF_UNIT_OF_MEASUREMENT),)] = str
         return self.async_show_form(
             step_id="init", data_schema=vol.Schema(data_schema), errors=self._errors
         )

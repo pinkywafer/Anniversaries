@@ -13,7 +13,8 @@
                     "days_as_soon": "Number of Days to consider soon",
                     "icon_soon": "Icon when anniversary is soon",
                     "date_format": "Date format (see http://strftime.org/)",
-                    "show_half_anniversary": "Show Half Anniversary Attributes"
+                    "show_half_anniversary": "Show Half Anniversary Attributes",
+                    "unit_of_measurement": "Text for unit_of_measurement"
                 }
             }
         },
@@ -33,7 +34,8 @@
                     "days_as_soon": "Number of Days to consider soon",
                     "icon_soon": "Icon when anniversary is soon",
                     "date_format": "Date format (see http://strftime.org/)",
-                    "show_half_anniversary": "Show Half Anniversary Attributes"
+                    "show_half_anniversary": "Show Half Anniversary Attributes",
+                    "unit_of_measurement": "Text for unit_of_measurement"
                 }
             }
         },

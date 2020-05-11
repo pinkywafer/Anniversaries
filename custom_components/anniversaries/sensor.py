@@ -24,6 +24,7 @@ from .const import (
     CONF_DATE_FORMAT,
     CONF_SOON,
     CONF_HALF_ANNIVERSARY,
+    CONF_UNIT_OF_MEASUREMENT,
 )
 
 ATTR_YEARS_NEXT = "years_at_next_anniversary"
@@ -68,6 +69,7 @@ class anniversaries(Entity):
         if self._show_half_anniversary:
             self._half_days_remaining = 0
             self._half_date = self._date + relativedelta(months=+6)
+        self._unit_of_measurement = config.get(CONF_UNIT_OF_MEASUREMENT)
 
     @property
     def unique_id(self):
@@ -105,9 +107,7 @@ class anniversaries(Entity):
     @property
     def unit_of_measurement(self):
         """Return the unit this state is expressed in."""
-        if self._state == 1:
-            return "day"
-        return "days"
+        return self._unit_of_measurement
 
     async def async_update(self):
         """update the sensor"""
