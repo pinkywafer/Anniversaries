@@ -7,7 +7,7 @@
                 "description": "Zadajte názov senzora a nakonfigurujte parametre senzora. Viac info na https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "name": "Vlastný názov",
-                    "date": "Prvý deň (yyyy-mm-dd) alebo (mm-yy) ak je rok neznámy",
+                    "date": "Prvý deň (yyyy-mm-dd) alebo (mm-dd) ak je rok neznámy",
                     "icon_normal": "Ikona",
                     "icon_today": "Ikona ked je výročie dnes",
                     "days_as_soon": "Počet dní, ktoré zostavajú do výročia",
@@ -27,7 +27,7 @@
                 "title": "Výročia",
                 "description": "Zmeň parametre senzora. Viac info na https://github.com/pinkywafer/Anniversaries",
                 "data": {
-                    "date": "Prvý deň (yyyy-mm-dd) alebo (mm-yy) ak je rok neznámy",
+                    "date": "Prvý deň (yyyy-mm-dd) alebo (mm-dd) ak je rok neznámy",
                     "icon_normal": "Ikona",
                     "icon_today": "Ikona ked je výročie dnes",
                     "days_as_soon": "Počet dní, ktoré zostavajú do výročia",

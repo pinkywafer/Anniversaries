@@ -7,7 +7,7 @@
 				"description": "Voer de sensornaam in en configureer sensorparameters. Meer info op https://github.com/pinkywafer/Anniversaries",
 				"data": {
 					"name": "Vriendelijke naam",
-					"date": "Eerste Datum (yyyy-mm-dd) of (mm-yy) als het jaar niet bekend is.",
+					"date": "Eerste Datum (yyyy-mm-dd) of (mm-dd) als het jaar niet bekend is.",
 					"icon_normal": "Icoon",
 					"icon_today": "Icoon als de verjaardag vandaag is",
 					"days_as_soon": "Aantal dagen vanaf iets binnenkort is",
@@ -26,7 +26,7 @@
 				"title": "Verjaardagen",
 				"description": "Wijzig sensorparameters. Meer info op https://github.com/pinkywafer/Anniversaries",
 				"data": {
-					"date": "Eerste Datum (yyyy-mm-dd) of (mm-yy) als het jaar niet bekend is.",
+					"date": "Eerste Datum (yyyy-mm-dd) of (mm-dd) als het jaar niet bekend is.",
 					"icon_normal": "Icoon",
 					"icon_today": "Icon when anniversary is today",
 					"days_as_soon": "Aantal dagen vanaf iets binnenkort is",

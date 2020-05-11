@@ -7,7 +7,7 @@
                 "description": "Angiv sensor navnet og konfigurere sensorens parametre. Mere info på https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "name": "Navn",
-                    "date": "Første dato (yyyy-mm-dd) eller (mm-yy) hvis årstallet er ukendt",
+                    "date": "Første dato (yyyy-mm-dd) eller (mm-dd) hvis årstallet er ukendt",
                     "icon_normal": "Ikon",
                     "icon_today": "Ikon, når mærkedagen er opnået",
                     "days_as_soon": "Antal dage, 'tæt på' betragtes som",
@@ -26,7 +26,7 @@
                 "title": "Mærkedage",
                 "description": "Skift sensor parametre. Mere info på https://github.com/pinkywafer/Anniversaries",
                 "data": {
-                    "date": "Første dato (yyyy-mm-dd) eller (mm-yy) hvis årstallet er ukendt",
+                    "date": "Første dato (yyyy-mm-dd) eller (mm-dd) hvis årstallet er ukendt",
                     "icon_normal": "Ikon",
                     "icon_today": "Ikon, når mærkedagen er opnået",
                     "days_as_soon": "Antal dage, 'tæt på' betragtes som",

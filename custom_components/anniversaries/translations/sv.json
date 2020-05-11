@@ -7,7 +7,7 @@
                 "description": "Ange sensorns namn eller konfigurera sensorns paramnetrar. Mer info på https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "name": "Namn",
-                    "date": "Första datumet (yyyy-mm-dd) eller (mm-yy) om år är unknown",
+                    "date": "Första datumet (yyyy-mm-dd) eller (mm-dd) om år är unknown",
                     "icon_normal": "Ikon",
                     "icon_today": "Ikon när årsdagen är idag",
                     "days_as_soon": "Antal dagar för att anta snart",
@@ -27,7 +27,7 @@
                 "title": "Årsdagar",
                 "description": "Ändra sensor parameter. Mer info på https://github.com/pinkywafer/Anniversaries",
                 "data": {
-                    "date": "Första datumet (yyyy-mm-dd) eller (mm-yy) om år är unknown",
+                    "date": "Första datumet (yyyy-mm-dd) eller (mm-dd) om år är unknown",
                     "icon_normal": "Ikon",
                     "icon_today": "Ikon när årsdagen är idag",
                     "days_as_soon": "Antal dagar för att anta snart",

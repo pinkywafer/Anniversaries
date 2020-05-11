@@ -7,7 +7,7 @@
                 "description": "Enter the sensor name and configure sensor parameters. More info on https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "name": "Friendly name",
-                    "date": "First Date (yyyy-mm-dd) or (mm-yy) if year is unknown",
+                    "date": "First Date (yyyy-mm-dd) or (mm-dd) if year is unknown",
                     "icon_normal": "Icon",
                     "icon_today": "Icon when anniversary is today",
                     "days_as_soon": "Number of Days to consider soon",

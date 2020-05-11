@@ -7,7 +7,7 @@
                 "description": "הכנס שם לחיישן והגדר פרמטרים. עוד מידע בכתובת https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "name": "שם ידידותי",
-                    "date": "תאריך ראשון (yyyy-mm-dd) או (mm-yy) אם התאריך הראשון לא ידוע",
+                    "date": "תאריך ראשון (yyyy-mm-dd) או (mm-dd) אם התאריך הראשון לא ידוע",
                     "icon_normal": "סמל",
                     "icon_today": "סמל כשהתאריך הוא היום",
                     "days_as_soon": "מספר הימים הנחשבים 'בקרוב'",
@@ -27,7 +27,7 @@
                 "title": "ימי-שנה",
                 "description": "שנה פרמטרים לחיישן. עוד מידע בכתובת - https://github.com/pinkywafer/Anniversaries",
                 "data": {
-                    "date": "תאריך ראשון (yyyy-mm-dd) או (mm-yy) אם התאריך הראשון לא ידוע",
+                    "date": "תאריך ראשון (yyyy-mm-dd) או (mm-dd) אם התאריך הראשון לא ידוע",
                     "icon_normal": "סמל",
                     "icon_today": "סמל כשהתאריך הוא היום",
                     "days_as_soon": "מספר הימים הנחשבים 'בקרוב'",
