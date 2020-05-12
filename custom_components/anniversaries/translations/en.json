@@ -15,7 +15,8 @@
                     "date_format": "Date format (see http://strftime.org/)",
                     "show_half_anniversary": "Show Half Anniversary Attributes",
                     "unit_of_measurement": "Text for unit_of_measurement",
-                    "id_prefix": "Entity_id Prefix"
+                    "id_prefix": "Entity_id Prefix",
+                    "one_time": "One Time Event (Non-recurring)"
                 }
             }
         },
@@ -37,12 +38,13 @@
                     "icon_soon": "Icon when anniversary is soon",
                     "date_format": "Date format (see http://strftime.org/)",
                     "show_half_anniversary": "Show Half Anniversary Attributes",
-                    "unit_of_measurement": "Text for unit_of_measurement"
+                    "unit_of_measurement": "Text for unit_of_measurement",
+                    "one_time": "One Time Event (Non-recurring)"
                 }
             }
         },
         "error": {
-            "invalid_date": "The date is not valid.  Please enter a valid 'YYYY-MM-DD' or 'MM-DD' date"
+            "invalid_date": "The date is not valid.  Please enter a valid 'YYYY-MM-DD' or 'MM-DD' date."
         }
     }
 }

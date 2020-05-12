@@ -18,6 +18,7 @@ from .const import (
     DEFAULT_HALF_ANNIVERSARY,
     DEFAULT_UNIT_OF_MEASUREMENT,
     DEFAULT_ID_PREFIX,
+    DEFAULT_ONE_TIME,
     CONF_SENSOR,
     CONF_ENABLED,
     CONF_ICON_NORMAL,
@@ -30,6 +31,7 @@ from .const import (
     CONF_HALF_ANNIVERSARY,
     CONF_UNIT_OF_MEASUREMENT,
     CONF_ID_PREFIX,
+    CONF_ONE_TIME,
 )
 
 from homeassistant.const import CONF_NAME
@@ -50,7 +52,7 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
         self._errors = {}
         if user_input is not None:
             self._data.update(user_input)
-            if is_not_date(user_input[CONF_DATE]):
+            if is_not_date(user_input[CONF_DATE], user_input[CONF_ONE_TIME]):
                 self._errors["base"] = "invalid_date"
             if self._errors == {}:
                 return self.async_create_entry(title=self._data["name"], data=self._data)
@@ -67,6 +69,7 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
         half_anniversary = DEFAULT_HALF_ANNIVERSARY
         unit_of_measurement = DEFAULT_UNIT_OF_MEASUREMENT
         id_prefix = DEFAULT_ID_PREFIX
+        one_time = DEFAULT_ONE_TIME
         if user_input is not None:
             if CONF_NAME in user_input:
                 name = user_input[CONF_NAME]
@@ -86,6 +89,8 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
                 unit_of_measurement = user_input[CONF_UNIT_OF_MEASUREMENT]
             if CONF_ID_PREFIX in user_input:
                 id_prefix = user_input[CONF_ID_PREFIX]
+            if CONF_ONE_TIME in user_input:
+                one_time = user_input[CONF_ONE_TIME]
         data_schema = OrderedDict()
         data_schema[vol.Required(CONF_NAME, default=name)] = str
         data_schema[vol.Required(CONF_DATE, default=date)] = str
@@ -97,6 +102,7 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
         data_schema[vol.Required(CONF_HALF_ANNIVERSARY, default=half_anniversary)] = bool
         data_schema[vol.Required(CONF_UNIT_OF_MEASUREMENT, default=unit_of_measurement)] = str
         data_schema[vol.Optional(CONF_ID_PREFIX, default=id_prefix)] = str
+        data_schema[vol.Required(CONF_ONE_TIME, default=one_time)] = bool
 
         return self.async_show_form(step_id="user", data_schema=vol.Schema(data_schema), errors=self._errors)
 
@@ -118,12 +124,15 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
         else:
             return EmptyOptions(config_entry)
 
-def is_not_date(date):
+def is_not_date(date, one_time):
     try:
         datetime.strptime(date, "%Y-%m-%d")
         return False
     except ValueError:
-        pass
+        if not one_time:
+            pass
+        else:
+            return True
     try:
         datetime.strptime(date, "%m-%d")
         return False
@@ -140,7 +149,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         self._errors = {}
         if user_input is not None:
             self._data.update(user_input)
-            if is_not_date(user_input[CONF_DATE]):
+            if is_not_date(user_input[CONF_DATE], user_input[CONF_ONE_TIME]):
                 self._errors["base"] = "invalid_date"
             if self._errors == {}:
                 return self.async_create_entry(title="", data=self._data)
@@ -157,6 +166,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         data_schema[vol.Required(CONF_DATE_FORMAT,default=self.config_entry.options.get(CONF_DATE_FORMAT),)] = str
         data_schema[vol.Required(CONF_HALF_ANNIVERSARY,default=self.config_entry.options.get(CONF_HALF_ANNIVERSARY),)] = bool
         data_schema[vol.Required(CONF_UNIT_OF_MEASUREMENT,default=self.config_entry.options.get(CONF_UNIT_OF_MEASUREMENT),)] = str
+        data_schema[vol.Required(CONF_ONE_TIME,default=self.config_entry.options.get(CONF_ONE_TIME),)] = bool
         return self.async_show_form(
             step_id="init", data_schema=vol.Schema(data_schema), errors=self._errors
         )

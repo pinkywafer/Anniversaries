@@ -33,6 +33,7 @@ CONF_SOON = "days_as_soon"
 CONF_HALF_ANNIVERSARY = "show_half_anniversary"
 CONF_UNIT_OF_MEASUREMENT = "unit_of_measurement"
 CONF_ID_PREFIX = "id_prefix"
+CONF_ONE_TIME = "one_time"
 
 # Defaults
 DEFAULT_NAME = DOMAIN
@@ -44,6 +45,7 @@ DEFAULT_SOON = 1
 DEFAULT_HALF_ANNIVERSARY = False
 DEFAULT_UNIT_OF_MEASUREMENT = "Days"
 DEFAULT_ID_PREFIX = "anniversary_"
+DEFAULT_ONE_TIME = False
 
 ICON = DEFAULT_ICON_NORMAL
 
@@ -70,6 +72,7 @@ SENSOR_SCHEMA = vol.Schema(
         vol.Optional(CONF_HALF_ANNIVERSARY, default=DEFAULT_HALF_ANNIVERSARY): cv.boolean,
         vol.Optional(CONF_UNIT_OF_MEASUREMENT, default=DEFAULT_UNIT_OF_MEASUREMENT): cv.string,
         vol.Optional(CONF_ID_PREFIX, default=DEFAULT_ID_PREFIX): cv.string,
+        vol.Optional(CONF_ONE_TIME, default=DEFAULT_ONE_TIME): cv.boolean,
     }
 )
 
