@@ -27,6 +27,7 @@
                 "title": "Jahrestage",
                 "description": "Ändere Sensorparameter. Mehr Informationen auf https://github.com/pinkywafer/Anniversaries",
                 "data": {
+                    "name": "Name",
                     "date": "Erstes Datum (yyyy-mm-dd) oder (mm-dd) wenn das Jahr unbekannt ist",
                     "icon_normal": "Icon",
                     "icon_today": "Icon, wenn heute der Jahrestag ist",

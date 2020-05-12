@@ -24,6 +24,7 @@
     "options": {
         "step": {
             "init": {
+                "name": "Nome",
                 "title": "Anniversari",
                 "description": "Configura i parametri del sensore. Altre informazioni su https://github.com/pinkywafer/Anniversaries",
                 "data": {

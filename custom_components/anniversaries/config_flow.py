@@ -148,6 +148,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
 
     async def _show_init_form(self, user_input):
         data_schema = OrderedDict()
+        data_schema[vol.Required(CONF_NAME,default=self.config_entry.options.get(CONF_NAME),)] = str
         data_schema[vol.Required(CONF_DATE, default=self.config_entry.options.get(CONF_DATE),)] = str
         data_schema[vol.Required(CONF_ICON_NORMAL,default=self.config_entry.options.get(CONF_ICON_NORMAL),)] = str
         data_schema[vol.Required(CONF_ICON_TODAY,default=self.config_entry.options.get(CONF_ICON_TODAY),)] = str

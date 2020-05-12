@@ -26,6 +26,7 @@
                 "title": "Mærkedage",
                 "description": "Skift sensor parametre. Mere info på https://github.com/pinkywafer/Anniversaries",
                 "data": {
+                    "name": "Navn",
                     "date": "Første dato (yyyy-mm-dd) eller (mm-dd) hvis årstallet er ukendt",
                     "icon_normal": "Ikon",
                     "icon_today": "Ikon, når mærkedagen er opnået",

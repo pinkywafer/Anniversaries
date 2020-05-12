@@ -26,6 +26,7 @@
                 "title": "Anniversaires",
                 "description": "Modifiez les paramètres du senseur. Plus d'infos sur https://github.com/pinkywafer/Anniversaries",
                 "data": {
+                    "name": "Nom familier",
                     "date": "Date de naissance (yyyy-mm-dd) ou (mm-dd) si l'année est inconnue",
                     "icon_normal": "Icône",
                     "icon_today": "Icône quand l'anniversaire est aujourd'hui",

@@ -27,6 +27,7 @@
                 "title": "ימי-שנה",
                 "description": "שנה פרמטרים לחיישן. עוד מידע בכתובת - https://github.com/pinkywafer/Anniversaries",
                 "data": {
+                    "name": "שם ידידותי",
                     "date": "תאריך ראשון (yyyy-mm-dd) או (mm-dd) אם התאריך הראשון לא ידוע",
                     "icon_normal": "סמל",
                     "icon_today": "סמל כשהתאריך הוא היום",

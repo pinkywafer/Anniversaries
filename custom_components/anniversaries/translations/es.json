@@ -27,6 +27,7 @@
                 "title": "Aniversarios",
                 "description": "Cambiar los parámetros del sensor. Más información en https://github.com/pinkywafer/Anniversaries",
                 "data": {
+                    "name": "Nombre amistoso",
                     "date": "Primera fecha (yyyy-mm-dd) o (mm-dd) si el año es desconocido",
                     "icon_normal": "Icono",
                     "icon_today": "Icono para cuando el aniversario es hoy",
