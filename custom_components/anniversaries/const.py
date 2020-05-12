@@ -70,6 +70,7 @@ SENSOR_SCHEMA = vol.Schema(
         vol.Optional(CONF_HALF_ANNIVERSARY, default=DEFAULT_HALF_ANNIVERSARY): cv.boolean,
         vol.Optional(CONF_UNIT_OF_MEASUREMENT, default=DEFAULT_UNIT_OF_MEASUREMENT): cv.string,
         vol.Optional(CONF_ID_PREFIX, default=""): cv.string,
+        vol.Optional(CONF_ID_PREFIX, default=DEFAULT_ID_PREFIX): cv.string,
     }
 )
 
