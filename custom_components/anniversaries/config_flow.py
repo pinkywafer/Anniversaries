@@ -17,6 +17,7 @@ from .const import (
     DEFAULT_SOON,
     DEFAULT_HALF_ANNIVERSARY,
     DEFAULT_UNIT_OF_MEASUREMENT,
+    DEFAULT_ID_PREFIX,
     CONF_SENSOR,
     CONF_ENABLED,
     CONF_ICON_NORMAL,
@@ -28,6 +29,7 @@ from .const import (
     CONF_SOON,
     CONF_HALF_ANNIVERSARY,
     CONF_UNIT_OF_MEASUREMENT,
+    CONF_ID_PREFIX,
 )
 
 from homeassistant.const import CONF_NAME
@@ -64,6 +66,7 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
         days_as_soon = DEFAULT_SOON
         half_anniversary = DEFAULT_HALF_ANNIVERSARY
         unit_of_measurement = DEFAULT_UNIT_OF_MEASUREMENT
+        id_prefix = DEFAULT_ID_PREFIX
         if user_input is not None:
             if CONF_NAME in user_input:
                 name = user_input[CONF_NAME]
@@ -81,6 +84,8 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
                 half_anniversary = user_input[CONF_HALF_ANNIVERSARY]
             if CONF_UNIT_OF_MEASUREMENT in user_input:
                 unit_of_measurement = user_input[CONF_UNIT_OF_MEASUREMENT]
+            if CONF_ID_PREFIX in user_input:
+                id_prefix = user_input[CONF_ID_PREFIX]
         data_schema = OrderedDict()
         data_schema[vol.Required(CONF_NAME, default=name)] = str
         data_schema[vol.Required(CONF_DATE, default=date)] = str
@@ -91,6 +96,8 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
         data_schema[vol.Required(CONF_DATE_FORMAT, default=date_format)] = str
         data_schema[vol.Required(CONF_HALF_ANNIVERSARY, default=half_anniversary)] = bool
         data_schema[vol.Required(CONF_UNIT_OF_MEASUREMENT, default=unit_of_measurement)] = str
+        data_schema[vol.Optional(CONF_ID_PREFIX, default=id_prefix)] = str
+
         return self.async_show_form(step_id="user", data_schema=vol.Schema(data_schema), errors=self._errors)
 
     async def async_step_import(self, user_input):  # pylint: disable=unused-argument

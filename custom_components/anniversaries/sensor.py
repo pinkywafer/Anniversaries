@@ -4,7 +4,7 @@ from dateutil.relativedelta import relativedelta
 from datetime import datetime, date, timedelta
 
 import logging
-from homeassistant.helpers.entity import Entity
+from homeassistant.helpers.entity import Entity, generate_entity_id
 from homeassistant.core import HomeAssistant, State
 
 from homeassistant.const import (
@@ -25,6 +25,7 @@ from .const import (
     CONF_SOON,
     CONF_HALF_ANNIVERSARY,
     CONF_UNIT_OF_MEASUREMENT,
+    CONF_ID_PREFIX,
 )
 
 ATTR_YEARS_NEXT = "years_at_next_anniversary"
@@ -48,6 +49,10 @@ class anniversaries(Entity):
         """Initialize the sensor."""
         self.config = config
         self._name = config.get(CONF_NAME)
+        self._id_prefix = config.get(CONF_ID_PREFIX)
+        if self._id_prefix is None:
+            self._id_prefix = "anniversary_"
+        self.entity_id = generate_entity_id(DOMAIN + ".{}", self._id_prefix + self._name, [])
         self._unknown_year = False
         self._date = ""
         try:
