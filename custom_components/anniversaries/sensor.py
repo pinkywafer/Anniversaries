@@ -15,6 +15,7 @@ from .const import (
     ATTRIBUTION,
     DEFAULT_NAME,
     DOMAIN,
+    DEFAULT_UNIT_OF_MEASUREMENT,
     CONF_SENSOR,
     CONF_ENABLED,
     CONF_ICON_NORMAL,
@@ -76,6 +77,8 @@ class anniversaries(Entity):
             self._half_days_remaining = 0
             self._half_date = self._date + relativedelta(months=+6)
         self._unit_of_measurement = config.get(CONF_UNIT_OF_MEASUREMENT)
+        if self._unit_of_measurement is None:
+            self._unit_of_measurement = DEFAULT_UNIT_OF_MEASUREMENT
         self._one_time = config.get(CONF_ONE_TIME)
 
     @property
