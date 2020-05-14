@@ -51,7 +51,7 @@
                     "icon_normal": "Icon",
                     "icon_today": "Icon, wenn heute der Jahrestag ist",
                     "days_as_soon": "Ab wie vielen Tagen gilt \"bald\"",
-                    "icon_soon": "Icon, wenn der Jahrestag bald ist",
+                    "icon_soon": "Icon, wenn der Jahrestag bald ist"
                 }
             }
         },

@@ -22,7 +22,7 @@
 					"icon_normal": "Icoon",
 					"icon_today": "Icoon als de verjaardag vandaag is",
 					"days_as_soon": "Aantal dagen vanaf iets binnenkort is",
-					"icon_soon": "Icoon als een verjaardag binnenkort is",
+					"icon_soon": "Icoon als een verjaardag binnenkort is"
 				}
 			}
 		},
@@ -41,7 +41,7 @@
 					"one_time": "One Time Event (Non-recurring)",
 					"show_half_anniversary": "Show Half Anniversary Attributes",
 					"date_format": "Datum formaat (see http://strftime.org/)",
-					"unit_of_measurement": "Text for unit_of_measurement",
+					"unit_of_measurement": "Text for unit_of_measurement"
 				}
 			},
 			"icons": {
@@ -51,7 +51,7 @@
 					"icon_normal": "Icoon",
 					"icon_today": "Icoon als de verjaardag vandaag is",
 					"days_as_soon": "Aantal dagen vanaf iets binnenkort is",
-					"icon_soon": "Icoon als een verjaardag binnenkort is",
+					"icon_soon": "Icoon als een verjaardag binnenkort is"
 				}
 			}
 		},

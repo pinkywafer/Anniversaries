@@ -10,7 +10,7 @@
                     "date": "Prvý deň (yyyy-mm-dd) alebo (mm-dd) ak je rok neznámy",
                     "one_time": "One Time Event (Non-recurring)",
                     "show_half_anniversary": "Zobraziť atribúty polroka",
-                    "date_format": "Formát dátumu (pozri http://strftime.org/)",,
+                    "date_format": "Formát dátumu (pozri http://strftime.org/)",
                     "unit_of_measurement": "Text for unit_of_measurement",
                     "id_prefix": "Entity_id Prefix"
                 }
@@ -22,7 +22,7 @@
                     "icon_normal": "Ikona",
                     "icon_today": "Ikona ked je výročie dnes",
                     "days_as_soon": "Počet dní, ktoré zostavajú do výročia",
-                    "icon_soon": "Ikona pri príležitosti výročia",
+                    "icon_soon": "Ikona pri príležitosti výročia"
                     
                     
                 }
@@ -42,7 +42,7 @@
                     "date": "Prvý deň (yyyy-mm-dd) alebo (mm-dd) ak je rok neznámy",
                     "one_time": "One Time Event (Non-recurring)",
                     "show_half_anniversary": "Zobraziť atribúty polroka",
-                    "date_format": "Formát dátumu (pozri http://strftime.org/)",,
+                    "date_format": "Formát dátumu (pozri http://strftime.org/)",
                     "unit_of_measurement": "Text for unit_of_measurement"
                 }
             },
@@ -53,7 +53,7 @@
                     "icon_normal": "Ikona",
                     "icon_today": "Ikona ked je výročie dnes",
                     "days_as_soon": "Počet dní, ktoré zostavajú do výročia",
-                    "icon_soon": "Ikona pri príležitosti výročia",
+                    "icon_soon": "Ikona pri príležitosti výročia"
                     
                     
                 }
