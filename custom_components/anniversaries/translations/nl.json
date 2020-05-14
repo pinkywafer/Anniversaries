@@ -8,11 +8,21 @@
 				"data": {
 					"name": "Vriendelijke naam",
 					"date": "Eerste Datum (yyyy-mm-dd) of (mm-dd) als het jaar niet bekend is.",
+					"one_time": "One Time Event (Non-recurring)",
+					"show_half_anniversary": "Show Half Anniversary Attributes",
+					"date_format": "Datum formaat (see http://strftime.org/)",
+					"unit_of_measurement": "Text for unit_of_measurement",
+					"id_prefix": "Entity_id Prefix"
+				}
+			},
+			"icons": {
+				"title": "Verjaardagen",
+				"description": "Voer de sensornaam in en configureer sensorparameters. Meer info op https://github.com/pinkywafer/Anniversaries",
+				"data": {
 					"icon_normal": "Icoon",
 					"icon_today": "Icoon als de verjaardag vandaag is",
 					"days_as_soon": "Aantal dagen vanaf iets binnenkort is",
 					"icon_soon": "Icoon als een verjaardag binnenkort is",
-					"date_format": "Datum formaat (see http://strftime.org/)"
 				}
 			}
 		},
@@ -28,11 +38,20 @@
 				"data": {
 					"name": "Vriendelijke naam",
 					"date": "Eerste Datum (yyyy-mm-dd) of (mm-dd) als het jaar niet bekend is.",
+					"one_time": "One Time Event (Non-recurring)",
+					"show_half_anniversary": "Show Half Anniversary Attributes",
+					"date_format": "Datum formaat (see http://strftime.org/)",
+					"unit_of_measurement": "Text for unit_of_measurement",
+				}
+			},
+			"icons": {
+				"title": "Verjaardagen",
+				"description": "Wijzig sensorparameters. Meer info op https://github.com/pinkywafer/Anniversaries",
+				"data": {
 					"icon_normal": "Icoon",
-					"icon_today": "Icon when anniversary is today",
+					"icon_today": "Icoon als de verjaardag vandaag is",
 					"days_as_soon": "Aantal dagen vanaf iets binnenkort is",
 					"icon_soon": "Icoon als een verjaardag binnenkort is",
-					"date_format": "Datum formaat (see http://strftime.org/)"
 				}
 			}
 		},
