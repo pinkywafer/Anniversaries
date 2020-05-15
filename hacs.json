@@ -5,5 +5,5 @@
   "filename": "anniversaries.zip",
   "domains": ["anniversaries", "sensor"],
   "iot_class": "Local Push",
-  "homeassistant": "0.109.0",
+  "homeassistant": "0.109.0"
 }
