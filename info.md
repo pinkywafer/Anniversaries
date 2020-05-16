@@ -14,8 +14,6 @@
 
 The 'anniversaries' component is a Home Assistant custom sensor which counts down to a recurring date such as birthdays, but can be used for any anniversary which occurs annually on the same date.
 
-**1.0.0 includes BREAKING CHANGES** read the [release notes](https://github.com/pinkywafer/anniversaries/releases/latest).
-
 State Returned:
 
 * The number of days remaining to the next occurance.
@@ -30,27 +28,10 @@ Attributes:
 * half_anniversary_date: The date of the next half anniversary (if enabled by `show_half_anniversary`)
 * days_until_half_anniversary: The number of days until the next half anniversary
 
-### Notes about unit of measurement
+## Notes about unit of measurement
 
 Unit_of_measurement is *not* translate-able.
-You can, however, change the unit of measurement with a customization. There are two ways to do this:
-
-* _NOTE that each sensor would require it's own customization_
-
-_This example would replace `Days` with `Dias`_
-
-* In customize.yaml:
-
-    ```yaml
-    sensor.your_sensor_id:
-      unit_of_measurement: Dias
-    ```
-
-* Use the Customizations from the Configuration menu:
-  1. Select your sensor
-  2. under "Pick an attribute to override" select unit_of_measurement
-  3. Type `Dias` in the box
-  4. Press save
+You can, however, change the text for unit of measurement in the configuration.  NB the sensor will always report in days, this just allows you to represent this in your own language.
 
 ## Configuration
 
@@ -81,12 +62,15 @@ anniversaries:
 |:----------|----------|------------
 | `name` | No | Friendly name
 |`date` | No | date in format `'YYYY-MM-DD'` (or `'MM-DD'` if year is unknown)
+| `one_time` | Yes | `true` or `false`. For a one-time event (Non-recurring) **Default**: `false`
+| `show_half_anniversary` | Yes | `true` or `false`. Enables the `half_anniversary_date` and `days_until_half_anniversary` attributes. **Default**: `false`
+| `date_format` | Yes | formats the returned date **Default**: '%Y-%m-%d' _for reference, see [http://strftime.org/](http://strftime.org/)_
+| `unit_of_measurement` | Yes | Your choice of label N.B. The sensor always returns Days, but this option allows you to express this in the language of your choice without needing a customization
+| `id_prefix` | Yes | Your choice of prefix for the entity_id **Default**: `anniversary_` NB. the entity_id cannot be changed from within the integration once it has been created.  You muse either delete your entity and re-create it or manually rename the entity_id on the configuration -> entities page
 | `icon_normal` | Yes | Default icon **Default**:  `mdi:calendar-blank`
 | `icon_today` | Yes | Icon if the anniversary is today **Default**: `mdi:calendar-star`
 | `days_as_soon` | Yes | Days in advance to display the icon defined in `icon_soon` **Default**: 1
 | `icon_soon` | Yes | Icon if the anniversary is 'soon' **Default**: `mdi:calendar`
-| `date_format` | Yes | formats the returned date **Default**: '%Y-%m-%d' _for reference, see [http://strftime.org/](http://strftime.org/)_
-| `show_half_anniversary` | Yes | `true` or `false`. Enables the `half_anniversary_date` and `days_until_half_anniversary` attributes. **Default**: `false`
 
 [patreon-shield]: https://c5.patreon.com/external/logo/become_a_patron_button.png
 [patreon]: https://www.patreon.com/pinkywafer

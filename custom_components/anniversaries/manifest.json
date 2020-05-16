@@ -6,11 +6,10 @@
   "config_flow": true,
   "codeowners": ["@pinkywafer"],
   "requirements": [
-    "datetime"
-    "python-dateutil"
+    "datetime",
+    "python-dateutil",
     "integrationhelper",
     "uuid",
     "voluptuous"
-  ],
-  "homeassistant": "0.96.0"
+  ]
 }
