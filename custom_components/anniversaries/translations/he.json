@@ -8,7 +8,7 @@
                 "data": {
                     "name": "שם ידידותי",
                     "date": "תאריך ראשון (yyyy-mm-dd) או (mm-dd) אם התאריך הראשון לא ידוע",
-                    "one_time": "One Time Event (Non-recurring)",
+                    "one_time": "אירוע חד-פעמי",
                     "show_half_anniversary": "הצג ערכי חצי הזמן",
                     "date_format": "פורמט תאריך (ראה http://strftime.org/)",
                     "unit_of_measurement": "טקסט עבור 'unit_of_measurement'",
@@ -38,7 +38,7 @@
                 "data": {
                     "name": "שם ידידותי",
                     "date": "תאריך ראשון (yyyy-mm-dd) או (mm-dd) אם התאריך הראשון לא ידוע",
-                    "one_time": "One Time Event (Non-recurring)",
+                    "one_time": "אירוע חד-פעמי",
                     "show_half_anniversary": "הצג ערכי חצי הזמן",
                     "date_format": "פורמט תאריך (ראה http://strftime.org/)",
                     "unit_of_measurement": "טקסט עבור 'unit_of_measurement'"
