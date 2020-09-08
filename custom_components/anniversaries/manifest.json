@@ -9,7 +9,6 @@
     "datetime",
     "python-dateutil",
     "integrationhelper",
-    "uuid",
     "voluptuous"
   ]
 }
