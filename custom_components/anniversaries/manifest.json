@@ -6,10 +6,8 @@
   "config_flow": true,
   "codeowners": ["@pinkywafer"],
   "requirements": [
-    "datetime",
     "python-dateutil",
     "integrationhelper",
-    "uuid",
     "voluptuous"
   ]
 }
