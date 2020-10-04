@@ -8,11 +8,11 @@
                 "data": {
                     "name": "Nom familier",
                     "date": "Date de naissance (yyyy-mm-dd) ou (mm-dd) si l'année est inconnue",
-                    "one_time": "One Time Event (Non-recurring)",
-                    "show_half_anniversary": "Show Half Anniversary Attributes",
+                    "one_time": "Événement unique (Non récurrent)",
+                    "show_half_anniversary": "Afficher l'attribut de mi-anniversaire",
                     "date_format": "Format de date (voir http://strftime.org/)",
-                    "unit_of_measurement": "Text for unit_of_measurement",
-                    "id_prefix": "Entity_id Prefix"
+                    "unit_of_measurement": "Texte pour unit_of_measurement",
+                    "id_prefix": "Préfixe des Entity_id"
                 }
             },
             "icons": {
@@ -23,7 +23,6 @@
                     "icon_today": "Icône quand l'anniversaire est aujourd'hui",
                     "days_as_soon": "Nombre de jours à considérer bientôt",
                     "icon_soon": "Icône quand l'anniversaire est bientôt"
-                    
                 }
             }
         },
@@ -39,10 +38,10 @@
                 "data": {
                     "name": "Nom familier",
                     "date": "Date de naissance (yyyy-mm-dd) ou (mm-dd) si l'année est inconnue",
-                    "one_time": "One Time Event (Non-recurring)",
-                    "show_half_anniversary": "Show Half Anniversary Attributes",
+                    "one_time": "Événement unique (Non récurrent)",
+                    "show_half_anniversary": "Afficher l'attribut de mi-anniversaire",
                     "date_format": "Format de date (voir http://strftime.org/)",
-                    "unit_of_measurement": "Text for unit_of_measurement"
+                    "unit_of_measurement": "Texte pour unit_of_measurement"
                 }
             },
             "icons": {
@@ -53,7 +52,6 @@
                     "icon_today": "Icône quand l'anniversaire est aujourd'hui",
                     "days_as_soon": "Nombre de jours à considérer bientôt",
                     "icon_soon": "Icône quand l'anniversaire est bientôt"
-                    
                 }
             }
         },

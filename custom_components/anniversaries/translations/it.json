@@ -8,11 +8,11 @@
                 "data": {
                     "name": "Nome",
                     "date": "Prima data (yyyy-mm-dd) oppure (mm-dd) se l'anno è sconosciuto",
-                    "one_time": "One Time Event (Non-recurring)",
+                    "one_time": "Evento singolo (Non si ripete)",
                     "show_half_anniversary": "Mostra attributo mezzo anniversario",
                     "date_format": "Formato data (vedi http://strftime.org/)",
-                    "unit_of_measurement": "Text for unit_of_measurement",
-                    "id_prefix": "Entity_id Prefix"
+                    "unit_of_measurement": "Testo per unit_of_measurement",
+                    "id_prefix": "Prefisso entity_id"
                 }
             },
             "icons": {
@@ -39,11 +39,11 @@
                 "data": {
                     "name": "Nome",
                     "date": "Prima data (yyyy-mm-dd) oppure (mm-dd) se l'anno è sconosciuto",
-                    "one_time": "One Time Event (Non-recurring)",
+                    "one_time": "Evento singolo (Non si ripete)",
                     "show_half_anniversary": "Mostra attributo mezzo anniversario",
                     "date_format": "Formato data (vedi http://strftime.org/)",
-                    "unit_of_measurement": "Text for unit_of_measurement",
-                    "id_prefix": "Entity_id Prefix"
+                    "unit_of_measurement": "Testo per unit_of_measurement",
+                    "id_prefix": "Prefisso entity_id"
                 }
             },
             "icons": {

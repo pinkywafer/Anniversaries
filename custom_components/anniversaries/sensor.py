@@ -6,6 +6,7 @@ from datetime import datetime, date, timedelta
 import logging
 from homeassistant.helpers.entity import Entity, generate_entity_id
 from homeassistant.core import HomeAssistant, State
+from homeassistant.components.sensor import ENTITY_ID_FORMAT
 
 from homeassistant.const import (
     CONF_NAME,
@@ -54,7 +55,7 @@ class anniversaries(Entity):
         self._id_prefix = config.get(CONF_ID_PREFIX)
         if self._id_prefix is None:
             self._id_prefix = "anniversary_"
-        self.entity_id = generate_entity_id(DOMAIN + ".{}", self._id_prefix + self._name, [])
+        self.entity_id = generate_entity_id(ENTITY_ID_FORMAT, self._id_prefix + self._name, [])
         self._unknown_year = False
         self._date = ""
         try:
