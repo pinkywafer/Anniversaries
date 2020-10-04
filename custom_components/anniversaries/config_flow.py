@@ -48,7 +48,7 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
         self._data = {}
         self._data["unique_id"] = str(uuid.uuid4())
 
-    async def async_step_user(self, user_input=None):   # pylint: disable=unused-argument
+    async def async_step_user(self, user_input=None):  # pylint: disable=unused-argument
         self._errors = {}
         if user_input is not None:
             self._data.update(user_input)
@@ -58,7 +58,7 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
                 self.init_info = user_input
                 return await self.async_step_icons()
         return await self._show_user_form(user_input)
-    
+
     async def async_step_icons(self, user_input=None):
         self._errors = {}
         if user_input is not None:
@@ -93,11 +93,17 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
         data_schema[vol.Required(CONF_NAME, default=name)] = str
         data_schema[vol.Required(CONF_DATE, default=date)] = str
         data_schema[vol.Required(CONF_ONE_TIME, default=one_time)] = bool
-        data_schema[vol.Required(CONF_HALF_ANNIVERSARY, default=half_anniversary)] = bool
+        data_schema[
+            vol.Required(CONF_HALF_ANNIVERSARY, default=half_anniversary)
+        ] = bool
         data_schema[vol.Required(CONF_DATE_FORMAT, default=date_format)] = str
-        data_schema[vol.Required(CONF_UNIT_OF_MEASUREMENT, default=unit_of_measurement)] = str
+        data_schema[
+            vol.Required(CONF_UNIT_OF_MEASUREMENT, default=unit_of_measurement)
+        ] = str
         data_schema[vol.Optional(CONF_ID_PREFIX, default=id_prefix)] = str
-        return self.async_show_form(step_id="user", data_schema=vol.Schema(data_schema), errors=self._errors)
+        return self.async_show_form(
+            step_id="user", data_schema=vol.Schema(data_schema), errors=self._errors
+        )
 
     async def _show_icon_form(self, user_input):
         icon_normal = DEFAULT_ICON_NORMAL
@@ -118,7 +124,9 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
         data_schema[vol.Required(CONF_ICON_TODAY, default=icon_today)] = str
         data_schema[vol.Required(CONF_SOON, default=days_as_soon)] = int
         data_schema[vol.Required(CONF_ICON_SOON, default=icon_soon)] = str
-        return self.async_show_form(step_id="icons", data_schema=vol.Schema(data_schema), errors=self._errors)
+        return self.async_show_form(
+            step_id="icons", data_schema=vol.Schema(data_schema), errors=self._errors
+        )
 
     async def async_step_import(self, user_input):  # pylint: disable=unused-argument
         """Import a config entry.
@@ -138,6 +146,7 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
         else:
             return EmptyOptions(config_entry)
 
+
 def is_not_date(date, one_time):
     try:
         datetime.strptime(date, "%Y-%m-%d")
@@ -152,7 +161,8 @@ def is_not_date(date, one_time):
         return False
     except ValueError:
         return True
-        
+
+
 class OptionsFlowHandler(config_entries.OptionsFlow):
     def __init__(self, config_entry):
         self.config_entry = config_entry
@@ -187,23 +197,75 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
             half_anniversary = DEFAULT_HALF_ANNIVERSARY
         if unit_of_measurement is None:
             unit_of_measurement = DEFAULT_UNIT_OF_MEASUREMENT
-        data_schema[vol.Required(CONF_NAME,default=self.config_entry.options.get(CONF_NAME),)] = str
-        data_schema[vol.Required(CONF_DATE, default=self.config_entry.options.get(CONF_DATE),)] = str
-        data_schema[vol.Required(CONF_ONE_TIME, default=one_time,)] = bool
-        data_schema[vol.Required(CONF_HALF_ANNIVERSARY,default=half_anniversary,)] = bool
-        data_schema[vol.Required(CONF_DATE_FORMAT,default=self.config_entry.options.get(CONF_DATE_FORMAT),)] = str
-        data_schema[vol.Required(CONF_UNIT_OF_MEASUREMENT,default=unit_of_measurement,)] = str
+        data_schema[
+            vol.Required(
+                CONF_NAME,
+                default=self.config_entry.options.get(CONF_NAME),
+            )
+        ] = str
+        data_schema[
+            vol.Required(
+                CONF_DATE,
+                default=self.config_entry.options.get(CONF_DATE),
+            )
+        ] = str
+        data_schema[
+            vol.Required(
+                CONF_ONE_TIME,
+                default=one_time,
+            )
+        ] = bool
+        data_schema[
+            vol.Required(
+                CONF_HALF_ANNIVERSARY,
+                default=half_anniversary,
+            )
+        ] = bool
+        data_schema[
+            vol.Required(
+                CONF_DATE_FORMAT,
+                default=self.config_entry.options.get(CONF_DATE_FORMAT),
+            )
+        ] = str
+        data_schema[
+            vol.Required(
+                CONF_UNIT_OF_MEASUREMENT,
+                default=unit_of_measurement,
+            )
+        ] = str
         return self.async_show_form(
             step_id="init", data_schema=vol.Schema(data_schema), errors=self._errors
         )
 
     async def _show_icon_form(self, user_input):
         data_schema = OrderedDict()
-        data_schema[vol.Required(CONF_ICON_NORMAL,default=self.config_entry.options.get(CONF_ICON_NORMAL),)] = str
-        data_schema[vol.Required(CONF_ICON_TODAY,default=self.config_entry.options.get(CONF_ICON_TODAY),)] = str
-        data_schema[vol.Required(CONF_SOON,default=self.config_entry.options.get(CONF_SOON),)] = int
-        data_schema[vol.Required(CONF_ICON_SOON,default=self.config_entry.options.get(CONF_ICON_SOON),)] = str
-        return self.async_show_form(step_id="icons", data_schema=vol.Schema(data_schema), errors=self._errors)
+        data_schema[
+            vol.Required(
+                CONF_ICON_NORMAL,
+                default=self.config_entry.options.get(CONF_ICON_NORMAL),
+            )
+        ] = str
+        data_schema[
+            vol.Required(
+                CONF_ICON_TODAY,
+                default=self.config_entry.options.get(CONF_ICON_TODAY),
+            )
+        ] = str
+        data_schema[
+            vol.Required(
+                CONF_SOON,
+                default=self.config_entry.options.get(CONF_SOON),
+            )
+        ] = int
+        data_schema[
+            vol.Required(
+                CONF_ICON_SOON,
+                default=self.config_entry.options.get(CONF_ICON_SOON),
+            )
+        ] = str
+        return self.async_show_form(
+            step_id="icons", data_schema=vol.Schema(data_schema), errors=self._errors
+        )
 
 
 class EmptyOptions(config_entries.OptionsFlow):

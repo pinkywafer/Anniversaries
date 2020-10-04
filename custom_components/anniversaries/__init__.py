@@ -25,7 +25,7 @@ from .const import (
     CONFIG_SCHEMA,
 )
 
-#MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=30)
+# MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=30)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -81,9 +81,7 @@ async def async_remove_entry(hass, config_entry):
     """Handle removal of an entry."""
     try:
         await hass.config_entries.async_forward_entry_unload(config_entry, PLATFORM)
-        _LOGGER.info(
-            "Successfully removed sensor from the Anniversaries integration"
-        )
+        _LOGGER.info("Successfully removed sensor from the Anniversaries integration")
     except ValueError:
         pass
 

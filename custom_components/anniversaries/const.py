@@ -49,6 +49,7 @@ DEFAULT_ONE_TIME = False
 
 ICON = DEFAULT_ICON_NORMAL
 
+
 def check_date(value):
     try:
         return datetime.strptime(value, "%Y-%m-%d").date().strftime("%Y-%m-%d")
@@ -69,8 +70,12 @@ SENSOR_SCHEMA = vol.Schema(
         vol.Optional(CONF_ICON_TODAY, default=DEFAULT_ICON_TODAY): cv.icon,
         vol.Optional(CONF_ICON_SOON, default=DEFAULT_ICON_SOON): cv.icon,
         vol.Optional(CONF_DATE_FORMAT, default=DEFAULT_DATE_FORMAT): cv.string,
-        vol.Optional(CONF_HALF_ANNIVERSARY, default=DEFAULT_HALF_ANNIVERSARY): cv.boolean,
-        vol.Optional(CONF_UNIT_OF_MEASUREMENT, default=DEFAULT_UNIT_OF_MEASUREMENT): cv.string,
+        vol.Optional(
+            CONF_HALF_ANNIVERSARY, default=DEFAULT_HALF_ANNIVERSARY
+        ): cv.boolean,
+        vol.Optional(
+            CONF_UNIT_OF_MEASUREMENT, default=DEFAULT_UNIT_OF_MEASUREMENT
+        ): cv.string,
         vol.Optional(CONF_ID_PREFIX, default=DEFAULT_ID_PREFIX): cv.string,
         vol.Optional(CONF_ONE_TIME, default=DEFAULT_ONE_TIME): cv.boolean,
     }
