@@ -1,31 +1,34 @@
 """ sensor """
 
-import logging
-from datetime import date, datetime, timedelta
-
 from dateutil.relativedelta import relativedelta
-from homeassistant.components.sensor import ENTITY_ID_FORMAT
-from homeassistant.const import CONF_NAME
-from homeassistant.core import HomeAssistant, State
+from datetime import datetime, date, timedelta
+
+import logging
 from homeassistant.helpers.entity import Entity, generate_entity_id
+from homeassistant.core import HomeAssistant, State
+from homeassistant.components.sensor import ENTITY_ID_FORMAT
+
+from homeassistant.const import (
+    CONF_NAME,
+)
 
 from .const import (
     ATTRIBUTION,
+    DEFAULT_NAME,
+    DOMAIN,
+    DEFAULT_UNIT_OF_MEASUREMENT,
+    CONF_SENSOR,
+    CONF_ENABLED,
+    CONF_ICON_NORMAL,
+    CONF_ICON_TODAY,
+    CONF_ICON_SOON,
     CONF_DATE,
     CONF_DATE_FORMAT,
-    CONF_ENABLED,
+    CONF_SOON,
     CONF_HALF_ANNIVERSARY,
-    CONF_ICON_NORMAL,
-    CONF_ICON_SOON,
-    CONF_ICON_TODAY,
+    CONF_UNIT_OF_MEASUREMENT,
     CONF_ID_PREFIX,
     CONF_ONE_TIME,
-    CONF_SENSOR,
-    CONF_SOON,
-    CONF_UNIT_OF_MEASUREMENT,
-    DEFAULT_NAME,
-    DEFAULT_UNIT_OF_MEASUREMENT,
-    DOMAIN,
 )
 
 ATTR_YEARS_NEXT = "years_at_next_anniversary"

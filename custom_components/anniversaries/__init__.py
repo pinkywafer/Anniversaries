@@ -1,28 +1,29 @@
 """Anniversaries Platform"""
-import logging
 import os
 from datetime import timedelta
-
-import homeassistant.helpers.config_validation as cv
-import voluptuous as vol
+import logging
 from homeassistant import config_entries
-from homeassistant.const import CONF_NAME
+import voluptuous as vol
+import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers import discovery
 from homeassistant.util import Throttle
+from .sensor import anniversaries
+
 from integrationhelper.const import CC_STARTUP_VERSION
 
+from homeassistant.const import CONF_NAME
+
 from .const import (
-    CONF_ENABLED,
     CONF_SENSORS,
-    CONFIG_SCHEMA,
+    CONF_ENABLED,
     DEFAULT_NAME,
-    DOMAIN,
     DOMAIN_DATA,
+    DOMAIN,
     ISSUE_URL,
     PLATFORM,
     VERSION,
+    CONFIG_SCHEMA,
 )
-from .sensor import anniversaries
 
 # MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=30)
 
