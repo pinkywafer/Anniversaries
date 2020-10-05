@@ -1,40 +1,24 @@
 """ config flow """
-from collections import OrderedDict
 import logging
-from homeassistant.core import callback
-import voluptuous as vol
-import homeassistant.helpers.config_validation as cv
-from homeassistant import config_entries
-from datetime import datetime
 import uuid
+from collections import OrderedDict
+from datetime import datetime
 
-from .const import (
-    DOMAIN,
-    DEFAULT_ICON_NORMAL,
-    DEFAULT_ICON_SOON,
-    DEFAULT_ICON_TODAY,
-    DEFAULT_DATE_FORMAT,
-    DEFAULT_SOON,
-    DEFAULT_HALF_ANNIVERSARY,
-    DEFAULT_UNIT_OF_MEASUREMENT,
-    DEFAULT_ID_PREFIX,
-    DEFAULT_ONE_TIME,
-    CONF_SENSOR,
-    CONF_ENABLED,
-    CONF_ICON_NORMAL,
-    CONF_ICON_TODAY,
-    CONF_ICON_SOON,
-    CONF_DATE,
-    CONF_DATE_FORMAT,
-    CONF_SENSORS,
-    CONF_SOON,
-    CONF_HALF_ANNIVERSARY,
-    CONF_UNIT_OF_MEASUREMENT,
-    CONF_ID_PREFIX,
-    CONF_ONE_TIME,
-)
-
+import homeassistant.helpers.config_validation as cv
+import voluptuous as vol
+from homeassistant import config_entries
 from homeassistant.const import CONF_NAME
+from homeassistant.core import callback
+
+from .const import (CONF_DATE, CONF_DATE_FORMAT, CONF_ENABLED,
+                    CONF_HALF_ANNIVERSARY, CONF_ICON_NORMAL, CONF_ICON_SOON,
+                    CONF_ICON_TODAY, CONF_ID_PREFIX, CONF_ONE_TIME,
+                    CONF_SENSOR, CONF_SENSORS, CONF_SOON,
+                    CONF_UNIT_OF_MEASUREMENT, DEFAULT_DATE_FORMAT,
+                    DEFAULT_HALF_ANNIVERSARY, DEFAULT_ICON_NORMAL,
+                    DEFAULT_ICON_SOON, DEFAULT_ICON_TODAY, DEFAULT_ID_PREFIX,
+                    DEFAULT_ONE_TIME, DEFAULT_SOON,
+                    DEFAULT_UNIT_OF_MEASUREMENT, DOMAIN)
 
 _LOGGER = logging.getLogger(__name__)
 
