@@ -1,11 +1,10 @@
 """ sensor """
 
 from dateutil.relativedelta import relativedelta
-from datetime import datetime, date, timedelta
+from datetime import datetime, date
 
 import logging
 from homeassistant.helpers.entity import Entity, generate_entity_id
-from homeassistant.core import HomeAssistant, State
 from homeassistant.components.sensor import ENTITY_ID_FORMAT
 
 from homeassistant.const import (
@@ -13,12 +12,7 @@ from homeassistant.const import (
 )
 
 from .const import (
-    ATTRIBUTION,
-    DEFAULT_NAME,
-    DOMAIN,
     DEFAULT_UNIT_OF_MEASUREMENT,
-    CONF_SENSOR,
-    CONF_ENABLED,
     CONF_ICON_NORMAL,
     CONF_ICON_TODAY,
     CONF_ICON_SOON,
