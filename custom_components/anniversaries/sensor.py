@@ -3,7 +3,6 @@
 from dateutil.relativedelta import relativedelta
 from datetime import datetime, date
 
-import logging
 from homeassistant.helpers.entity import Entity, generate_entity_id
 from homeassistant.components.sensor import ENTITY_ID_FORMAT
 
