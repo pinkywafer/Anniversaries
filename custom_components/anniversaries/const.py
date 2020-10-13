@@ -1,6 +1,6 @@
 """ Constants """
 import voluptuous as vol
-from datetime import datetime, date
+from datetime import datetime
 import homeassistant.helpers.config_validation as cv
 from homeassistant.const import CONF_NAME
 
