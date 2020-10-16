@@ -8,7 +8,7 @@ from homeassistant.helpers import template as templater
 
 from homeassistant.const import (
     CONF_NAME,
-    ATTR_ATTRIBUTION
+    ATTR_ATTRIBUTION,
 )
 
 from .const import (
