@@ -12,6 +12,7 @@ from .const import (
     ISSUE_URL,
     PLATFORM,
     VERSION,
+    CONFIG_SCHEMA,
 )
 
 #MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=30)
