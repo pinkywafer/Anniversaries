@@ -158,11 +158,12 @@ class anniversaries(Entity):
         if not self._one_time:
             if today >= nextDate:
                 nextDate = self._date.date() + relativedelta(year=today.year)
-                if today == nextDate:
-                    years = years + 1
-                if today > nextDate:
-                    nextDate = self._date.date() + relativedelta(year=today.year + 1)
-                    years = years + 1
+
+        if today == nextDate:
+            years = years + 1
+        if today > nextDate:
+            nextDate = self._date.date() + relativedelta(year=today.year + 1)
+            years = years + 1
 
         daysRemaining = (nextDate - today).days
 
@@ -181,12 +182,11 @@ class anniversaries(Entity):
         self._years_current = years - 1
         self._weeks_remaining = int(daysRemaining / 7)
 
-        if not self._one_time:
-            if self._show_half_anniversary:
-                nextHalfDate = self._half_date.date()
-                if today > nextHalfDate:
-                    nextHalfDate = self._half_date.date() + relativedelta(year = today.year)
-                if today > nextHalfDate:
-                    nextHalfDate = self._half_date.date() + relativedelta(year = today.year + 1)
-                self._half_days_remaining = (nextHalfDate - today).days
-                self._half_date = datetime(nextHalfDate.year, nextHalfDate.month, nextHalfDate.day)
+        if self._show_half_anniversary:
+            nextHalfDate = self._half_date.date()
+            if today > nextHalfDate:
+                nextHalfDate = self._half_date.date() + relativedelta(year = today.year)
+            if today > nextHalfDate:
+                nextHalfDate = self._half_date.date() + relativedelta(year = today.year + 1)
+            self._half_days_remaining = (nextHalfDate - today).days
+            self._half_date = datetime(nextHalfDate.year, nextHalfDate.month, nextHalfDate.day)
