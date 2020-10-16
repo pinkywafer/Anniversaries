@@ -1,4 +1,4 @@
-""" config flow """
+""" Config flow """
 from collections import OrderedDict
 from homeassistant.core import callback
 import voluptuous as vol
@@ -51,7 +51,7 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
                 self.init_info = user_input
                 return await self.async_step_icons()
         return await self._show_user_form(user_input)
-    
+
     async def async_step_icons(self, user_input=None):
         self._errors = {}
         if user_input is not None:
@@ -145,7 +145,8 @@ def is_not_date(date, one_time):
         return False
     except ValueError:
         return True
-        
+
+
 class OptionsFlowHandler(config_entries.OptionsFlow):
     def __init__(self, config_entry):
         self.config_entry = config_entry

@@ -1,5 +1,4 @@
-""" sensor """
-
+""" Sensor """
 from dateutil.relativedelta import relativedelta
 from datetime import datetime, date
 
@@ -11,6 +10,7 @@ from homeassistant.const import (
 )
 
 from .const import (
+    ATTRIBUTION,
     DEFAULT_UNIT_OF_MEASUREMENT,
     CONF_ICON_NORMAL,
     CONF_ICON_TODAY,
@@ -90,7 +90,7 @@ class anniversaries(Entity):
         """Return the name of the sensor."""
         return self._state
 
-    @property 
+    @property
     def device_state_attributes(self):
         """Return the state attributes."""
         res = {}
@@ -107,7 +107,7 @@ class anniversaries(Entity):
     @property
     def icon(self):
         return self._icon
-    
+
     @property
     def unit_of_measurement(self):
         """Return the unit this state is expressed in."""
@@ -118,7 +118,7 @@ class anniversaries(Entity):
         today = date.today()
         years = today.year - self._date.year
         nextDate = self._date.date()
-        
+
         if not self._one_time:
             if today >= nextDate:
                 nextDate = self._date.date() + relativedelta(year=today.year)
@@ -127,24 +127,24 @@ class anniversaries(Entity):
                 if today > nextDate:
                     nextDate = self._date.date() + relativedelta(year=today.year + 1)
                     years = years + 1
-        
+
         daysRemaining = (nextDate - today).days
 
         if self._unknown_year:
             self._date = datetime(nextDate.year, nextDate.month, nextDate.day)
-        
+
         if daysRemaining == 0:
             self._icon = self._icon_today
         elif daysRemaining <= self._soon:
             self._icon = self._icon_soon
         else:
             self._icon = self._icon_normal
-        
+
         self._state = daysRemaining
         self._years_next = years
         self._years_current = years - 1
         self._weeks_remaining = int(daysRemaining / 7)
-        
+
         if not self._one_time:
             if self._show_half_anniversary:
                 nextHalfDate = self._half_date.date()
