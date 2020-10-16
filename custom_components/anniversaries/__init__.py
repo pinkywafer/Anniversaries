@@ -1,4 +1,4 @@
-"""Anniversaries Platform"""
+"""The Anniversaries Integration"""
 import logging
 from homeassistant import config_entries
 from homeassistant.helpers import discovery
