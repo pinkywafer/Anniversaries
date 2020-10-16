@@ -8,6 +8,7 @@ from homeassistant.helpers import template as templater
 
 from homeassistant.const import (
     CONF_NAME,
+    ATTR_ATTRIBUTION
 )
 
 from .const import (
@@ -107,8 +108,9 @@ class anniversaries(Entity):
     def device_state_attributes(self):
         """Return the state attributes."""
         res = {}
+        res[ATTR_ATTRIBUTION] = ATTRIBUTION
         if self._state in ["Invalid Date", "Invalid Template"]:
-            return
+            return res
         if not self._unknown_year:
             res[ATTR_YEARS_NEXT] = self._years_next
             res[ATTR_YEARS_CURRENT] = self._years_current
