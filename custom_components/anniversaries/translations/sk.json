@@ -23,13 +23,11 @@
                     "icon_today": "Ikona ked je výročie dnes",
                     "days_as_soon": "Počet dní, ktoré zostavajú do výročia",
                     "icon_soon": "Ikona pri príležitosti výročia"
-                    
-                    
                 }
             }
         },
         "error": {
-            "invalid_date": "Dátum je nesprávny.  Prosím vložte správny dátum vo formáte 'YYYY-MM-DD' alebo 'MM-DD'"
+            "invalid_date": "Dátum je nesprávny. Prosím vložte správny dátum vo formáte 'YYYY-MM-DD' alebo 'MM-DD'"
         }
     },
     "options": {
@@ -54,13 +52,11 @@
                     "icon_today": "Ikona ked je výročie dnes",
                     "days_as_soon": "Počet dní, ktoré zostavajú do výročia",
                     "icon_soon": "Ikona pri príležitosti výročia"
-                    
-                    
                 }
             }
         },
         "error": {
-            "invalid_date": "Dátum je nesprávny.  Prosím vložte správny dátum vo formáte 'YYYY-MM-DD' alebo 'MM-DD'"
+            "invalid_date": "Dátum je nesprávny. Prosím vložte správny dátum vo formáte 'YYYY-MM-DD' alebo 'MM-DD'"
         }
     }
 }

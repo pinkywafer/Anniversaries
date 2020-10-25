@@ -27,7 +27,7 @@
             }
         },
         "error": {
-            "invalid_date": "Datoen er ikke gyldig.  Angiv venligst en gyldig 'YYYY-MM-DD'  eller 'MM-DD' date"
+            "invalid_date": "Datoen er ikke gyldig. Angiv venligst en gyldig 'YYYY-MM-DD'  eller 'MM-DD' date"
         }
     },
     "options": {
@@ -56,7 +56,7 @@
             }
         },
         "error": {
-            "invalid_date": "Datoen er ikke gyldig.  Angiv venligst en gyldig 'YYYY-MM-DD' eller 'MM-DD' date"
+            "invalid_date": "Datoen er ikke gyldig. Angiv venligst en gyldig 'YYYY-MM-DD' eller 'MM-DD' date"
         }
     }
 }

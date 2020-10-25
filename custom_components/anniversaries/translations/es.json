@@ -22,7 +22,7 @@
                     "icon_normal": "Icono",
                     "icon_today": "Icono para cuando el aniversario es hoy",
                     "days_as_soon": "Número de días para considerar que el aniversario esta a punto de cumplirse",
-                    "icon_soon": "Icono para cuando el aniversario esta a punto de cumplirse"                    
+                    "icon_soon": "Icono para cuando el aniversario esta a punto de cumplirse"
                 }
             }
         },
@@ -51,7 +51,7 @@
                     "icon_normal": "Icono",
                     "icon_today": "Icono para cuando el aniversario es hoy",
                     "days_as_soon": "Número de días para considerar que el aniversario esta a punto de cumplirse",
-                    "icon_soon": "Icono para cuando el aniversario esta a punto de cumplirse"                    
+                    "icon_soon": "Icono para cuando el aniversario esta a punto de cumplirse"
                 }
             }
         },
