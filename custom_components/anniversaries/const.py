@@ -1,9 +1,9 @@
 """ Constants """
-import voluptuous as vol
 from datetime import datetime
-import homeassistant.helpers.config_validation as cv
-from homeassistant.const import CONF_NAME
 
+import homeassistant.helpers.config_validation as cv
+import voluptuous as vol
+from homeassistant.const import CONF_NAME
 
 # Base component constants
 DOMAIN = "anniversaries"
@@ -11,11 +11,14 @@ DOMAIN_DATA = f"{DOMAIN}_data"
 VERSION = "4.0.0"
 PLATFORM = "sensor"
 ISSUE_URL = "https://github.com/pinkywafer/Anniversaries/issues"
-ATTRIBUTION = "Sensor data calculated by Anniversaries Integration"
+ATTRIBUTION = "Sensor data is calculated by the Anniversaries Integration"
 
 ATTR_YEARS_NEXT = "years_at_next_anniversary"
 ATTR_YEARS_CURRENT = "current_years"
 ATTR_DATE = "date"
+ATTR_WEEKS = "weeks_remaining"
+ATTR_HALF_DATE = "half_anniversary_date"
+ATTR_HALF_DAYS = "days_until_half_anniversary"
 
 # Device classes
 BINARY_SENSOR_DEVICE_CLASS = "connectivity"

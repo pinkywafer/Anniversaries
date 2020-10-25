@@ -1,38 +1,34 @@
 """ Sensor """
+from datetime import date, datetime
+
 from dateutil.relativedelta import relativedelta
-from datetime import datetime, date
-
-from homeassistant.helpers.entity import Entity, generate_entity_id
 from homeassistant.components.sensor import ENTITY_ID_FORMAT
+from homeassistant.const import ATTR_ATTRIBUTION, CONF_NAME
 from homeassistant.helpers import template as templater
-
-from homeassistant.const import (
-    CONF_NAME,
-    ATTR_ATTRIBUTION,
-)
+from homeassistant.helpers.entity import Entity, generate_entity_id
 
 from .const import (
+    ATTR_DATE,
+    ATTR_HALF_DATE,
+    ATTR_HALF_DAYS,
+    ATTR_WEEKS,
+    ATTR_YEARS_CURRENT,
+    ATTR_YEARS_NEXT,
     ATTRIBUTION,
-    DEFAULT_UNIT_OF_MEASUREMENT,
-    CONF_ICON_NORMAL,
-    CONF_ICON_TODAY,
-    CONF_ICON_SOON,
     CONF_DATE,
-    CONF_DATE_TEMPLATE,
     CONF_DATE_FORMAT,
-    CONF_SOON,
+    CONF_DATE_TEMPLATE,
     CONF_HALF_ANNIVERSARY,
-    CONF_UNIT_OF_MEASUREMENT,
+    CONF_ICON_NORMAL,
+    CONF_ICON_SOON,
+    CONF_ICON_TODAY,
     CONF_ID_PREFIX,
     CONF_ONE_TIME,
+    CONF_SOON,
+    CONF_UNIT_OF_MEASUREMENT,
+    DEFAULT_UNIT_OF_MEASUREMENT
 )
 
-ATTR_YEARS_NEXT = "years_at_next_anniversary"
-ATTR_YEARS_CURRENT = "current_years"
-ATTR_DATE = "date"
-ATTR_WEEKS = "weeks_remaining"
-ATTR_HALF_DATE = "half_anniversary_date"
-ATTR_HALF_DAYS = "days_until_half_anniversary"
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Setup the sensor platform."""
@@ -51,6 +47,7 @@ def validate_date(value):
         return datetime.strptime(value, "%m-%d"), True
     except ValueError:
             return "Invalid Date", False
+
 
 class anniversaries(Entity):
     def __init__(self, hass, config):
@@ -101,7 +98,7 @@ class anniversaries(Entity):
 
     @property
     def state(self):
-        """Return the name of the sensor."""
+        """Return the state of the sensor."""
         return self._state
 
     @property
@@ -129,6 +126,7 @@ class anniversaries(Entity):
 
     @property
     def icon(self):
+        """Return the icon for the sensor."""
         return self._icon
 
     @property
@@ -139,7 +137,7 @@ class anniversaries(Entity):
         return self._unit_of_measurement
 
     async def async_update(self):
-        """update the sensor"""
+        """update the sensor."""
         if self._template_sensor:
             try:
                 template_date = templater.Template(self._date_template, self.hass).async_render()
@@ -150,7 +148,7 @@ class anniversaries(Entity):
             if self._date == "Invalid Date":
                 self._state = self._date
                 return
-        
+
         today = date.today()
         years = today.year - self._date.year
         nextDate = self._date.date()

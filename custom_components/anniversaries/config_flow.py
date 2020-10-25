@@ -1,35 +1,35 @@
 """ Config flow """
+import uuid
 from collections import OrderedDict
-from homeassistant.core import callback
+from datetime import datetime
+
 import voluptuous as vol
 from homeassistant import config_entries
-from datetime import datetime
-import uuid
+from homeassistant.const import CONF_NAME
+from homeassistant.core import callback
 
 from .const import (
-    DOMAIN,
+    CONF_DATE,
+    CONF_DATE_FORMAT,
+    CONF_HALF_ANNIVERSARY,
+    CONF_ICON_NORMAL,
+    CONF_ICON_SOON,
+    CONF_ICON_TODAY,
+    CONF_ID_PREFIX,
+    CONF_ONE_TIME,
+    CONF_SOON,
+    CONF_UNIT_OF_MEASUREMENT,
+    DEFAULT_DATE_FORMAT,
+    DEFAULT_HALF_ANNIVERSARY,
     DEFAULT_ICON_NORMAL,
     DEFAULT_ICON_SOON,
     DEFAULT_ICON_TODAY,
-    DEFAULT_DATE_FORMAT,
-    DEFAULT_SOON,
-    DEFAULT_HALF_ANNIVERSARY,
-    DEFAULT_UNIT_OF_MEASUREMENT,
     DEFAULT_ID_PREFIX,
     DEFAULT_ONE_TIME,
-    CONF_ICON_NORMAL,
-    CONF_ICON_TODAY,
-    CONF_ICON_SOON,
-    CONF_DATE,
-    CONF_DATE_FORMAT,
-    CONF_SOON,
-    CONF_HALF_ANNIVERSARY,
-    CONF_UNIT_OF_MEASUREMENT,
-    CONF_ID_PREFIX,
-    CONF_ONE_TIME,
+    DEFAULT_SOON,
+    DEFAULT_UNIT_OF_MEASUREMENT,
+    DOMAIN,
 )
-
-from homeassistant.const import CONF_NAME
 
 
 @config_entries.HANDLERS.register(DOMAIN)
