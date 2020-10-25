@@ -8,7 +8,7 @@ from homeassistant.const import CONF_NAME
 # Base component constants
 DOMAIN = "anniversaries"
 DOMAIN_DATA = f"{DOMAIN}_data"
-VERSION = "1.0.0"
+VERSION = "4.0.0"
 PLATFORM = "sensor"
 ISSUE_URL = "https://github.com/pinkywafer/Anniversaries/issues"
 ATTRIBUTION = "Sensor data calculated by Anniversaries Integration"
