@@ -8,6 +8,7 @@ from integrationhelper.const import CC_STARTUP_VERSION
 from .const import (
     CONF_DATE_TEMPLATE,
     CONF_SENSORS,
+    CONFIG_SCHEMA,
     DOMAIN,
     ISSUE_URL,
     PLATFORM,
