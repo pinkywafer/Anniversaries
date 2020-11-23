@@ -1,3 +1,19 @@
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+categories:
+  - title: '🎉 Features'
+    labels:
+      - 'feature'
+      - 'enhancement'
+  - title: '🚑 Bug Fixes'
+    labels:
+      - 'fix'
+      - 'bugfix'
+      - 'bug'
+  - title: '⬆️ Update'
+    label: 'update'
+  - title: '➖ Removed'
+    label: 'remove'
 version-resolver:
   major:
     labels:
