@@ -27,6 +27,7 @@ from .const import (
     CONF_UNIT_OF_MEASUREMENT,
     CONF_ID_PREFIX,
     CONF_ONE_TIME,
+    CONF_CALENDAR_TYPE,
 )
 
 from homeassistant.const import CONF_NAME

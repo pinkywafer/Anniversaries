@@ -7,9 +7,15 @@
   "config_flow": true,
   "codeowners": ["@pinkywafer"],
   "requirements": [
-    "pyluach>=1.2.1",
+<<<<<<< HEAD
     "python-dateutil>=2.8.1",
     "integrationhelper>=0.2.2",
     "voluptuous>=0.12.1"
+=======
+    "pyluach",
+    "python-dateutil",
+    "integrationhelper",
+    "voluptuous"
+>>>>>>> dab9275 (add hebrew calendar)
   ]
 }
