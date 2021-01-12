@@ -117,7 +117,6 @@ class anniversaries(Entity):
         if self._unit_of_measurement is None:
             self._unit_of_measurement = DEFAULT_UNIT_OF_MEASUREMENT
         self._one_time = config.get(CONF_ONE_TIME)
-        )
 
     @property
     def unique_id(self):
