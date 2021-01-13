@@ -63,7 +63,7 @@ def validate_date(value, calendar_type):
         try:
             hdate = get_hebrew_date(value)
             text = datetime.strftime(hdate.to_pydate(), "%Y-%m-%d")
-            return datetime.strptime(text, "%Y-%m-%d"), True
+            return datetime.strptime(text, "%Y-%m-%d"), False
         except ValueError:
             return "Invalid Date", False
 
