@@ -26,8 +26,7 @@ from .const import (
     CONF_HALF_ANNIVERSARY,
     CONF_UNIT_OF_MEASUREMENT,
     CONF_ID_PREFIX,
-    CONF_ONE_TIME,
-    CONF_CALENDAR_TYPE,
+    CONF_ONE_TIME
 )
 
 from homeassistant.const import CONF_NAME

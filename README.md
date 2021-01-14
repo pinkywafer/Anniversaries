@@ -73,8 +73,8 @@ anniversaries:
 |Parameter |Optional|Description
 |:----------|----------|------------
 | `name` | No | Friendly name
-|`date` | Either `date` or `date_template` MUST be included | date in format `'YYYY-MM-DD'` (or `'MM-DD'` if year is unknown)
-|`date_template` | Either `date` or `date_template` MUST be included | Template to evaluate date from _(Note this is ONLY available in YAML configuration)_ The template must return a string in either `'YYYY-MM-DD'` or `'MM-DD'` format
+| `date` | Either `date` or `date_template` MUST be included | date in format `'YYYY-MM-DD'` (or `'MM-DD'` if year is unknown)
+| `date_template` | Either `date` or `date_template` MUST be included | Template to evaluate date from _(Note this is ONLY available in YAML configuration)_ The template must return a string in either `'YYYY-MM-DD'` or `'MM-DD'` format
 | `one_time` | Yes | `true` or `false`. For a one-time event (Non-recurring) **Default**: `false`
 | `show_half_anniversary` | Yes | `true` or `false`. Enables the `half_anniversary_date` and `days_until_half_anniversary` attributes. **Default**: `false`
 | `date_format` | Yes | formats the returned date **Default**: '%Y-%m-%d' _for reference, see [http://strftime.org/](http://strftime.org/)_
@@ -83,7 +83,10 @@ anniversaries:
 | `icon_normal` | Yes | Default icon **Default**:  `mdi:calendar-blank`
 | `icon_today` | Yes | Icon if the anniversary is today **Default**: `mdi:calendar-star`
 | `days_as_soon` | Yes | Days in advance to display the icon defined in `icon_soon` **Default**: 1
-| `icon_soon` | Yes | Icon if the anniversary is 'soon' **Default**: `mdi:calendar`
+| `calendar_type` | Yes | Type of calendar to use for entry (gregorian, jewish) **Default**: gregorian
+| `hebrew_date` | Yes | will display orignal hebrew data configured
+
+
 
 ## State and Attributes
 
@@ -100,11 +103,34 @@ anniversaries:
 * unit_of_measurement: 'Days' By default, this is displayed after the state. _this is NOT translate-able.  See below for work-around_
 * half_anniversary_date: The date of the next half anniversary (if enabled by `show_half_anniversary`)
 * days_until_half_anniversary: The number of days until the next half anniversary
-
+* hebrew_date: original hebrew date (if jewish calendar)
+* calendar_type: type of calendar
 ### Notes about unit of measurement
 
 Unit_of_measurement is *not* translate-able.
 You can, however, change the text for unit of measurement in the configuration.  NB the sensor will always report in days, this just allows you to represent this in your own language.
+
+### Hebrew Dates
+[Hebrew-Calendar]: https://en.wikipedia.org/wiki/Hebrew_calendar
+This is a different a calendar then the gregorian calendar.
+The date you but in the by the hebrew date, and the calculation will be when it is this year on the gregorian calendar.
+The date field will be propagated with the gregorian date of this year and then date original date will be saved in a seperate filed (hebrew_date)
+
+
+```yaml
+# Example configuration.yaml entry
+
+anniversaries:
+  sensors:
+  - name: Shakespeare's Birthday
+    date: '1564-04-23'
+  - name: Shakespeare's Wedding Anniversary
+    date: '1582-11-27'
+  - name: Independence day 
+    date: '5708-02-05'
+    calendar_type: jewish
+```
+
 
 [patreon-shield]: https://c5.patreon.com/external/logo/become_a_patron_button.png
 [patreon]: https://www.patreon.com/pinkywafer
