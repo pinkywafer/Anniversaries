@@ -56,13 +56,13 @@ async def async_setup_entry(hass, config_entry, async_add_devices):
 
 def get_hebrew_date(sdate):
     try:
-        match = re.match(r'([0-9]{4})-([0-9]{2})-([0-9]{2})', sdate)
+        match = re.match(r'([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})', sdate)
         if match is not None:
             return HebrewDate(int(match.group(1)), int(match.group(2)), int(match.group(3))), False
     except ValueError:
         pass
     try:
-        match = re.match(r'([0-9]{2})-([0-9]{2})', sdate)
+        match = re.match(r'([0-9]{1,2})-([0-9]{1,2})', sdate)
         if match is not None:
             return HebrewDate(HebrewDate.today().year, int(match.group(1)), int(match.group(2))), True
     except ValueError:
@@ -75,6 +75,9 @@ def validate_date(value, calendar_type):
             text = datetime.strftime(hdate.to_pydate(), "%Y-%m-%d")
             return datetime.strptime(text, "%Y-%m-%d"), unknown_year
         except ValueError:
+            _LOGGER.error(
+                "Invalid Jewish Date %s",value
+            )
             return "Invalid Date", False
 
     else:
