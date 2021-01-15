@@ -39,6 +39,7 @@ ATTR_HALF_DATE = "half_anniversary_date"
 ATTR_HALF_DAYS = "days_until_half_anniversary"
 ATTR_CALENDAR_TYPE = "calendar_type"
 ATTR_HEBREW_DATE = "hebrew_date"
+ATTR_ID_PREFIX = "id_prefix"
 
 JEWISH_CALENDAR = "jewish"
 GREGORIAN_CALENDAR = "gregorian"
@@ -160,6 +161,7 @@ class anniversaries(Entity):
     def device_state_attributes(self):
         """Return the state attributes."""
         res = {}
+        res[ATTR_ID_PREFIX] = self._id_prefix
         res[ATTR_ATTRIBUTION] = ATTRIBUTION
         if self._state in ["Invalid Date", "Invalid Template"]:
             return res
