@@ -164,6 +164,9 @@ class anniversaries(Entity):
         if today > nextDate:
             nextDate = self._date.date() + relativedelta(year=today.year + 1)
             years = years + 1
+            daysRemaining = (today - self._date.date()).days
+        else:
+            daysRemaining = (nextDate - today).days
 
         daysRemaining = (nextDate - today).days
 
