@@ -13,6 +13,7 @@ jobs:
       - name: "Set version numbmer"
         run: |
           sed -i '/VERSION = /c\VERSION = "${{ github.ref }}"' custom_components/anniversaries/const.py
+          sed -i '  "version": /c\  "version": "${{ github.ref }}",' custom_components/anniversaries/manifest.json
           sed -i 's|refs/heads/||' custom_components/anniversaries/const.py
           sed -i 's|refs/tags/||' custom_components/anniversaries/const.py
 
