@@ -12,7 +12,7 @@ categories:
       - 'bug'
   - title: '⬆️ Update'
     label: 'update'
-  - title: ':heavy_minus_sign: Removed'
+  - title: '➖ Removed'
     label: 'remove'
 version-resolver:
   major:
