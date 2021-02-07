@@ -27,7 +27,7 @@
             }
         },
         "error": {
-            "invalid_date": "La date n'est pas valide. Veuillez saisir une valide 'YYYY-MM-DD'  ou 'MM-DD' date"
+            "invalid_date": "La date n'est pas valide. Veuillez saisir une date valide 'YYYY-MM-DD' ou 'MM-DD'"
         }
     },
     "options": {
@@ -56,7 +56,7 @@
             }
         },
         "error": {
-            "invalid_date": "La date n'est pas valide. Veuillez saisir une valide 'YYYY-MM-DD' ou 'MM-DD' date"
+            "invalid_date": "La date n'est pas valide. Veuillez saisir une date valide 'YYYY-MM-DD' ou 'MM-DD'"
         }
     }
 }
