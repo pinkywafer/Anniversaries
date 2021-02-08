@@ -11,6 +11,16 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Get version
+        id: version
+        uses: home-assistant/actions/helpers/version@master
+
       - name: "Set version number"
         run: |
           sed -i '/VERSION = /c\VERSION = "${{ steps.version.outputs.version }}"' custom_components/anniversaries/const.py
