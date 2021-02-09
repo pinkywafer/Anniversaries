@@ -83,8 +83,9 @@ anniversaries:
 | `icon_normal` | Yes | Default icon **Default**:  `mdi:calendar-blank`
 | `icon_today` | Yes | Icon if the anniversary is today **Default**: `mdi:calendar-star`
 | `days_as_soon` | Yes | Days in advance to display the icon defined in `icon_soon` **Default**: 1
-| `calendar_type` | Yes | Type of calendar to use for entry (gregorian, jewish) **Default**: gregorian
-| `hebrew_date` | Yes | will display orignal hebrew data configured
+| `icon_soon` | Yes | Icon if the anniversary is 'soon' **Default**: `mdi:calendar`
+| `calendar_type` | Yes | Type of calendar to use for entry (gregorian, hebrew) **Default**: gregorian
+| `hebrew_date` | Yes | will display original hebrew data configured
 
 
 
@@ -103,7 +104,7 @@ anniversaries:
 * unit_of_measurement: 'Days' By default, this is displayed after the state. _this is NOT translate-able.  See below for work-around_
 * half_anniversary_date: The date of the next half anniversary (if enabled by `show_half_anniversary`)
 * days_until_half_anniversary: The number of days until the next half anniversary
-* hebrew_date: original hebrew date (if jewish calendar)
+* hebrew_date: original hebrew date (if hebrew calendar)
 * calendar_type: type of calendar
 ### Notes about unit of measurement
 
@@ -128,7 +129,7 @@ anniversaries:
     date: '1582-11-27'
   - name: Independence day 
     date: '5708-02-05'
-    calendar_type: jewish
+    calendar_type: hebrew
 ```
 
 

@@ -41,18 +41,21 @@ ATTR_CALENDAR_TYPE = "calendar_type"
 ATTR_HEBREW_DATE = "hebrew_date"
 ATTR_ID_PREFIX = "id_prefix"
 
-JEWISH_CALENDAR = "jewish"
+HEBREW_CALENDAR = "hebrew"
 GREGORIAN_CALENDAR = "gregorian"
 
 _LOGGER = logging.getLogger(__name__)
+
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Setup the sensor platform."""
     async_add_entities([anniversaries(hass, discovery_info)], True)
 
+
 async def async_setup_entry(hass, config_entry, async_add_devices):
     """Setup sensor platform."""
     async_add_devices([anniversaries(hass, config_entry.data)], True)
+
 
 def get_hebrew_date(sdate):
     try:
@@ -68,15 +71,16 @@ def get_hebrew_date(sdate):
     except ValueError:
         return None
 
+
 def validate_date(value, calendar_type):
-    if calendar_type == JEWISH_CALENDAR:
+    if calendar_type == HEBREW_CALENDAR:
         try:
             hdate, unknown_year = get_hebrew_date(value)
             text = datetime.strftime(hdate.to_pydate(), "%Y-%m-%d")
             return datetime.strptime(text, "%Y-%m-%d"), unknown_year
         except ValueError:
             _LOGGER.error(
-                "Invalid Jewish Date %s",value
+                "Invalid Hebrew Date %s",value
             )
             return "Invalid Date", False
 
@@ -89,6 +93,7 @@ def validate_date(value, calendar_type):
             return datetime.strptime(value, "%m-%d"), True
         except ValueError:
                 return "Invalid Date", False
+
 
 def is_not_blank(s):
     return bool(s and s.strip())
@@ -116,7 +121,7 @@ class anniversaries(Entity):
             self._template_sensor = True
         else:
             self._date, self._unknown_year = validate_date(config.get(CONF_DATE), self._calendar_type)
-            if self._calendar_type == JEWISH_CALENDAR:
+            if self._calendar_type == HEBREW_CALENDAR:
                 self._h_date, self._unknown_year = get_hebrew_date(config.get(CONF_DATE))
             if self._show_half_anniversary:
                 self._half_date = self._date + relativedelta(months=+6)
@@ -150,15 +155,16 @@ class anniversaries(Entity):
         """Return the name of the sensor."""
         return self._state
 
-    @property
     def calendar_type(self):
         """Return the type of calendar."""
         return self._calendar_type
 
-    @property
     def hebrew_date(self):
         """Return the hebrew date."""
-        return self._h_date
+        if self.calendar_type == HEBREW_CALENDAR:
+            return self._h_date
+        else:
+            return None
 
     @property
     def device_state_attributes(self):
@@ -177,7 +183,7 @@ class anniversaries(Entity):
             res[ATTR_DATE] = self._date
         res[ATTR_WEEKS] = self._weeks_remaining
         res[ATTR_CALENDAR_TYPE] = self._calendar_type
-        if self._calendar_type == JEWISH_CALENDAR:
+        if self._calendar_type == HEBREW_CALENDAR:
             res[ATTR_HEBREW_DATE] = "{year}-{month}-{day}".format(year=self._h_date.year,month=self._h_date.month,day=self._h_date.day)
         else:
             res[ATTR_HEBREW_DATE] = ""
@@ -215,7 +221,7 @@ class anniversaries(Entity):
         
         today = date.today()
         years = today.year - self._date.year
-        if self._calendar_type == JEWISH_CALENDAR:
+        if self._calendar_type == HEBREW_CALENDAR:
             todayHeb = HebrewDate.today()
             this_year = HebrewDate(todayHeb.year, self._h_date.month, self._h_date.day)
             nextDate = this_year.to_pydate()
