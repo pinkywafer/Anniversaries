@@ -6,9 +6,9 @@
   "config_flow": true,
   "codeowners": ["@pinkywafer"],
   "requirements": [
-    "pyluach",
-    "python-dateutil",
-    "integrationhelper",
-    "voluptuous"
+    "pyluach>=1.2.1",
+    "python-dateutil>=2.8.1",
+    "integrationhelper>=0.2.2",
+    "voluptuous>=0.12.1"
   ]
 }

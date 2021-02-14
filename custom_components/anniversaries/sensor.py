@@ -39,17 +39,10 @@ ATTR_HALF_DATE = "half_anniversary_date"
 ATTR_HALF_DAYS = "days_until_half_anniversary"
 ATTR_CALENDAR_TYPE = "calendar_type"
 ATTR_HEBREW_DATE = "hebrew_date"
-ATTR_ID_PREFIX = "id_prefix"
 
 HEBREW_CALENDAR = "hebrew"
-GREGORIAN_CALENDAR = "gregorian"
 
 _LOGGER = logging.getLogger(__name__)
-
-
-async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
-    """Setup the sensor platform."""
-    async_add_entities([anniversaries(hass, discovery_info)], True)
 
 
 async def async_setup_entry(hass, config_entry, async_add_devices):
@@ -93,10 +86,6 @@ def validate_date(value, calendar_type):
             return datetime.strptime(value, "%m-%d"), True
         except ValueError:
                 return "Invalid Date", False
-
-
-def is_not_blank(s):
-    return bool(s and s.strip())
 
 
 class anniversaries(Entity):
@@ -155,22 +144,10 @@ class anniversaries(Entity):
         """Return the name of the sensor."""
         return self._state
 
-    def calendar_type(self):
-        """Return the type of calendar."""
-        return self._calendar_type
-
-    def hebrew_date(self):
-        """Return the hebrew date."""
-        if self.calendar_type == HEBREW_CALENDAR:
-            return self._h_date
-        else:
-            return None
-
     @property
     def device_state_attributes(self):
         """Return the state attributes."""
         res = {}
-        res[ATTR_ID_PREFIX] = self._id_prefix
         res[ATTR_ATTRIBUTION] = ATTRIBUTION
         if self._state in ["Invalid Date", "Invalid Template"]:
             return res

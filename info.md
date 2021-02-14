@@ -27,8 +27,6 @@ Attributes:
 * unit_of_measurement: 'Days' By default, this is displayed after the state. _this is NOT translate-able.  See below for work-around_
 * half_anniversary_date: The date of the next half anniversary (if enabled by `show_half_anniversary`)
 * days_until_half_anniversary: The number of days until the next half anniversary
-* calendar_type: Type of calendar to use for entry (gregorian, hebrew) **Default**: gregorian
-* hebrew_date: Will display original hebrew data configured
 
 ## Notes about unit of measurement
 
@@ -74,7 +72,7 @@ anniversaries:
 | `icon_today` | Yes | Icon if the anniversary is today **Default**: `mdi:calendar-star`
 | `days_as_soon` | Yes | Days in advance to display the icon defined in `icon_soon` **Default**: 1
 | `icon_soon` | Yes | Icon if the anniversary is 'soon' **Default**: `mdi:calendar`
-| `calendar_type` | Yes | Type of calendar to use for entry (gregorian, hebrew) **Default**: gregorian
+| `calendar_type` | Yes | Hebrew if configured using hebrew calendar (gregorian, hebrew) **Default**: gregorian _(Note this is ONLY available in YAML configuration)_
 | `hebrew_date` | Yes | will display original hebrew data configured
 
 [patreon-shield]: https://c5.patreon.com/external/logo/become_a_patron_button.png
