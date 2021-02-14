@@ -159,8 +159,8 @@ class anniversaries(Entity):
         except:
             res[ATTR_DATE] = self._date
         res[ATTR_WEEKS] = self._weeks_remaining
-        res[ATTR_CALENDAR_TYPE] = self._calendar_type
         if self._calendar_type == HEBREW_CALENDAR:
+            res[ATTR_CALENDAR_TYPE] = self._calendar_type
             res[ATTR_HEBREW_DATE] = "{year}-{month}-{day}".format(year=self._h_date.year,month=self._h_date.month,day=self._h_date.day)
         else:
             res[ATTR_HEBREW_DATE] = ""
