@@ -25,6 +25,7 @@ from .const import (
     CONF_UNIT_OF_MEASUREMENT,
     CONF_ID_PREFIX,
     CONF_ONE_TIME,
+    CONF_COUNT_UP,
 )
 
 ATTR_YEARS_NEXT = "years_at_next_anniversary"
@@ -88,6 +89,7 @@ class anniversaries(Entity):
         if self._unit_of_measurement is None:
             self._unit_of_measurement = DEFAULT_UNIT_OF_MEASUREMENT
         self._one_time = config.get(CONF_ONE_TIME)
+        self._count_up = config.get(CONF_COUNT_UP)
 
     @property
     def unique_id(self):
@@ -164,8 +166,11 @@ class anniversaries(Entity):
             if today > nextDate:
                 nextDate = self._date.date() + relativedelta(year=today.year + 1)
 
-        daysRemaining = (nextDate - today).days
-
+        if self._count_up:
+            daysRemaining = (today - nextDate).days
+        else:
+            daysRemaining = (nextDate - today).days
+        
         if self._unknown_year:
             self._date = datetime(nextDate.year, nextDate.month, nextDate.day)
 
