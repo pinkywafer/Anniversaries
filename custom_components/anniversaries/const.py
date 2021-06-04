@@ -37,6 +37,8 @@ CONF_ID_PREFIX = "id_prefix"
 CONF_ONE_TIME = "one_time"
 CONF_DATE_EXCLUSION_ERROR = "Configuration cannot include both `date` and `date_template`. configure ONLY ONE"
 CONF_DATE_REQD_ERROR = "Either `date` or `date_template` is Required"
+CONF_CALENDAR_TYPE = "calendar_type"
+CONF_HEBREW_DATE = "hebrew_date"
 
 # Defaults
 DEFAULT_NAME = DOMAIN
@@ -49,6 +51,7 @@ DEFAULT_HALF_ANNIVERSARY = False
 DEFAULT_UNIT_OF_MEASUREMENT = "Days"
 DEFAULT_ID_PREFIX = "anniversary_"
 DEFAULT_ONE_TIME = False
+DEFAULT_CALENDAR_TYPE = "gregorian"
 
 ICON = DEFAULT_ICON_NORMAL
 
@@ -86,6 +89,9 @@ SENSOR_CONFIG_SCHEMA = vol.Schema(
         vol.Optional(CONF_UNIT_OF_MEASUREMENT, default=DEFAULT_UNIT_OF_MEASUREMENT): cv.string,
         vol.Optional(CONF_ID_PREFIX, default=DEFAULT_ID_PREFIX): cv.string,
         vol.Optional(CONF_ONE_TIME, default=DEFAULT_ONE_TIME): cv.boolean,
+        vol.Optional(CONF_CALENDAR_TYPE, default=DEFAULT_CALENDAR_TYPE): cv.string,
+        vol.Optional(CONF_HEBREW_DATE, default=""): cv.string,
+
     }
 )
 

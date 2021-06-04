@@ -5,6 +5,9 @@ from datetime import datetime, date
 from homeassistant.helpers.entity import Entity, generate_entity_id
 from homeassistant.components.sensor import ENTITY_ID_FORMAT
 from homeassistant.helpers import template as templater
+from pyluach.dates import HebrewDate
+import re
+import logging
 
 from homeassistant.const import (
     CONF_NAME,
@@ -25,6 +28,7 @@ from .const import (
     CONF_UNIT_OF_MEASUREMENT,
     CONF_ID_PREFIX,
     CONF_ONE_TIME,
+    CONF_CALENDAR_TYPE
 )
 
 ATTR_YEARS_NEXT = "years_at_next_anniversary"
@@ -33,24 +37,61 @@ ATTR_DATE = "date"
 ATTR_WEEKS = "weeks_remaining"
 ATTR_HALF_DATE = "half_anniversary_date"
 ATTR_HALF_DAYS = "days_until_half_anniversary"
+ATTR_CALENDAR_TYPE = "calendar_type"
+ATTR_HEBREW_DATE = "hebrew_date"
+
+HEBREW_CALENDAR = "hebrew"
+
+_LOGGER = logging.getLogger(__name__)
+
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Setup the sensor platform."""
     async_add_entities([anniversaries(hass, discovery_info)], True)
-
+	
+	
 async def async_setup_entry(hass, config_entry, async_add_devices):
     """Setup sensor platform."""
     async_add_devices([anniversaries(hass, config_entry.data)], True)
 
-def validate_date(value):
+
+def get_hebrew_date(sdate):
     try:
-        return datetime.strptime(value, "%Y-%m-%d"), False
+        match = re.match(r'([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})', sdate)
+        if match is not None:
+            return HebrewDate(int(match.group(1)), int(match.group(2)), int(match.group(3))), False
     except ValueError:
         pass
     try:
-        return datetime.strptime(value, "%m-%d"), True
+        match = re.match(r'([0-9]{1,2})-([0-9]{1,2})', sdate)
+        if match is not None:
+            return HebrewDate(HebrewDate.today().year, int(match.group(1)), int(match.group(2))), True
     except ValueError:
+        return None
+
+
+def validate_date(value, calendar_type):
+    if calendar_type == HEBREW_CALENDAR:
+        try:
+            hdate, unknown_year = get_hebrew_date(value)
+            text = datetime.strftime(hdate.to_pydate(), "%Y-%m-%d")
+            return datetime.strptime(text, "%Y-%m-%d"), unknown_year
+        except ValueError:
+            _LOGGER.error(
+                "Invalid Hebrew Date %s",value
+            )
             return "Invalid Date", False
+
+    else:
+        try:
+            return datetime.strptime(value, "%Y-%m-%d"), False
+        except ValueError:
+            pass
+        try:
+            return datetime.strptime(value, "%m-%d"), True
+        except ValueError:
+                return "Invalid Date", False
+
 
 class anniversaries(Entity):
     def __init__(self, hass, config):
@@ -67,11 +108,15 @@ class anniversaries(Entity):
         self._half_days_remaining = 0
         self._half_date = ""
         self._template_sensor = False
+        self._calendar_type = config.get(CONF_CALENDAR_TYPE)
         self._date_template = config.get(CONF_DATE_TEMPLATE)
+        self._h_date = "-NA-"
         if self._date_template is not None:
             self._template_sensor = True
         else:
-            self._date, self._unknown_year = validate_date(config.get(CONF_DATE))
+            self._date, self._unknown_year = validate_date(config.get(CONF_DATE), self._calendar_type)
+            if self._calendar_type == HEBREW_CALENDAR:
+                self._h_date, self._unknown_year = get_hebrew_date(config.get(CONF_DATE))
             if self._show_half_anniversary:
                 self._half_date = self._date + relativedelta(months=+6)
         self._icon_normal = config.get(CONF_ICON_NORMAL)
@@ -119,6 +164,11 @@ class anniversaries(Entity):
         except:
             res[ATTR_DATE] = self._date
         res[ATTR_WEEKS] = self._weeks_remaining
+        if self._calendar_type == HEBREW_CALENDAR:
+            res[ATTR_CALENDAR_TYPE] = self._calendar_type
+            res[ATTR_HEBREW_DATE] = "{year}-{month}-{day}".format(year=self._h_date.year,month=self._h_date.month,day=self._h_date.day)
+        else:
+            res[ATTR_HEBREW_DATE] = ""
         if self._show_half_anniversary:
             try:
                 res[ATTR_HALF_DATE] = datetime.strftime(self._half_date, self._date_format)
@@ -143,7 +193,7 @@ class anniversaries(Entity):
         if self._template_sensor:
             try:
                 template_date = templater.Template(self._date_template, self.hass).async_render()
-                self._date, self._unknown_year = validate_date(template_date)
+                self._date, self._unknown_year = validate_date(template_date, "")
             except:
                 self._state = "Invalid Template"
                 return
@@ -153,7 +203,12 @@ class anniversaries(Entity):
         
         today = date.today()
         years = today.year - self._date.year
-        nextDate = self._date.date()
+        if self._calendar_type == HEBREW_CALENDAR:
+            todayHeb = HebrewDate.today()
+            this_year = HebrewDate(todayHeb.year, self._h_date.month, self._h_date.day)
+            nextDate = this_year.to_pydate()
+        else:
+            nextDate = self._date.date()
 
         if today >= self._date.date() + relativedelta(year=today.year):
             years = years + 1
@@ -189,3 +244,4 @@ class anniversaries(Entity):
                 nextHalfDate = self._half_date.date() + relativedelta(year = today.year + 1)
             self._half_days_remaining = (nextHalfDate - today).days
             self._half_date = datetime(nextHalfDate.year, nextHalfDate.month, nextHalfDate.day)
+

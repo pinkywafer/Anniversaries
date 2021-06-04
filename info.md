@@ -72,6 +72,8 @@ anniversaries:
 | `icon_today` | Yes | Icon if the anniversary is today **Default**: `mdi:calendar-star`
 | `days_as_soon` | Yes | Days in advance to display the icon defined in `icon_soon` **Default**: 1
 | `icon_soon` | Yes | Icon if the anniversary is 'soon' **Default**: `mdi:calendar`
+| `calendar_type` | Yes | Hebrew if configured using hebrew calendar (gregorian, hebrew) **Default**: gregorian _(Note this is ONLY available in YAML configuration)_
+| `hebrew_date` | Yes | will display original hebrew data configured
 
 [patreon-shield]: https://c5.patreon.com/external/logo/become_a_patron_button.png
 [patreon]: https://www.patreon.com/pinkywafer
