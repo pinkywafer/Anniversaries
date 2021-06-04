@@ -152,7 +152,7 @@ class anniversaries(Entity):
             if self._date == "Invalid Date":
                 self._state = self._date
                 return
-        
+
         today = date.today()
         years = today.year - self._date.year
         nextDate = self._date.date()
@@ -166,10 +166,7 @@ class anniversaries(Entity):
             if today > nextDate:
                 nextDate = self._date.date() + relativedelta(year=today.year + 1)
 
-        if self._count_up:
-            daysRemaining = (today - nextDate).days
-        else:
-            daysRemaining = (nextDate - today).days
+        daysRemaining = (nextDate - today).days
         
         if self._unknown_year:
             self._date = datetime(nextDate.year, nextDate.month, nextDate.day)
@@ -185,6 +182,11 @@ class anniversaries(Entity):
         self._years_next = years
         self._years_current = years - 1
         self._weeks_remaining = int(daysRemaining / 7)
+
+        if self._count_up:
+            if daysRemaining > 0 and not self._one_time:
+                nextDate = nextDate + relativedelta(years=-1)
+            self._state = (today - nextDate).days
 
         if self._show_half_anniversary:
             nextHalfDate = self._half_date.date()
