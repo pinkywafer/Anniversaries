@@ -75,6 +75,7 @@ anniversaries:
 | `name` | No | Friendly name
 |`date` | Either `date` or `date_template` MUST be included | date in format `'YYYY-MM-DD'` (or `'MM-DD'` if year is unknown)
 |`date_template` | Either `date` or `date_template` MUST be included | Template to evaluate date from _(Note this is ONLY available in YAML configuration)_ The template must return a string in either `'YYYY-MM-DD'` or `'MM-DD'` format
+| `count_up` | Yes | `true` or `false` changes the state to count up from a date (can be useful for non-recurring events) **Default**: `false`
 | `one_time` | Yes | `true` or `false`. For a one-time event (Non-recurring) **Default**: `false`
 | `show_half_anniversary` | Yes | `true` or `false`. Enables the `half_anniversary_date` and `days_until_half_anniversary` attributes. **Default**: `false`
 | `date_format` | Yes | formats the returned date **Default**: '%Y-%m-%d' _for reference, see [http://strftime.org/](http://strftime.org/)_
@@ -89,7 +90,7 @@ anniversaries:
 
 ### State
 
-* The number of days remaining to the next occurance.
+* The number of days remaining to the next occurance. (or days since last occurence if you have chosen the count up option)
 
 ### Attributes
 
