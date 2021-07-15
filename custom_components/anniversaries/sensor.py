@@ -1,4 +1,5 @@
 """ Sensor """
+import logging
 from dateutil.relativedelta import relativedelta
 from datetime import datetime, date
 
@@ -35,6 +36,8 @@ ATTR_WEEKS = "weeks_remaining"
 ATTR_HALF_DATE = "half_anniversary_date"
 ATTR_HALF_DAYS = "days_until_half_anniversary"
 
+_LOGGER = logging.getLogger(__name__)
+
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Setup the sensor platform."""
     async_add_entities([anniversaries(hass, discovery_info)], True)
@@ -69,17 +72,20 @@ class anniversaries(Entity):
         self._half_date = ""
         self._template_sensor = False
         self._date_template = config.get(CONF_DATE_TEMPLATE)
+        self._date_format = config.get(CONF_DATE_FORMAT)
         if self._date_template is not None:
             self._template_sensor = True
         else:
+            _LOGGER.debug('%s - config string - %s', self._name, config.get(CONF_DATE))
             self._date, self._unknown_year = validate_date(config.get(CONF_DATE))
+            _LOGGER.debug('%s - date - %s', self._name, self._date)
+            _LOGGER.debug('%s - formatted date - %s', self._name, datetime.strftime(self._date,self._date_format))
             if self._show_half_anniversary:
                 self._half_date = self._date + relativedelta(months=+6)
         self._icon_normal = config.get(CONF_ICON_NORMAL)
         self._icon_today = config.get(CONF_ICON_TODAY)
         self._icon_soon = config.get(CONF_ICON_SOON)
         self._soon = config.get(CONF_SOON)
-        self._date_format = config.get(CONF_DATE_FORMAT)
         self._icon = self._icon_normal
         self._years_next = 0
         self._years_current = 0
