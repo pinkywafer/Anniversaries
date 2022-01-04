@@ -1,4 +1,5 @@
 """ Sensor """
+from dateutil import tz
 from dateutil.relativedelta import relativedelta
 from datetime import datetime, date
 
@@ -73,6 +74,7 @@ class anniversaries(Entity):
             self._template_sensor = True
         else:
             self._date, self._unknown_year = validate_date(config.get(CONF_DATE))
+            self._date = self._date.replace(tzinfo=tz.tzlocal())
             if self._show_half_anniversary:
                 self._half_date = self._date + relativedelta(months=+6)
         self._icon_normal = config.get(CONF_ICON_NORMAL)
