@@ -28,6 +28,7 @@ from .const import (
     CONF_UNIT_OF_MEASUREMENT,
     CONF_ID_PREFIX,
     CONF_ONE_TIME,
+	CONF_COUNT_UP,
     CONF_CALENDAR_TYPE
 )
 
@@ -128,6 +129,7 @@ class anniversaries(Entity):
         if self._unit_of_measurement is None:
             self._unit_of_measurement = DEFAULT_UNIT_OF_MEASUREMENT
         self._one_time = config.get(CONF_ONE_TIME)
+        self._count_up = config.get(CONF_COUNT_UP)
 
     @property
     def unique_id(self):
@@ -145,7 +147,7 @@ class anniversaries(Entity):
         return self._state
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """Return the state attributes."""
         res = {}
         res[ATTR_ATTRIBUTION] = ATTRIBUTION
@@ -230,6 +232,11 @@ class anniversaries(Entity):
         self._years_next = years
         self._years_current = years - 1
         self._weeks_remaining = int(daysRemaining / 7)
+
+        if self._count_up:
+            if daysRemaining > 0 and not self._one_time:
+                nextDate = nextDate + relativedelta(years=-1)
+            self._state = (today - nextDate).days
 
         if self._show_half_anniversary:
             nextHalfDate = self._half_date.date()

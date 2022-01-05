@@ -8,6 +8,7 @@
                 "data": {
                     "name": "Friendly name",
                     "date": "First Date (yyyy-mm-dd) or (mm-dd) if year is unknown",
+                    "count_up": "Count Up (Count down is default)",
                     "one_time": "One Time Event (Non-recurring)",
                     "show_half_anniversary": "Show Half Anniversary Attributes",
                     "date_format": "Date format (see http://strftime.org/)",
@@ -38,6 +39,7 @@
                 "data": {
                     "name": "Friendly name",
                     "date": "First Date (yyyy-mm-dd) or (mm-yy) if year is unknown",
+                    "count_up": "Count Up (Count down is default)",
                     "one_time": "One Time Event (Non-recurring)",
                     "show_half_anniversary": "Show Half Anniversary Attributes",
                     "date_format": "Date format (see http://strftime.org/)",

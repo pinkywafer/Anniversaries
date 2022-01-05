@@ -6,6 +6,7 @@
   "dependencies": [],
   "config_flow": true,
   "codeowners": ["@pinkywafer"],
+  "iot_class": "calculated",
   "requirements": [
     "pyluach>=1.2.1",
     "python-dateutil>=2.8.1",
