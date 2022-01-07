@@ -5,6 +5,7 @@ from datetime import datetime, date
 from homeassistant.helpers.entity import Entity, generate_entity_id
 from homeassistant.components.sensor import ENTITY_ID_FORMAT
 from homeassistant.helpers import template as templater
+import homeassistant.util.dt as dt_util
 
 from homeassistant.const import (
     CONF_NAME,
@@ -73,6 +74,7 @@ class anniversaries(Entity):
             self._template_sensor = True
         else:
             self._date, self._unknown_year = validate_date(config.get(CONF_DATE))
+            self._date = self._date.replace(tzinfo=dt_util.DEFAULT_TIME_ZONE)
             if self._show_half_anniversary:
                 self._half_date = self._date + relativedelta(months=+6)
         self._icon_normal = config.get(CONF_ICON_NORMAL)
@@ -146,6 +148,7 @@ class anniversaries(Entity):
             try:
                 template_date = templater.Template(self._date_template, self.hass).async_render()
                 self._date, self._unknown_year = validate_date(template_date)
+                self._date = self._date.replace(tzinfo=dt_util.DEFAULT_TIME_ZONE)
             except:
                 self._state = "Invalid Template"
                 return
@@ -170,6 +173,7 @@ class anniversaries(Entity):
         
         if self._unknown_year:
             self._date = datetime(nextDate.year, nextDate.month, nextDate.day)
+            self._date = self._date.replace(tzinfo=dt_util.DEFAULT_TIME_ZONE)
 
         if daysRemaining == 0:
             self._icon = self._icon_today
