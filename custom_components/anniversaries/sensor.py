@@ -119,7 +119,7 @@ class anniversaries(Entity):
             res[ATTR_YEARS_NEXT] = self._years_next
             res[ATTR_YEARS_CURRENT] = self._years_current
         try:
-            res[ATTR_DATE] = datetime.strftime(self._date,self._date_format)
+            res[ATTR_DATE] = self._date
         except:
             res[ATTR_DATE] = self._date
         res[ATTR_WEEKS] = self._weeks_remaining
