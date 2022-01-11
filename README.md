@@ -78,7 +78,6 @@ anniversaries:
 | `count_up` | Yes | `true` or `false` changes the state to count up from a date (can be useful for non-recurring events) **Default**: `false`
 | `one_time` | Yes | `true` or `false`. For a one-time event (Non-recurring) **Default**: `false`
 | `show_half_anniversary` | Yes | `true` or `false`. Enables the `half_anniversary_date` and `days_until_half_anniversary` attributes. **Default**: `false`
-| `date_format` | Yes | formats the returned date **Default**: '%Y-%m-%d' _for reference, see [http://strftime.org/](http://strftime.org/)_
 | `unit_of_measurement` | Yes | Your choice of label N.B. The sensor always returns Days, but this option allows you to express this in the language of your choice without needing a customization
 | `id_prefix` | Yes | Your choice of prefix for the entity_id **Default**: `anniversary_` NB. the entity_id cannot be changed from within the integration once it has been created.  You muse either delete your entity and re-create it or manually rename the entity_id on the configuration -> entities page
 | `icon_normal` | Yes | Default icon **Default**:  `mdi:calendar-blank`
@@ -96,7 +95,7 @@ anniversaries:
 
 * years at next anniversary: number of years that will have passed at the next occurrence _(NOT displayed if year is unknown)_
 * current years: number of years have passed since the first occurance (ie, current age)  _(NOT displayed if year is unknown)_
-* date:  The date of the first occurence _(or the date of the next occurence if year is unknown)_ (formatted by the date_format attribute if set)
+* date:  The date of the first occurence _(or the date of the next occurence if year is unknown)_
 * weeks_remaining: The number of weeks until the anniversary
 * unit_of_measurement: 'Days' By default, this is displayed after the state. _this is NOT translate-able.  See below for work-around_
 * half_anniversary_date: The date of the next half anniversary (if enabled by `show_half_anniversary`)
