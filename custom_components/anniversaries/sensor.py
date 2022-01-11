@@ -20,7 +20,6 @@ from .const import (
     CONF_ICON_SOON,
     CONF_DATE,
     CONF_DATE_TEMPLATE,
-    CONF_DATE_FORMAT,
     CONF_SOON,
     CONF_HALF_ANNIVERSARY,
     CONF_UNIT_OF_MEASUREMENT,
@@ -81,7 +80,6 @@ class anniversaries(Entity):
         self._icon_today = config.get(CONF_ICON_TODAY)
         self._icon_soon = config.get(CONF_ICON_SOON)
         self._soon = config.get(CONF_SOON)
-        self._date_format = config.get(CONF_DATE_FORMAT)
         self._icon = self._icon_normal
         self._years_next = 0
         self._years_current = 0
@@ -118,16 +116,10 @@ class anniversaries(Entity):
         if not self._unknown_year:
             res[ATTR_YEARS_NEXT] = self._years_next
             res[ATTR_YEARS_CURRENT] = self._years_current
-        try:
-            res[ATTR_DATE] = self._date
-        except:
-            res[ATTR_DATE] = self._date
+        res[ATTR_DATE] = self._date
         res[ATTR_WEEKS] = self._weeks_remaining
         if self._show_half_anniversary:
-            try:
-                res[ATTR_HALF_DATE] = datetime.strftime(self._half_date, self._date_format)
-            except:
-                res[ATTR_HALF_DATE] = self._half_date
+            res[ATTR_HALF_DATE] = self._half_date
             res[ATTR_HALF_DAYS] = self._half_days_remaining
         return res
 
@@ -200,3 +192,4 @@ class anniversaries(Entity):
                 nextHalfDate = self._half_date.date() + relativedelta(year = today.year + 1)
             self._half_days_remaining = (nextHalfDate - today).days
             self._half_date = datetime(nextHalfDate.year, nextHalfDate.month, nextHalfDate.day)
+            self._half_date = self._half_date.replace(tzinfo=dt_util.DEFAULT_TIME_ZONE)
