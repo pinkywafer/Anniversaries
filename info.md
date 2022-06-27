@@ -23,6 +23,7 @@ Attributes:
 * years at next anniversary: number of years that will have passed at the next occurrence  _(NOT displayed if year is unknown)_
 * current years: number of years have passed since the first occurance (ie, current age)  _(NOT displayed if year is unknown)_
 * date:  The date of the first occurence _(or the date of the next occurence if year is unknown)_
+* next_date: The date of the next occurance
 * weeks_remaining: The number of weeks until the anniversary
 * unit_of_measurement: 'Days' By default, this is displayed after the state. _this is NOT translate-able.  See below for work-around_
 * half_anniversary_date: The date of the next half anniversary (if enabled by `show_half_anniversary`)
