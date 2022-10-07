@@ -4,6 +4,10 @@ import voluptuous as vol
 from datetime import datetime
 import homeassistant.helpers.config_validation as cv
 from homeassistant.const import CONF_NAME
+from script.hassfest.translations import ALLOW_NAME_TRANSLATION
+
+ALLOW_NAME_TRANSLATION.add("anniversaries")
+
 
 
 # Base component constants
