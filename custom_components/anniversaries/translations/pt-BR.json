@@ -1,0 +1,62 @@
+{
+    "config": {
+        "title": "Aniversários",
+        "step": {
+            "user": {
+                "title": "Aniversários",
+                "description": "Insira o nome do sensor e configure os parâmetros do sensor. Mais informações em https://github.com/pinkywafer/Anniversaries",
+                "data": {
+                    "name": "Nome amigável",
+                    "date": "Primeira data (aaaa-mm-dd) ou (mm-dd) se o ano for desconhecido",
+                    "count_up": "Contagem crescente (a contagem regressiva é o padrão)",
+                    "one_time": "Evento único (não recorrente)",
+                    "show_half_anniversary": "Mostrar atributos de meio aniversário",
+                    "unit_of_measurement": "Texto para unit_of_measurement",
+                    "id_prefix": "Prefixo Entity_id"
+                }
+            },
+            "icons": {
+                "title": "Aniversários",
+                "description": "Configuração de ícones. Mais informações em https://github.com/pinkywafer/Anniversaries",
+                "data": {
+                    "icon_normal": "Ícone",
+                    "icon_today": "Ícone quando o aniversário é hoje",
+                    "days_as_soon": "Número de dias a considerar em breve",
+                    "icon_soon": "Ícone quando o aniversário é em breve"
+                }
+            }
+        },
+        "error": {
+            "invalid_date": "A data não é válida. Insira uma data válida 'AAAA-MM-DD' ou 'MM-DD'"
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Aniversários",
+                "description": "Altere os parâmetros do sensor. Mais informações em https://github.com/pinkywafer/Anniversaries",
+                "data": {
+                    "name": "Nome amigável",
+                    "date": "Primeira data (aaaa-mm-dd) ou (mm-aa) se o ano for desconhecido",
+                    "count_up": "Contagem crescente (a contagem regressiva é o padrão)",
+                    "one_time": "Evento único (não recorrente)",
+                    "show_half_anniversary": "Mostrar atributos de meio aniversário",
+                    "unit_of_measurement": "Texto para unit_of_measurement"
+                }
+            },
+            "icons": {
+                "title": "Aniversários",
+                "description":"Configuração de ícones. Mais informações em https://github.com/pinkywafer/Anniversaries",
+                "data": {
+                    "icon_normal": "Ícone",
+                    "icon_today": "Ícone quando o aniversário é hoje",
+                    "days_as_soon": "Número de dias a considerar em breve",
+                    "icon_soon": "Ícone quando o aniversário é em breve"
+                }
+            }
+        },
+        "error": {
+            "invalid_date": "A data não é válida. Insira uma data válida 'AAAA-MM-DD' ou 'MM-DD'."
+        }
+    }
+}
