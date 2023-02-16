@@ -1,8 +1,8 @@
 {
     "config": {
-        "title": "Anniversaries",
         "step": {
             "user": {
+                "title": "Anniversaries",
                 "description": "Enter the sensor name and configure sensor parameters. More info on https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "name": "Friendly name",
