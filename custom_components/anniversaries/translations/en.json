@@ -16,7 +16,6 @@
                 }
             },
             "icons": {
-                //"title": "Anniversaries",
                 "description": "Icon configuration. More info on https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "icon_normal": "Icon",
