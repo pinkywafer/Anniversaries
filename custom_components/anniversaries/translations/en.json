@@ -1,5 +1,6 @@
 {
     "config": {
+        "title": "Anniversaries",
         "step": {
             "user": {
                 "title": "Anniversaries",
@@ -15,7 +16,7 @@
                 }
             },
             "icons": {
-                "title": "Anniversaries",
+                //"title": "Anniversaries",
                 "description": "Icon configuration. More info on https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "icon_normal": "Icon",
