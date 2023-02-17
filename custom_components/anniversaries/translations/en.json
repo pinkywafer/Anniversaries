@@ -1,9 +1,7 @@
 {
     "config": {
-        "title": "Anniversaries",
         "step": {
             "user": {
-                "title": "Anniversaries",
                 "description": "Enter the sensor name and configure sensor parameters. More info on https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "name": "Friendly name",
@@ -16,7 +14,6 @@
                 }
             },
             "icons": {
-                "title": "Anniversaries",
                 "description": "Icon configuration. More info on https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "icon_normal": "Icon",
@@ -33,7 +30,6 @@
     "options": {
         "step": {
             "init": {
-                "title": "Anniversaries",
                 "description": "Change sensor parameters. More info on https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "name": "Friendly name",
@@ -45,7 +41,6 @@
                 }
             },
             "icons": {
-                "title": "Anniversaries",
                 "description":"Icon configuration. More info on https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "icon_normal": "Icon",
