@@ -1,0 +1,57 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "Insira o nome do sensor e configure os parâmetros do sensor. Mais informações em https://github.com/pinkywafer/Anniversaries",
+        "data": {
+          "name": "Nome amigável",
+          "date": "Primeira data (aaaa-mm-dd) ou (mm-dd) se o ano for desconhecido",
+          "count_up": "Contagem crescente (contagem regressiva é o padrão)",
+          "one_time": "Evento único (não recorrente)",
+          "show_half_anniversary": "Mostrar atributos de meio aniversário",
+          "unit_of_measurement": "Texto para unit_of_measurement",
+          "id_prefix": "Prefixo Entity_id"
+        }
+      },
+      "icons": {
+        "description": "Configuração do ícone. Mais informações em https://github.com/pinkywafer/Anniversaries",
+        "data": {
+          "icon_normal": "ícone",
+          "icon_today": "Ícone quando o aniversário é hoje",
+          "days_as_soon": "Número de dias a considerar em breve",
+          "icon_soon": "Ícone quando o aniversário está próximo"
+        }
+      }
+    },
+    "error": {
+      "invalid_date": "A data não é válida. Insira uma data válida 'AAAA-MM-DD' ou 'MM-DD'"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "description": "Altere os parâmetros do sensor. Mais informações em https://github.com/pinkywafer/Anniversaries",
+        "data": {
+          "name": "Nome amigável",
+          "date": "Primeira data (aaaa-mm-dd) ou (mm-aa) se o ano for desconhecido",
+          "count_up": "Contagem crescente (contagem regressiva é o padrão)",
+          "one_time": "Evento único (não recorrente)",
+          "show_half_anniversary": "Mostrar atributos de meio aniversário",
+          "unit_of_measurement": "Texto para unit_of_measurement"
+        }
+      },
+      "icons": {
+        "description": "Configuração do ícone. Mais informações em https://github.com/pinkywafer/Anniversaries",
+        "data": {
+          "icon_normal": "Ícone",
+          "icon_today": "Ícone quando o aniversário é hoje",
+          "days_as_soon": "Número de dias a considerar em breve",
+          "icon_soon": "Ícone quando o aniversário está próximo"
+        }
+      }
+    },
+    "error": {
+      "invalid_date": "A data não é válida. Insira uma data 'AAAA-MM-DD' ou 'MM-DD' válida."
+    }
+  }
+}
