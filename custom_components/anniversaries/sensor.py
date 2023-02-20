@@ -31,6 +31,7 @@ from .const import (
 ATTR_YEARS_NEXT = "years_at_next_anniversary"
 ATTR_YEARS_CURRENT = "current_years"
 ATTR_DATE = "date"
+ATTR_NEXT_DATE = "next_date"
 ATTR_WEEKS = "weeks_remaining"
 ATTR_HALF_DATE = "half_anniversary_date"
 ATTR_HALF_DAYS = "days_until_half_anniversary"
@@ -117,6 +118,7 @@ class anniversaries(Entity):
             res[ATTR_YEARS_NEXT] = self._years_next
             res[ATTR_YEARS_CURRENT] = self._years_current
         res[ATTR_DATE] = self._date
+        res[ATTR_NEXT_DATE] = self._next_date
         res[ATTR_WEEKS] = self._weeks_remaining
         if self._show_half_anniversary:
             res[ATTR_HALF_DATE] = self._half_date
@@ -161,6 +163,8 @@ class anniversaries(Entity):
             if today > nextDate:
                 nextDate = self._date.date() + relativedelta(year=today.year + 1)
 
+        self._next_date = datetime.combine(nextDate, datetime.min.time())
+        self._next_date = self._next_date.replace(tzinfo=dt_util.DEFAULT_TIME_ZONE)
         daysRemaining = (nextDate - today).days
         
         if self._unknown_year:
