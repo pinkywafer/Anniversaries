@@ -14,6 +14,10 @@ PLATFORM = "sensor"
 ISSUE_URL = "https://github.com/pinkywafer/Anniversaries/issues"
 ATTRIBUTION = "Sensor data calculated by Anniversaries Integration"
 
+CALENDAR_NAME = "Anniversaries"
+SENSOR_PLATFORM = "sensor"
+CALENDAR_PLATFORM = "calendar"
+
 ATTR_YEARS_NEXT = "years_at_next_anniversary"
 ATTR_YEARS_CURRENT = "current_years"
 ATTR_DATE = "date"
