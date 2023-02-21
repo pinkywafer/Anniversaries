@@ -14,7 +14,7 @@
 
 The 'anniversaries' component is a Home Assistant custom sensor which counts down to a recurring date such as birthdays, but can be used for any anniversary which occurs annually on the same date.
 
-Any anniversaries entries configured will be added to the home assistant calendar.  This also generates the `calendar.anniversaries` entity, which shows information about the next configured anniversary.
+Any anniversaries entries configured will be added to the home assistant calendar.  This also generates the `calendar.anniversaries` entity, which shows information about the next configured anniversary.  _N.B. At the moment, only the next occurence of the anniversaries are added to the calendar_
 
 State Returned:
 
