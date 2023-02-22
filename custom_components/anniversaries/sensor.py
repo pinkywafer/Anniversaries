@@ -38,7 +38,7 @@ from .const import (
     CALENDAR_NAME,
 )
 
-ATTR_YEARS_NEXT = "years_at_next_anniversary"
+ATTR_YEARS_NEXT = "years_at_anniversary"
 ATTR_YEARS_CURRENT = "current_years"
 ATTR_DATE = "date"
 ATTR_NEXT_DATE = "next_date"
@@ -189,7 +189,10 @@ class anniversaries(Entity):
             self._icon = self._icon_normal
 
         self._state = daysRemaining
-        self._years_next = years
+        if daysRemaining == 0:
+            self._years_next = years - 1
+        else:
+            self._years_next = years
         self._years_current = years - 1
         self._weeks_remaining = int(daysRemaining / 7)
 
