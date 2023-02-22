@@ -95,7 +95,7 @@ anniversaries:
 
 ### Attributes
 
-* years at next anniversary: number of years that will have passed at the next occurrence _(NOT displayed if year is unknown)_
+* years at anniversary: number of years that will have passed at the occurrence counted down to _(NOT displayed if year is unknown)_
 * current years: number of years have passed since the first occurance (ie, current age)  _(NOT displayed if year is unknown)_
 * date:  The date of the first occurence _(or the date of the next occurence if year is unknown)_
 * next_date: The date of the next occurance
