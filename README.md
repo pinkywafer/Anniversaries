@@ -76,7 +76,7 @@ anniversaries:
 |:----------|----------|------------
 | `name` | No | Friendly name
 |`date` | Either `date` or `date_template` MUST be included | date in format `'YYYY-MM-DD'` (or `'MM-DD'` if year is unknown)
-|`date_template` | Either `date` or `date_template` MUST be included | Template to evaluate date from _(Note this is ONLY available in YAML configuration)_ The template must return a string in either `'YYYY-MM-DD'` or `'MM-DD'` format
+|`date_template` | Either `date` or `date_template` MUST be included | Template to evaluate date from _(Note this is ONLY available in YAML configuration)_ The template must return a string in either `'YYYY-MM-DD'` or `'MM-DD'` format, ie: `date_template: '{{ states("input_datetime.your_input_datetime") \| string }}'`
 | `count_up` | Yes | `true` or `false` changes the state to count up from a date (can be useful for non-recurring events) **Default**: `false`
 | `one_time` | Yes | `true` or `false`. For a one-time event (Non-recurring) **Default**: `false`
 | `show_half_anniversary` | Yes | `true` or `false`. Enables the `half_anniversary_date` and `days_until_half_anniversary` attributes. **Default**: `false`
