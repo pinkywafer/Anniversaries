@@ -1,6 +1,9 @@
 name-template: '$RESOLVED_VERSION'
 tag-template: '$RESOLVED_VERSION'
 categories:
+  - title: '⚠️ BREAKING CHANGES ⚠️'
+    labels:
+      - 'breaking'
   - title: '🎉 Features'
     labels:
       - 'feature'
