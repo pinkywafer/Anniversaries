@@ -14,7 +14,7 @@
                 }
             },
             "icons": {
-                "description": "Icon configuration. More info on https://github.com/pinkywafer/Anniversaries",
+                "description": "Icon configuration.",
                 "data": {
                     "icon_normal": "Icon",
                     "icon_today": "Icon when anniversary is today",
