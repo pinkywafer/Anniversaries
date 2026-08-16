@@ -2,7 +2,7 @@
     "config": {
         "step": {
             "user": {
-                "description": "Enter the sensor name and configure sensor parameters. More info on https://github.com/pinkywafer/Anniversaries",
+                "description": "Enter the sensor name and configure sensor parameters.",
                 "data": {
                     "name": "Friendly name",
                     "date": "First Date (yyyy-mm-dd) or (mm-dd) if year is unknown",
@@ -30,7 +30,7 @@
     "options": {
         "step": {
             "init": {
-                "description": "Change sensor parameters. More info on https://github.com/pinkywafer/Anniversaries",
+                "description": "Change sensor parameters.",
                 "data": {
                     "name": "Friendly name",
                     "date": "First Date (yyyy-mm-dd) or (mm-yy) if year is unknown",
@@ -41,7 +41,7 @@
                 }
             },
             "icons": {
-                "description":"Icon configuration. More info on https://github.com/pinkywafer/Anniversaries",
+                "description":"Icon configuration.",
                 "data": {
                     "icon_normal": "Icon",
                     "icon_today": "Icon when anniversary is today",
