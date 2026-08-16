@@ -7,7 +7,10 @@
                 "description": "הכנס שם לחיישן והגדר פרמטרים. עוד מידע בכתובת https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "name": "שם ידידותי",
-                    "date": "תאריך ראשון (yyyy-mm-dd) או (mm-dd) אם התאריך הראשון לא ידוע",
+                    "calendar_type": "סוג לוח שנה",
+                    "event_type": "סוג אירוע",
+                    "date": "תאריך (לועזי: yyyy-mm-dd או mm-dd; עברי: dd-mm-yyyy, dd-mm, או 'DD שם חודש YYYY')",
+                    "count_up": "ספור למעלה",
                     "one_time": "אירוע חד-פעמי",
                     "show_half_anniversary": "הצג ערכי חצי הזמן",
                     "unit_of_measurement": "טקסט עבור 'unit_of_measurement'",
@@ -26,7 +29,23 @@
             }
         },
         "error": {
-            "invalid_date": "תאריך לא תקין. נא הכנס תאריך בפורמט 'YYYY-MM-DD' או 'MM-DD'"
+            "invalid_date": "תאריך לא תקין. לועזי: 'YYYY-MM-DD' או 'MM-DD'. עברי: 'DD-MM-YYYY', 'DD-MM', או 'DD שם חודש YYYY'"
+        }
+    },
+    "selector": {
+        "calendar_type": {
+            "options": {
+                "gregorian": "לוח לועזי",
+                "hebrew": "לוח עברי"
+            }
+        },
+        "event_type": {
+            "options": {
+                "birthday": "יום הולדת",
+                "anniversary": "יום נישואין",
+                "yahrzeit": "יארצייט",
+                "bar_bat_mitzvah": "בר/בת מצווה"
+            }
         }
     },
     "options": {
@@ -36,7 +55,10 @@
                 "description": "שנה פרמטרים לחיישן. עוד מידע בכתובת - https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "name": "שם ידידותי",
-                    "date": "תאריך ראשון (yyyy-mm-dd) או (mm-dd) אם התאריך הראשון לא ידוע",
+                    "calendar_type": "סוג לוח שנה",
+                    "event_type": "סוג אירוע",
+                    "date": "תאריך (לועזי: yyyy-mm-dd או mm-dd; עברי: dd-mm-yyyy, dd-mm, או 'DD שם חודש YYYY')",
+                    "count_up": "ספור למעלה",
                     "one_time": "אירוע חד-פעמי",
                     "show_half_anniversary": "הצג ערכי חצי הזמן",
                     "unit_of_measurement": "טקסט עבור 'unit_of_measurement'"
@@ -54,7 +76,7 @@
             }
         },
         "error": {
-            "invalid_date": "תאריך לא תקין. נא הכנס תאריך בפורמט 'YYYY-MM-DD' או 'MM-DD'"
+            "invalid_date": "תאריך לא תקין. לועזי: 'YYYY-MM-DD' או 'MM-DD'. עברי: 'DD-MM-YYYY', 'DD-MM', או 'DD שם חודש YYYY'"
         }
     }
 }

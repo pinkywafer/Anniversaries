@@ -6,7 +6,7 @@ from homeassistant.components.calendar import CalendarEntity, CalendarEvent
 from homeassistant.core import HomeAssistant
 from homeassistant.util import Throttle
 
-from .const import CALENDAR_NAME, CALENDAR_PLATFORM, DOMAIN, SENSOR_PLATFORM
+from .const import CALENDAR_NAME, CALENDAR_PLATFORM, DOMAIN, SENSOR_PLATFORM, CALENDAR_TYPE_HEBREW
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -104,16 +104,33 @@ class EntitiesCalendarData:
             if (
                 entity
                 and entity.name
+                and entity._date != "Invalid Date"
                 and entity._next_date.date()
                 and start_date <= entity._next_date.date() <= end_date
             ):
+                # Build description with Hebrew date info if applicable
+                description = ""
+                if "description" in entity.extra_state_attributes:
+                    description = entity.extra_state_attributes["description"]
+                
+                # Add Hebrew calendar information if using Hebrew calendar
+                if hasattr(entity, '_calendar_type') and entity._calendar_type == CALENDAR_TYPE_HEBREW:
+                    hebrew_info = []
+                    if hasattr(entity, '_hebrew_date') and entity._hebrew_date:
+                        hebrew_info.append(f"Hebrew Date: {entity._hebrew_date}")
+                    if hasattr(entity, '_next_hebrew_date') and entity._next_hebrew_date:
+                        hebrew_info.append(f"Next Hebrew Date: {entity._next_hebrew_date}")
+                    if hebrew_info:
+                        if description:
+                            description += "\n" + "\n".join(hebrew_info)
+                        else:
+                            description = "\n".join(hebrew_info)
+                
                 event = CalendarEvent(
                     summary=entity.name,
                     start=entity._next_date.date(),
                     end=entity._next_date.date() + timedelta(days=1),
-                    description=entity.extra_state_attributes["description"]
-                    if "description" in entity.extra_state_attributes
-                    else None,
+                    description=description if description else None,
                 )
                 events.append(event)
         return events
@@ -125,12 +142,28 @@ class EntitiesCalendarData:
         for ent in self.entities:
             _LOGGER.debug("Update Entity Name: " + str(ent))
             entity = self._hass.data[DOMAIN][SENSOR_PLATFORM][ent]
-            if entity and entity.name and entity._date:
+            if entity and entity.name and entity._date and entity._date != "Invalid Date":
+                # Build description with Hebrew date info if applicable
+                description = ""
+                if "description" in entity.extra_state_attributes:
+                    description = entity.extra_state_attributes["description"]
+                
+                # Add Hebrew calendar information if using Hebrew calendar
+                if hasattr(entity, '_calendar_type') and entity._calendar_type == CALENDAR_TYPE_HEBREW:
+                    hebrew_info = []
+                    if hasattr(entity, '_hebrew_date') and entity._hebrew_date:
+                        hebrew_info.append(f"Hebrew Date: {entity._hebrew_date}")
+                    if hasattr(entity, '_next_hebrew_date') and entity._next_hebrew_date:
+                        hebrew_info.append(f"Next Hebrew Date: {entity._next_hebrew_date}")
+                    if hebrew_info:
+                        if description:
+                            description += "\n" + "\n".join(hebrew_info)
+                        else:
+                            description = "\n".join(hebrew_info)
+                
                 self.event = CalendarEvent(
                     summary=entity.name,
                     start=entity._next_date.date(),
                     end=entity._next_date.date() + timedelta(days=1),
-                    description=entity.extra_state_attributes["description"]
-                    if "description" in entity.extra_state_attributes
-                    else None,
+                    description=description if description else None,
                 )

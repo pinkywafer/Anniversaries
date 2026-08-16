@@ -5,6 +5,8 @@ from homeassistant.helpers import discovery
 
 from integrationhelper.const import CC_STARTUP_VERSION
 
+from homeassistant.const import CONF_NAME
+
 from .const import (
     CONF_SENSORS,
     CONF_DATE_TEMPLATE,
@@ -92,8 +94,13 @@ async def async_remove_entry(hass, config_entry):
 
 async def update_listener(hass, entry):
     """Handle updates to the config entry."""
-    # Update the entry's data based on options
-    hass.config_entries.async_update_entry(entry, data=entry.options)
+    # Update the entry's data and title based on options
+    new_title = entry.options.get(CONF_NAME, entry.title)
+    hass.config_entries.async_update_entry(
+        entry,
+        data=entry.options,
+        title=new_title
+    )
 
     # Unload and reload platform to apply new settings
     await async_unload_entry(hass, entry)
