@@ -226,14 +226,13 @@ class anniversaries(Entity):
                 CALENDAR_PLATFORM
             ] = EntitiesCalendarData(self.hass)
             _LOGGER.debug("Creating Anniversaries calendar")
-            self.hass.async_create_task(
-                async_load_platform(
-                    self.hass,
-                    CALENDAR_PLATFORM,
-                    DOMAIN,
-                    {"name": CALENDAR_NAME},
-                    {"name": CALENDAR_NAME},
-                )
+            # Replace async_create_task with await to fix the deprecated method warning
+            await async_load_platform(
+                self.hass,
+                CALENDAR_PLATFORM,
+                DOMAIN,
+                {"name": CALENDAR_NAME},
+                {"name": CALENDAR_NAME},
             )
         else:
             _LOGGER.debug("Anniversaries calendar already exists")

@@ -76,8 +76,8 @@ async def async_setup_entry(hass, config_entry):
 
 async def async_unload_entry(hass, config_entry):
     """Unload a config entry."""
-    # Unload the platform using the new `async_forward_entry_unload`
-    if await hass.config_entries.async_forward_entry_unload(config_entry, [PLATFORM]):
+    # Unload the platform using the new `async_unload_platforms` method
+    if await hass.config_entries.async_unload_platforms(config_entry, [PLATFORM]):
         _LOGGER.info(f"Successfully unloaded {PLATFORM} for {DOMAIN}")
         return True
     else:
