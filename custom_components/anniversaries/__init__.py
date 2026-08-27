@@ -15,6 +15,8 @@ from .const import (
     CONFIG_SCHEMA,
 )
 
+from .services import async_register_services
+
 _LOGGER = logging.getLogger(__name__)
 
 async def async_setup(hass, config):
@@ -27,6 +29,9 @@ async def async_setup(hass, config):
     _LOGGER.info(
         CC_STARTUP_VERSION.format(name=DOMAIN, version=VERSION, issue_link=ISSUE_URL)
     )
+
+    # Register services
+    await async_register_services(hass)
 
     platform_config = config[DOMAIN].get(CONF_SENSORS, {})
 
@@ -60,6 +65,9 @@ async def async_setup_entry(hass, config_entry):
     _LOGGER.info(
         CC_STARTUP_VERSION.format(name=DOMAIN, version=VERSION, issue_link=ISSUE_URL)
     )
+
+    # Register services
+    await async_register_services(hass)
 
     # Safely update entry options if needed
     hass.config_entries.async_update_entry(

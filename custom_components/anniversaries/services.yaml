@@ -1,0 +1,58 @@
+# services.yaml for Anniversaries integration
+add_anniversary:
+  description: Adds a new anniversary to Home Assistant.
+  fields:
+    name:
+      description: Name of the anniversary.
+      example: "Wedding Anniversary"
+      required: true
+      selector:
+        text:
+    date:
+      description: Date of the anniversary in YYYY-MM-DD or MM-DD format.
+      example: "2020-06-20"
+      required: false
+      selector:
+        text:
+    date_template:
+      description: Template to determine the anniversary date.
+      example: "{{ states('input_text.anniversary_date') }}"
+      required: false
+      selector:
+        template:
+    one_time:
+      description: Whether this is a one-time event that doesn't repeat annually.
+      default: false
+      required: false
+      selector:
+        boolean:
+    count_up:
+      description: Whether to count up from the date instead of down to the next occurrence.
+      default: false
+      required: false
+      selector:
+        boolean:
+    unit_of_measurement:
+      description: Unit of measurement for the sensor.
+      example: "days"
+      default: "days"
+      required: false
+      selector:
+        text:
+    id_prefix:
+      description: Prefix to use for the entity ID.
+      example: "anniversary_"
+      default: "anniversary_"
+      required: false
+      selector:
+        text:
+
+remove_anniversary:
+  description: Removes an anniversary from Home Assistant.
+  fields:
+    name:
+      description: Name of the anniversary to remove.
+      example: "Wedding Anniversary"
+      required: true
+      selector:
+        text:
