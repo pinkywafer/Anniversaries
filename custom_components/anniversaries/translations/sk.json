@@ -1,9 +1,7 @@
 {
     "config": {
-        "title": "Výročia",
         "step": {
             "user": {
-                "title": "Výročia",
                 "description": "Zadajte názov senzora a nakonfigurujte parametre senzora. Viac info na https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "name": "Vlastný názov",
@@ -15,15 +13,12 @@
                 }
             },
             "icons": {
-                "title": "Výročia",
                 "description": "Zadajte názov senzora a nakonfigurujte parametre senzora. Viac info na https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "icon_normal": "Ikona",
                     "icon_today": "Ikona ked je výročie dnes",
                     "days_as_soon": "Počet dní, ktoré zostavajú do výročia",
                     "icon_soon": "Ikona pri príležitosti výročia"
-                    
-                    
                 }
             }
         },
@@ -34,7 +29,6 @@
     "options": {
         "step": {
             "init": {
-                "title": "Výročia",
                 "description": "Zmeň parametre senzora. Viac info na https://github.com/pinkywafer/Anniversaries",
                 "data": {
                     "name": "Vlastný názov",
@@ -52,8 +46,6 @@
                     "icon_today": "Ikona ked je výročie dnes",
                     "days_as_soon": "Počet dní, ktoré zostavajú do výročia",
                     "icon_soon": "Ikona pri príležitosti výročia"
-                    
-                    
                 }
             }
         },
