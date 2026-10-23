@@ -116,21 +116,19 @@ class AnniversariesFlowHandler(config_entries.ConfigFlow):
 
     async def async_step_import(self, user_input):  # pylint: disable=unused-argument
         """Import a config entry.
-        Special type of import, we're not actually going to store any data.
-        Instead, we're going to rely on the values that are in config file.
+        YAML configuration is loaded entirely through the YAML discovery path,
+        so never create a marker entry: removing such an entry from
+        async_setup_entry deadlocks on its own setup lock (issues #180/#181).
         """
-        if self._async_current_entries():
-            return self.async_abort(reason="single_instance_allowed")
-
-        return self.async_create_entry(title="configuration.yaml", data={})
+        return self.async_abort(reason="yaml_configuration")
 
     @staticmethod
     @callback
     def async_get_options_flow(config_entry):
         if config_entry.options.get("unique_id", None) is not None:
-            return OptionsFlowHandler(config_entry)
+            return OptionsFlowHandler()
         else:
-            return EmptyOptions(config_entry)
+            return EmptyOptions()
 
 def is_not_date(date, one_time):
     try:
@@ -149,13 +147,14 @@ def is_not_date(date, one_time):
 
 
 class OptionsFlowHandler(config_entries.OptionsFlow):
-    def __init__(self, config_entry):
-        self.config_entry = config_entry
+    def __init__(self):
+        # self.config_entry is provided by Home Assistant and is not available
+        # in __init__ (it is a read-only property since Home Assistant 2025.12).
         self._data = {}
-        self._data["unique_id"] = config_entry.options.get("unique_id")
 
     async def async_step_init(self, user_input=None):
         self._errors = {}
+        self._data.setdefault("unique_id", self.config_entry.options.get("unique_id"))
         if user_input is not None:
             self._data.update(user_input)
             if is_not_date(user_input[CONF_DATE], user_input[CONF_ONE_TIME]):
@@ -205,5 +204,8 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
 
 
 class EmptyOptions(config_entries.OptionsFlow):
-    def __init__(self, config_entry):
-        self.config_entry = config_entry
+    """Options flow for legacy entries without a unique_id."""
+
+    async def async_step_init(self, user_input=None):
+        """There is nothing to configure for this entry."""
+        return self.async_abort(reason="not_configurable")

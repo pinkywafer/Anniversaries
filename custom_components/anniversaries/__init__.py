@@ -3,8 +3,6 @@ import logging
 from homeassistant import config_entries
 from homeassistant.helpers import discovery
 
-from integrationhelper.const import CC_STARTUP_VERSION
-
 from .const import (
     CONF_SENSORS,
     CONF_DATE_TEMPLATE,
@@ -24,9 +22,7 @@ async def async_setup(hass, config):
         return True
 
     # Log startup message
-    _LOGGER.info(
-        CC_STARTUP_VERSION.format(name=DOMAIN, version=VERSION, issue_link=ISSUE_URL)
-    )
+    _LOGGER.info("Anniversaries %s starting - issues: %s", VERSION, ISSUE_URL)
 
     platform_config = config[DOMAIN].get(CONF_SENSORS, {})
 
@@ -52,22 +48,25 @@ async def async_setup(hass, config):
 async def async_setup_entry(hass, config_entry):
     """Set up this integration using UI."""
     if config_entry.source == config_entries.SOURCE_IMPORT:
-        # Remove UI config entry if set up via YAML
-        await hass.config_entries.async_remove(config_entry.entry_id)
-        return False
+        # Marker entry from YAML import: remove it only after setup completes.
+        # Awaiting the removal here deadlocks on the entry's own setup lock
+        # (upstream issues #180/#181 - the multi-minute startup hang).
+        hass.async_create_task(
+            hass.config_entries.async_remove(config_entry.entry_id)
+        )
+        return True
 
     # Log startup message
-    _LOGGER.info(
-        CC_STARTUP_VERSION.format(name=DOMAIN, version=VERSION, issue_link=ISSUE_URL)
-    )
+    _LOGGER.info("Anniversaries %s starting - issues: %s", VERSION, ISSUE_URL)
 
     # Safely update entry options if needed
     hass.config_entries.async_update_entry(
         config_entry, options=config_entry.data
     )
 
-    # Add update listener for configuration changes
-    config_entry.add_update_listener(update_listener)
+    # Add update listener for configuration changes (tied to unload so reloads
+    # don't stack up duplicate listeners)
+    config_entry.async_on_unload(config_entry.add_update_listener(update_listener))
 
     # Set up the platforms using the new `async_forward_entry_setups`
     await hass.config_entries.async_forward_entry_setups(config_entry, [PLATFORM])
@@ -76,8 +75,8 @@ async def async_setup_entry(hass, config_entry):
 
 async def async_unload_entry(hass, config_entry):
     """Unload a config entry."""
-    # Unload the platform using the new `async_forward_entry_unload`
-    if await hass.config_entries.async_forward_entry_unload(config_entry, [PLATFORM]):
+    # Unload the platform using `async_unload_platforms`
+    if await hass.config_entries.async_unload_platforms(config_entry, [PLATFORM]):
         _LOGGER.info(f"Successfully unloaded {PLATFORM} for {DOMAIN}")
         return True
     else:
@@ -92,9 +91,10 @@ async def async_remove_entry(hass, config_entry):
 
 async def update_listener(hass, entry):
     """Handle updates to the config entry."""
-    # Update the entry's data based on options
-    hass.config_entries.async_update_entry(entry, data=entry.options)
+    # Mirror options into data first. That update re-enters this listener with
+    # data == options, which is the point where a single reload happens.
+    if entry.data != entry.options:
+        hass.config_entries.async_update_entry(entry, data=entry.options)
+        return
 
-    # Unload and reload platform to apply new settings
-    await async_unload_entry(hass, entry)
-    await async_setup_entry(hass, entry)
+    await hass.config_entries.async_reload(entry.entry_id)
